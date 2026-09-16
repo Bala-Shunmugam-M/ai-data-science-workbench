@@ -1,0 +1,24 @@
+{
+  "artifact": "final_model_selection",
+  "generated_at": "2026-08-08T19:00:05+00:00",
+  "task": "classification",
+  "selection_metric": "roc_auc",
+  "champion_name": "LogisticRegression",
+  "champion_version": "v001",
+  "test_metrics": {
+    "accuracy": 0.8107852412488175,
+    "precision": 0.6866359447004609,
+    "recall": 0.5302491103202847,
+    "f1": 0.5983935742971888,
+    "roc_auc": 0.844778405547199
+  },
+  "validation_metrics": {
+    "accuracy": 0.8077651515151515,
+    "precision": 0.6498054474708171,
+    "recall": 0.5964285714285714,
+    "f1": 0.6219739292364991,
+    "roc_auc": 0.8454643777614139
+  },
+  "selection_rationale": "6 candidate model(s) were compared on the untouched validation split using ROC-AUC as the selection metric (higher is better).\n  - LogisticRegression (v001): ROC-AUC 0.845, ACCURACY 0.808, PRECISION 0.650, RECALL 0.596, F1 0.622.\n  - LogisticRegression (v002): ROC-AUC 0.845, ACCURACY 0.808, PRECISION 0.650, RECALL 0.596, F1 0.622.\n  - RandomForestClassifier (v002): ROC-AUC 0.845, ACCURACY 0.736, PRECISION 0.501, RECALL 0.836, F1 0.627.\n  - RandomForestClassifier (v001): ROC-AUC 0.845, ACCURACY 0.736, PRECISION 0.501, RECALL 0.836, F1 0.627.\n  - DecisionTreeClassifier (v001): ROC-AUC 0.839, ACCURACY 0.750, PRECISION 0.519, RECALL 0.775, F1 0.622.\n  - DecisionTreeClassifier (v002): ROC-AUC 0.839, ACCURACY 0.750, PRECISION 0.519, RECALL 0.775, F1 0.622.\nLogisticRegression (v001) had the best validation ROC-AUC and was promoted to champion.\nThe champion was then evaluated once on the held-out test split: ROC-AUC 0.845, ACCURACY 0.811, PRECISION 0.687, RECALL 0.530, F1 0.598. The test split was used only for this single final measurement, never for tuning or selection.",
+  "model_path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\models\\LogisticRegression\\v001\\model.joblib"
+}

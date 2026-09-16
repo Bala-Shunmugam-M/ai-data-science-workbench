@@ -1,0 +1,190 @@
+{
+  "nodes": [
+    {
+      "stage": "model_training",
+      "timestamp": "2026-07-20T21:37:16+00:00",
+      "script": "src/model_training/trainer.py",
+      "inputs": [
+        {
+          "path": "data\\engineered\\train.csv",
+          "sha256": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d"
+        },
+        {
+          "path": "data\\engineered\\validation.csv",
+          "sha256": "de15f29a7e4d43bf4ae7e04582015df45b5caa30d45b3c8e1e3d7250813b043c"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "models\\LinearRegression\\v002\\model.joblib",
+          "sha256": "36275eb7e1f090d8a6c998fff11d3ce81622a6a9e07afc6ac059af37952e773c"
+        },
+        {
+          "path": "models\\Ridge\\v002\\model.joblib",
+          "sha256": "dd142f239bc393057bf0804c42eb984ed6d7e842c8503eb6510805d1315115b0"
+        },
+        {
+          "path": "models\\Lasso\\v002\\model.joblib",
+          "sha256": "75955e80a02486bb794da8f4d533467600dc1c326497b63833d84aadcabcb67e"
+        }
+      ],
+      "params_hash": "7668a8d0340fe7ea24f76b9bf12492c6aca89feacb7fa4e32ff5acfb38d53ab1",
+      "params": {
+        "models": [
+          "LinearRegression",
+          "Ridge",
+          "Lasso"
+        ],
+        "predictor_columns": [
+          "longitude",
+          "latitude",
+          "housing_median_age",
+          "total_rooms",
+          "total_bedrooms",
+          "population",
+          "households",
+          "median_income",
+          "ocean_proximity",
+          "rooms_per_household",
+          "bedrooms_per_room",
+          "population_per_household",
+          "bedrooms_per_household",
+          "rooms_per_person",
+          "bedrooms_per_person",
+          "log_total_rooms",
+          "log_total_bedrooms",
+          "log_population",
+          "log_households"
+        ]
+      },
+      "trained_models": [
+        "LinearRegression v002",
+        "Ridge v002",
+        "Lasso v002"
+      ]
+    },
+    {
+      "stage": "model_evaluation",
+      "timestamp": "2026-07-26T20:27:55+00:00",
+      "script": "src/model_evaluation/evaluator.py",
+      "inputs": [
+        {
+          "path": "models\\Ridge\\v001\\model.joblib",
+          "sha256": "72978022be2e11d31dc3d52a2f80c20526bb40bc1472b72be75963366a4aa05a"
+        },
+        {
+          "path": "data\\engineered\\validation.csv",
+          "sha256": "de15f29a7e4d43bf4ae7e04582015df45b5caa30d45b3c8e1e3d7250813b043c"
+        },
+        {
+          "path": "data\\engineered\\test.csv",
+          "sha256": "e0e384789ac046db51aec7adaa8e129508f9bb308c15bc82aeab795b8bc396fa"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "artifacts\\evaluation\\model_comparison.csv",
+          "sha256": "d7256d6aaa4329d318adad9f67f8b186a749ef678ef561b501b15099fc20123b"
+        },
+        {
+          "path": "artifacts\\evaluation\\model_evaluation_report.json",
+          "sha256": "24dee18911bf954cc85ebe7db934d880d088897a4322fe2a99dc8b638057e768"
+        },
+        {
+          "path": "artifacts\\final_model_selection.json",
+          "sha256": "898a56967f4bbc8535a3d10414ff7cdf81e74377bd3f9616558f83e89f5e01cd"
+        }
+      ],
+      "params_hash": "8169425e1ebed96a2f8615dbd7d3ce0afc089799f358aa0fe2f9dcb8e4253d44",
+      "params": {
+        "champion": "Ridge v001",
+        "selection_metric": "rmse"
+      },
+      "champion": "Ridge v001",
+      "test_metrics": {
+        "rmse": 66680.80871331149,
+        "mae": 48731.4185299291,
+        "r2": 0.6665125391478672,
+        "mape": 28.323672260501958
+      }
+    },
+    {
+      "stage": "explainability",
+      "timestamp": "2026-08-01T14:11:00+00:00",
+      "script": "src/explainability/interpretation.py",
+      "inputs": [
+        {
+          "path": "models\\Ridge\\v001\\model.joblib",
+          "sha256": "72978022be2e11d31dc3d52a2f80c20526bb40bc1472b72be75963366a4aa05a"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "artifacts\\explainability\\coefficient_interpretation.csv",
+          "sha256": "2a6d9b3a1fd1a5aa99fe3dd8a5729f978171ef3441447efca824a990982e0597"
+        },
+        {
+          "path": "artifacts\\explainability\\top_drivers.png",
+          "sha256": "7f29299f2c8c5491e3528437856ce09a56f4e4155ed465da4792c09d12a37d89"
+        },
+        {
+          "path": "artifacts\\reports\\executive_briefing.md",
+          "sha256": "e2f4abc3f08995e46880792c92713352021904bb2fa5aca826912b30df145156"
+        }
+      ],
+      "params_hash": "fb14d6b0e7475037fd15a6164e8ac7fc4a830e1793fea69dd73529a6180ab60b",
+      "params": {
+        "champion": "Ridge v001",
+        "top_n": 10
+      }
+    },
+    {
+      "stage": "trust_audit",
+      "timestamp": "2026-08-09T14:20:54+00:00",
+      "script": "src/pipelines/trust_pipeline.py",
+      "inputs": [
+        {
+          "path": "data\\engineered\\test.csv",
+          "sha256": "e0e384789ac046db51aec7adaa8e129508f9bb308c15bc82aeab795b8bc396fa"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "artifacts\\trust\\subgroup_fairness.json",
+          "sha256": "69de5b1bd868bada94eff563bcdcca9405eda43341f9a9f18b2482c3573a2db6"
+        },
+        {
+          "path": "artifacts\\trust\\permutation_importance.json",
+          "sha256": "68d48635d9e61708e1abd8f29680db530ac2cea9298a7e597bf34fc36b1ffd4b"
+        },
+        {
+          "path": "artifacts\\trust\\calibration.json",
+          "sha256": "b1abc7919deb096bc9e8b6ddcf65b39250e47c2d47af974dbe93986c64cd16c1"
+        },
+        {
+          "path": "artifacts\\trust\\model_card.md",
+          "sha256": "133e3668f1da857289e7a350e398093205f087b757d3d20c681515b6dc522a11"
+        },
+        {
+          "path": "artifacts\\trust\\model_card.json",
+          "sha256": "397d6c15ff31e5092b62a6870df60f839e32c17453b32278a6577a462c8f9c6b"
+        }
+      ],
+      "params_hash": "074f83f7ff1314cf01160b38b3d95aeaf959a7d89ba863a5884c7280f32f69c2",
+      "params": {
+        "split": "test",
+        "champion": "Ridge v001"
+      },
+      "champion": "Ridge v001",
+      "split": "test",
+      "columns_audited": [
+        "ocean_proximity"
+      ],
+      "n_features_ranked": 23,
+      "n_features_above_noise": 21,
+      "calibration_assessed": false,
+      "model_card": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\model_card.md"
+    }
+  ],
+  "updated_at": "2026-08-09T14:20:54+00:00"
+}

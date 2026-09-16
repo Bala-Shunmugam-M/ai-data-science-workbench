@@ -1,0 +1,436 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   Design tokens — WEBAPP_PLAN.md §2. Encoded verbatim.
+   Do not add colours. Components consume the semantic custom
+   properties below (or the Tailwind utilities they generate),
+   never a raw hex or a Tailwind palette number.
+   ============================================================ */
+
+:root {
+  /* ---- 2.1 Colour (light) ---- */
+  --bg: #ffffff;
+  --bg-subtle: #f7f8fa;
+  --surface: #ffffff;
+  --surface-hover: #f7f8fa;
+  --border: #e4e7ec;
+  --border-strong: #d0d5dd;
+  --text: #101828;
+  --text-secondary: #475467;
+  --text-tertiary: #667085;
+  --brand: #1f4ad1;
+  --brand-hover: #1a3cab;
+  --brand-subtle: #eff4ff;
+  --brand-fg: #ffffff;
+  --success: #067647;
+  --success-subtle: #ecfdf3;
+  --warning: #b54708;
+  --warning-subtle: #fffaeb;
+  --danger: #b42318;
+  --danger-subtle: #fef3f2;
+  --focus-ring: #1f4ad1;
+
+  /* Chart categorical ramp (max 6, in order) — light */
+  --chart-1: #1f4ad1;
+  --chart-2: #0e9384;
+  --chart-3: #b54708;
+  --chart-4: #7a5af8;
+  --chart-5: #dd2590;
+  --chart-6: #475467;
+
+  /* ---- 2.2 Spacing — 4px base ----
+     Tailwind v4's default spacing scale (1=4px ... 20=80px) already
+     matches this table exactly, so it is not redefined here — use
+     the standard padding, gap and margin utilities (p-6, gap-8, ...).
+     Only the values Tailwind has no built-in name for are added below. */
+  --card-padding: 24px; /* §2.2 "Card padding 24" */
+  --section-gap: 32px; /* §2.2 "Section gap 32" */
+  --page-gutter: 32px; /* desktop */
+  --page-gutter-mobile: 16px;
+  --content-max-width: 1280px;
+
+  /* ---- 2.3 Radii ---- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* ---- 2.4 Shadow (light) ---- */
+  --shadow-xs: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-sm:
+    0 1px 3px rgba(16, 24, 40, 0.1), 0 1px 2px rgba(16, 24, 40, 0.06);
+  --shadow-md:
+    0 4px 8px -2px rgba(16, 24, 40, 0.1), 0 2px 4px -2px rgba(16, 24, 40, 0.06);
+  --shadow-lg:
+    0 12px 16px -4px rgba(16, 24, 40, 0.08),
+    0 4px 6px -2px rgba(16, 24, 40, 0.03);
+
+  /* ---- 2.6 Motion ---- */
+  --motion-fast: 120ms;
+  --motion-base: 180ms;
+  --motion-slow: 280ms;
+  --motion-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-stagger: 60ms;
+
+  /* ---- shadcn/ui compatibility bridge ----
+     ponytail: `npx shadcn add <component>` emits markup that reads
+     these standard slot names (bg-primary, bg-card, ...). Aliasing
+     them onto our own tokens means anything pulled from the shadcn
+     registry already renders in-palette with zero find/replace.
+     No new colours are introduced — every value on the right already
+     exists above. */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-fg);
+  --secondary: var(--bg-subtle);
+  --secondary-foreground: var(--text);
+  --muted: var(--bg-subtle);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--brand-subtle);
+  --accent-foreground: var(--brand);
+  --destructive: var(--danger);
+  --destructive-foreground: #ffffff;
+  --input: var(--border);
+  --ring: var(--focus-ring);
+  --radius: var(--radius-lg);
+}
+
+.dark {
+  /* ---- 2.1 Colour (dark) ---- */
+  --bg: #0b0d12;
+  --bg-subtle: #171b24;
+  --surface: #12151c;
+  --surface-hover: #1a1f29;
+  --border: #262b36;
+  --border-strong: #343a46;
+  --text: #f2f4f7;
+  --text-secondary: #98a2b3;
+  /* Was #667085 - the same value as the light theme, which was an oversight:
+     every other colour here has a distinct dark value. At #667085 it scored
+     3.67:1 on --surface and 3.91:1 on --bg, failing WCAG AA (4.5:1) on every
+     label, caption and hint in the app. #8a94a6 scores 5.97 / 6.36 while
+     staying dimmer than --text-secondary (7.09), so the type hierarchy holds. */
+  --text-tertiary: #8a94a6;
+  --brand: #5b82f0;
+  --brand-hover: #7398f4;
+  --brand-subtle: #151c33;
+  --brand-fg: #0b0d12;
+  --success: #75e0a7;
+  --success-subtle: #053321;
+  --warning: #fec84b;
+  --warning-subtle: #4e1d09;
+  --danger: #fda29b;
+  --danger-subtle: #55160c;
+  --focus-ring: #5b82f0;
+
+  /* Chart categorical ramp — dark equivalents */
+  --chart-1: #5b82f0;
+  --chart-2: #2ed3b7;
+  --chart-3: #fec84b;
+  --chart-4: #9b8afb;
+  --chart-5: #f670c7;
+  --chart-6: #98a2b3;
+
+  /* ---- 2.4 Shadow (dark) ----
+     "replace shadows with --border outlines; shadows on near-black
+     read as dirt." Same var names, so every component that does
+     `box-shadow: var(--shadow-sm)` gets a 1px border look for free. */
+  --shadow-xs: 0 0 0 1px var(--border);
+  --shadow-sm: 0 0 0 1px var(--border);
+  --shadow-md: 0 0 0 1px var(--border);
+  --shadow-lg: 0 0 0 1px var(--border-strong);
+
+  /* shadcn/ui compatibility bridge (dark) */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface);
+  --popover-foreground: var(--text);
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-fg);
+  --secondary: var(--bg-subtle);
+  --secondary-foreground: var(--text);
+  --muted: var(--bg-subtle);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--brand-subtle);
+  --accent-foreground: var(--brand);
+  --destructive: var(--danger);
+  --destructive-foreground: #0b0d12;
+  --input: var(--border);
+  --ring: var(--focus-ring);
+}
+
+/* ============================================================
+   Tailwind v4 exposure — @theme inline
+   ============================================================ */
+
+@theme inline {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Semantic colours -> bg-brand, text-text-secondary, border-border, etc. */
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-fg: var(--brand-fg);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-danger: var(--danger);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-focus-ring: var(--focus-ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+
+  /* shadcn/ui bridge colours -> bg-primary, text-muted-foreground, etc. */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Radii -> rounded-sm, rounded-md, rounded-lg, rounded-xl, rounded-full */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-full: var(--radius-full);
+
+  /* Content max width -> max-w-content */
+  --container-content: var(--content-max-width);
+}
+
+/* ============================================================
+   2.5 Type scale — Inter via next/font/google
+   One class per role. The plan's "sm" and "xs" roles are named
+   text-caption / text-label below so they don't collide with
+   Tailwind's own built-in text-sm / text-xs size utilities.
+   ============================================================ */
+
+@utility text-metric {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+@utility text-display {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@utility text-h1 {
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+@utility text-h2 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+@utility text-h3 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+@utility text-body-lg {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+/* "sm" role (14/20, weight 400): table cells, captions */
+@utility text-caption {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+/* "xs" role (12/18, weight 500): labels, badges, uppercase */
+@utility text-label {
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 500;
+}
+
+/* Numeric table columns and all metrics use tabular figures.
+   Tailwind's own `tabular-nums` utility class covers this ad hoc;
+   it is already baked into text-metric/text-caption above. */
+
+/* ============================================================
+   2.6 Motion
+   ============================================================ */
+
+@utility duration-fast {
+  transition-duration: var(--motion-fast);
+}
+@utility duration-base {
+  transition-duration: var(--motion-base);
+}
+@utility duration-slow {
+  transition-duration: var(--motion-slow);
+}
+@utility ease-standard {
+  transition-timing-function: var(--motion-ease);
+}
+
+/* Card stagger: consumer sets `--stagger-index` (0-based, cap at 8)
+   on each item and applies this class; delay = index * 60ms. */
+@utility stagger-item {
+  animation-delay: calc(var(--stagger-index, 0) * var(--motion-stagger));
+}
+
+@keyframes file-drop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* File-drop entry: opacity 0->1, scale .96->1, over `base`.
+   `@utility` can't itself be nested inside `@media`, so the
+   no-preference gate is nested inside the utility body instead —
+   same effect: the animation only runs when motion is not reduced. */
+@utility animate-file-drop-in {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: file-drop-in var(--motion-base) var(--motion-ease) both;
+  }
+}
+
+@utility animate-fade-in {
+  @media (prefers-reduced-motion: no-preference) {
+    animation: fade-in var(--motion-base) var(--motion-ease) both;
+  }
+}
+
+/* Every animation must be neutralised when the user asks for reduced
+   motion — belt-and-braces on top of the no-preference guard above,
+   in case a future component reaches for `animate-*` / `transition-*`
+   directly instead of the wrapped utilities. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   Base layer
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-bg text-text;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ============================================================
+   Data table cells
+
+   These live here rather than as utility strings on every cell for one
+   measurable reason: a dense stage renders 7,000+ cells, and repeating the
+   full class list on each one cost roughly 100 bytes per cell - about a third
+   of the page weight - before the browser had drawn anything. One class name
+   per cell ships the same styling.
+
+   Only the invariant part is hoisted. Alignment, wrapping and zebra striping
+   stay as utilities in the component, because they vary per column and per row.
+   ============================================================ */
+
+@layer components {
+  .dt-cell {
+    @apply border-b border-border px-4 py-2.5 align-top text-text;
+  }
+
+  .dt-head {
+    @apply border-b border-border bg-bg-subtle px-4 py-2.5 text-label font-medium tracking-wide text-text-secondary uppercase whitespace-nowrap;
+  }
+
+  /* Opaque background is required, not inherited: a transparent sticky header
+     lets scrolling rows show through it. */
+  .dt-head-sticky {
+    @apply sticky top-0 z-10 bg-bg-subtle;
+  }
+
+  /* Prose columns. Capped so one long column cannot squeeze the rest of the
+     table out of view. */
+  .dt-cell-wrap {
+    @apply max-w-[28rem] min-w-[16rem] break-words whitespace-normal;
+  }
+}

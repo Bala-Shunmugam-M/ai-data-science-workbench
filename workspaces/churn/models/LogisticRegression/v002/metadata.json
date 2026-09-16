@@ -1,0 +1,158 @@
+{
+  "name": "LogisticRegression",
+  "version": "v002",
+  "estimator_path": "sklearn.linear_model.LogisticRegression",
+  "params": {
+    "max_iter": 2000,
+    "solver": "liblinear",
+    "C": 2.154434690031882
+  },
+  "tuned": true,
+  "best_params": {
+    "C": 2.154434690031882
+  },
+  "tuning_history": [
+    {
+      "C": 0.01,
+      "validation_roc_auc": 0.8421184646539028
+    },
+    {
+      "C": 0.014677992676220698,
+      "validation_roc_auc": 0.8426109167893963
+    },
+    {
+      "C": 0.021544346900318832,
+      "validation_roc_auc": 0.843038935935199
+    },
+    {
+      "C": 0.03162277660168379,
+      "validation_roc_auc": 0.8433657032400588
+    },
+    {
+      "C": 0.046415888336127774,
+      "validation_roc_auc": 0.8438075294550811
+    },
+    {
+      "C": 0.06812920690579612,
+      "validation_roc_auc": 0.8440146354933725
+    },
+    {
+      "C": 0.1,
+      "validation_roc_auc": 0.8444472569955817
+    },
+    {
+      "C": 0.1467799267622069,
+      "validation_roc_auc": 0.8448062407952872
+    },
+    {
+      "C": 0.21544346900318834,
+      "validation_roc_auc": 0.8451284057437408
+    },
+    {
+      "C": 0.31622776601683794,
+      "validation_roc_auc": 0.8452664764359351
+    },
+    {
+      "C": 0.46415888336127775,
+      "validation_roc_auc": 0.8453723306332843
+    },
+    {
+      "C": 0.6812920690579611,
+      "validation_roc_auc": 0.8453861377025038
+    },
+    {
+      "C": 1.0,
+      "validation_roc_auc": 0.845321704712813
+    },
+    {
+      "C": 1.467799267622069,
+      "validation_roc_auc": 0.845409149484536
+    },
+    {
+      "C": 2.154434690031882,
+      "validation_roc_auc": 0.8454643777614139
+    },
+    {
+      "C": 3.1622776601683795,
+      "validation_roc_auc": 0.8454137518409426
+    },
+    {
+      "C": 4.6415888336127775,
+      "validation_roc_auc": 0.8453355117820325
+    },
+    {
+      "C": 6.812920690579608,
+      "validation_roc_auc": 0.8452986929307804
+    },
+    {
+      "C": 10.0,
+      "validation_roc_auc": 0.8453124999999999
+    },
+    {
+      "C": 14.67799267622069,
+      "validation_roc_auc": 0.8452526693667158
+    },
+    {
+      "C": 21.54434690031882,
+      "validation_roc_auc": 0.8452250552282771
+    },
+    {
+      "C": 31.622776601683793,
+      "validation_roc_auc": 0.8452618740795287
+    },
+    {
+      "C": 46.41588833612777,
+      "validation_roc_auc": 0.8452204528718703
+    },
+    {
+      "C": 68.12920690579608,
+      "validation_roc_auc": 0.8452618740795287
+    },
+    {
+      "C": 100.0,
+      "validation_roc_auc": 0.8452526693667157
+    }
+  ],
+  "train_metrics": {
+    "accuracy": 0.8040567951318458,
+    "precision": 0.6557377049180327,
+    "recall": 0.5504587155963303,
+    "f1": 0.5985037406483791,
+    "roc_auc": 0.8489196795998628
+  },
+  "validation_metrics": {
+    "accuracy": 0.8077651515151515,
+    "precision": 0.6498054474708171,
+    "recall": 0.5964285714285714,
+    "f1": 0.6219739292364991,
+    "roc_auc": 0.8454643777614139
+  },
+  "training_seconds": 1.8774,
+  "n_train_rows": 4930,
+  "n_features": 46,
+  "predictor_columns": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "data_hash": "41cdaed48c20190eb70e9afcce0138d763889304479b0bc696d14bee58bb0fb5",
+  "random_state": 42,
+  "created_at": "2026-07-26T20:27:21+00:00",
+  "model_path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\models\\LogisticRegression\\v002\\model.joblib"
+}

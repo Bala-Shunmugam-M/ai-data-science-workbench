@@ -1,0 +1,206 @@
+{
+  "nodes": [
+    {
+      "stage": "churn_prep",
+      "timestamp": "2026-07-26T20:27:19+00:00",
+      "script": "src/pipelines/churn_pipeline.py",
+      "inputs": [
+        {
+          "path": "workspaces\\churn\\data\\raw\\WA_Fn-UseC_-Telco-Customer-Churn.csv",
+          "sha256": "4cd901efab211ccb154051a93a1ab5e9298e37e8fd29bbf2c097da23cee36017"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "workspaces\\churn\\data\\engineered\\train.csv",
+          "sha256": "41cdaed48c20190eb70e9afcce0138d763889304479b0bc696d14bee58bb0fb5"
+        },
+        {
+          "path": "workspaces\\churn\\data\\engineered\\validation.csv",
+          "sha256": "4c80cf0852ab83df223a43c033d5b41c6e38d1578d7bda30c951fc9dcd649c7c"
+        },
+        {
+          "path": "workspaces\\churn\\data\\engineered\\test.csv",
+          "sha256": "31e6411231e569ba62425c3ac450ae14fede59800d823343ac462fee8d94890d"
+        }
+      ],
+      "params_hash": "3030d2202c97cdb40977c19981f8a9a279cf80328d705d4929af722dd6283607",
+      "params": {
+        "target": "Churn",
+        "n_predictors": 19
+      }
+    },
+    {
+      "stage": "model_training",
+      "timestamp": "2026-07-26T20:27:45+00:00",
+      "script": "src/model_training/trainer.py",
+      "inputs": [
+        {
+          "path": "workspaces\\churn\\data\\engineered\\train.csv",
+          "sha256": "41cdaed48c20190eb70e9afcce0138d763889304479b0bc696d14bee58bb0fb5"
+        },
+        {
+          "path": "workspaces\\churn\\data\\engineered\\validation.csv",
+          "sha256": "4c80cf0852ab83df223a43c033d5b41c6e38d1578d7bda30c951fc9dcd649c7c"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "workspaces\\churn\\models\\LogisticRegression\\v002\\model.joblib",
+          "sha256": "0790e7153547f355674d0a891b3db612873145da9ef5ac337c02708350550ac8"
+        },
+        {
+          "path": "workspaces\\churn\\models\\DecisionTreeClassifier\\v002\\model.joblib",
+          "sha256": "57eaaeba78d183dd333346341c82878b465bcf520d553d20f8b1aaf747ed4d9b"
+        },
+        {
+          "path": "workspaces\\churn\\models\\RandomForestClassifier\\v002\\model.joblib",
+          "sha256": "2cae98cdcd314e1b1f3fb9bba8de6c14df503d3b0a35153d1b53a2fb15409dd3"
+        }
+      ],
+      "params_hash": "bbcf41cb7446c1d60f79d8b0101b4898144d374bbfc32491410dd01cfc9d8c9e",
+      "params": {
+        "models": [
+          "LogisticRegression",
+          "DecisionTreeClassifier",
+          "RandomForestClassifier"
+        ],
+        "predictor_columns": [
+          "gender",
+          "SeniorCitizen",
+          "Partner",
+          "Dependents",
+          "tenure",
+          "PhoneService",
+          "MultipleLines",
+          "InternetService",
+          "OnlineSecurity",
+          "OnlineBackup",
+          "DeviceProtection",
+          "TechSupport",
+          "StreamingTV",
+          "StreamingMovies",
+          "Contract",
+          "PaperlessBilling",
+          "PaymentMethod",
+          "MonthlyCharges",
+          "TotalCharges"
+        ]
+      },
+      "trained_models": [
+        "LogisticRegression v002",
+        "DecisionTreeClassifier v002",
+        "RandomForestClassifier v002"
+      ]
+    },
+    {
+      "stage": "model_evaluation",
+      "timestamp": "2026-08-08T19:00:05+00:00",
+      "script": "src/model_evaluation/evaluator.py",
+      "inputs": [
+        {
+          "path": "workspaces\\churn\\models\\LogisticRegression\\v001\\model.joblib",
+          "sha256": "c07ea99409d68d23ccfab7217321380fbd728586f8f3c742f707411733dba7a4"
+        },
+        {
+          "path": "workspaces\\churn\\data\\engineered\\validation.csv",
+          "sha256": "4c80cf0852ab83df223a43c033d5b41c6e38d1578d7bda30c951fc9dcd649c7c"
+        },
+        {
+          "path": "workspaces\\churn\\data\\engineered\\test.csv",
+          "sha256": "31e6411231e569ba62425c3ac450ae14fede59800d823343ac462fee8d94890d"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "workspaces\\churn\\artifacts\\evaluation\\model_comparison.csv",
+          "sha256": "be406dde57698406fc2693fa5b9cb90b6403beb88f19ef4ef7e5d1883f42a020"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\evaluation\\model_evaluation_report.json",
+          "sha256": "ef869f11d7a07459906ac0d7e35b8e8c44bf6828d47651faf281839944bbd6b2"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\final_model_selection.json",
+          "sha256": "07a76d55c16d2f8e39ea7d27182d7a59ddc3fc9bc92d0fe8e9c2f2d6ccd12a66"
+        }
+      ],
+      "params_hash": "b321e39216caaf2263c12d5adbd990474a297ad53321b95c22a621b2f9b5a36e",
+      "params": {
+        "champion": "LogisticRegression v001",
+        "selection_metric": "roc_auc"
+      },
+      "champion": "LogisticRegression v001",
+      "test_metrics": {
+        "accuracy": 0.8107852412488175,
+        "precision": 0.6866359447004609,
+        "recall": 0.5302491103202847,
+        "f1": 0.5983935742971888,
+        "roc_auc": 0.844778405547199
+      }
+    },
+    {
+      "stage": "trust_audit",
+      "timestamp": "2026-08-09T14:23:51+00:00",
+      "script": "src/pipelines/trust_pipeline.py",
+      "inputs": [
+        {
+          "path": "workspaces\\churn\\data\\engineered\\test.csv",
+          "sha256": "31e6411231e569ba62425c3ac450ae14fede59800d823343ac462fee8d94890d"
+        }
+      ],
+      "outputs": [
+        {
+          "path": "workspaces\\churn\\artifacts\\trust\\subgroup_fairness.json",
+          "sha256": "ab7a152c2cb4b3ed3ed576334669a93cfe1c82ca207a1da29be8b3775ab93801"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\trust\\permutation_importance.json",
+          "sha256": "1765c1cd54808462086b4ac0eded50d31c49110258448593bb1a45c413a90285"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\trust\\calibration.json",
+          "sha256": "a278ce4d74828ea8b4810d6570773654b1360d4f4aa82016c9b8576dbfbee32d"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\trust\\model_card.md",
+          "sha256": "1d727518d4badbaa62125a6040d64ac1242a9688ce9723c2749b9ae77c24bcc1"
+        },
+        {
+          "path": "workspaces\\churn\\artifacts\\trust\\model_card.json",
+          "sha256": "4f1e3ff2441856674ae6543d6356c017dd69522d4388073cda1e0d1b59b463e1"
+        }
+      ],
+      "params_hash": "76b3182220d67ba9f00591ed593a19e423dfdf7b38942836ee3dc04564171bd8",
+      "params": {
+        "split": "test",
+        "champion": "LogisticRegression v001"
+      },
+      "champion": "LogisticRegression v001",
+      "split": "test",
+      "columns_audited": [
+        "InternetService",
+        "OnlineSecurity",
+        "OnlineBackup",
+        "Contract",
+        "TechSupport",
+        "PaymentMethod",
+        "DeviceProtection",
+        "StreamingTV",
+        "StreamingMovies",
+        "SeniorCitizen",
+        "PaperlessBilling",
+        "Dependents",
+        "Partner",
+        "MultipleLines",
+        "PhoneService",
+        "gender"
+      ],
+      "n_features_ranked": 46,
+      "n_features_above_noise": 18,
+      "calibration_assessed": true,
+      "model_card": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\model_card.md"
+    }
+  ],
+  "updated_at": "2026-08-09T14:23:51+00:00"
+}

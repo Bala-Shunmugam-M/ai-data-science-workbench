@@ -1,0 +1,6 @@
+column,metric_set,group,n,share,reliable,mean_error,mae,rmse
+ocean_proximity,regression,<1H OCEAN,1382,0.446382,True,-1981.324292,49915.971381,68913.25966
+ocean_proximity,regression,INLAND,983,0.317506,True,69.025051,35863.853444,49014.228228
+ocean_proximity,regression,ISLAND,1,0.000323,False,241531.537695,241531.537695,241531.537695
+ocean_proximity,regression,NEAR BAY,313,0.101098,True,-2413.451641,61665.82816,77085.033087
+ocean_proximity,regression,NEAR OCEAN,417,0.13469,True,7742.867579,64967.615428,83721.86819

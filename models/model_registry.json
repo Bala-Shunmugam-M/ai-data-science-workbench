@@ -1,0 +1,153 @@
+{
+  "models": [
+    {
+      "name": "LinearRegression",
+      "version": "v001",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\LinearRegression\\v001\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\LinearRegression\\v001\\metadata.json",
+      "params": {},
+      "validation_metrics": {
+        "rmse": 64887.43759422965,
+        "mae": 46300.76391775423,
+        "r2": 0.6791459616611555,
+        "mape": 28.599185876830546
+      },
+      "train_metrics": {
+        "rmse": 65747.05250804337,
+        "mae": 47485.203976334116,
+        "r2": 0.6762712737459826,
+        "mape": 27.745585168568116
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": false,
+      "registered_at": "2026-07-20T17:23:18+00:00"
+    },
+    {
+      "name": "Ridge",
+      "version": "v001",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v001\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v001\\metadata.json",
+      "params": {
+        "alpha": 100.0
+      },
+      "validation_metrics": {
+        "rmse": 64787.47785361487,
+        "mae": 46246.33782090241,
+        "r2": 0.680133757870843,
+        "mape": 28.286901578561523
+      },
+      "train_metrics": {
+        "rmse": 65883.98293862847,
+        "mae": 47453.88766549442,
+        "r2": 0.6749214193219906,
+        "mape": 27.471662047581987
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": true,
+      "registered_at": "2026-07-20T17:23:18+00:00"
+    },
+    {
+      "name": "Lasso",
+      "version": "v001",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Lasso\\v001\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\Lasso\\v001\\metadata.json",
+      "params": {
+        "max_iter": 10000,
+        "tol": 0.1,
+        "alpha": 0.0017782794100389228
+      },
+      "validation_metrics": {
+        "rmse": 64887.43494233497,
+        "mae": 46300.76369616628,
+        "r2": 0.6791459878872211,
+        "mape": 28.599183302180958
+      },
+      "train_metrics": {
+        "rmse": 65747.0525082783,
+        "mae": 47485.20253348829,
+        "r2": 0.6762712737436692,
+        "mape": 27.745582831449113
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": false,
+      "registered_at": "2026-07-20T17:27:16+00:00"
+    },
+    {
+      "name": "LinearRegression",
+      "version": "v002",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\LinearRegression\\v002\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\LinearRegression\\v002\\metadata.json",
+      "params": {},
+      "validation_metrics": {
+        "rmse": 64887.43759422965,
+        "mae": 46300.76391775423,
+        "r2": 0.6791459616611555,
+        "mape": 28.599185876830546
+      },
+      "train_metrics": {
+        "rmse": 65747.05250804337,
+        "mae": 47485.203976334116,
+        "r2": 0.6762712737459826,
+        "mape": 27.745585168568116
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": false,
+      "registered_at": "2026-07-20T21:35:30+00:00"
+    },
+    {
+      "name": "Ridge",
+      "version": "v002",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v002\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v002\\metadata.json",
+      "params": {
+        "alpha": 100.0
+      },
+      "validation_metrics": {
+        "rmse": 64787.47785361487,
+        "mae": 46246.33782090241,
+        "r2": 0.680133757870843,
+        "mape": 28.286901578561523
+      },
+      "train_metrics": {
+        "rmse": 65883.98293862847,
+        "mae": 47453.88766549442,
+        "r2": 0.6749214193219906,
+        "mape": 27.471662047581987
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": false,
+      "registered_at": "2026-07-20T21:35:30+00:00"
+    },
+    {
+      "name": "Lasso",
+      "version": "v002",
+      "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Lasso\\v002\\model.joblib",
+      "metadata_path": "D:\\AI\\ai-data-science-workbench\\models\\Lasso\\v002\\metadata.json",
+      "params": {
+        "max_iter": 10000,
+        "tol": 0.1,
+        "alpha": 0.0017782794100389228
+      },
+      "validation_metrics": {
+        "rmse": 64887.43494233497,
+        "mae": 46300.76369616628,
+        "r2": 0.6791459878872211,
+        "mape": 28.599183302180958
+      },
+      "train_metrics": {
+        "rmse": 65747.0525082783,
+        "mae": 47485.20253348829,
+        "r2": 0.6762712737436692,
+        "mape": 27.745582831449113
+      },
+      "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+      "is_champion": false,
+      "registered_at": "2026-07-20T21:37:16+00:00"
+    }
+  ],
+  "champion": {
+    "name": "Ridge",
+    "version": "v001"
+  },
+  "updated_at": "2026-07-26T20:27:55+00:00"
+}

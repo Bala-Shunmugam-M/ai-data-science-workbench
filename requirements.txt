@@ -1,0 +1,11 @@
+# AI Data Science Workbench - runtime dependencies (unpinned per project policy).
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+kagglehub
+pyyaml
+joblib
+streamlit
+pytest

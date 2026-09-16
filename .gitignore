@@ -1,0 +1,85 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ---------------------------------------------------------------------------
+# Virtual environments
+# ---------------------------------------------------------------------------
+.venv/
+venv/
+env/
+.env
+
+# ---------------------------------------------------------------------------
+# IDE / OS
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Generated content.
+#
+# The rule here is: DATASETS and BINARIES are not published; EVIDENCE is.
+#
+# Artifacts and the governance trail are the whole argument this project makes
+# ("the result is reproducible and the choice is documented"), so they are
+# tracked. A repository that ignored them would ask a reader to take that
+# argument on trust, which is exactly the failure the project exists to fix.
+# ---------------------------------------------------------------------------
+
+# Datasets are never redistributed. The pipeline downloads them, or the user
+# supplies their own. This pattern matches data/ at ANY depth, so it covers
+# workspaces/<slug>/data/ too.
+data/
+!data/**/.gitkeep
+
+# Regenerable CSV analysis output.
+results/
+!results/**/.gitkeep
+
+# Run logs are noise and churn on every execution.
+logs/
+
+# Trained model binaries are Python pickles, which execute arbitrary code when
+# loaded. Publishing them invites a supply-chain problem for anyone who forks
+# and loads one. The pipeline regenerates them in seconds, and their
+# metadata.json plus model_registry.json - the actual evidence of what was
+# trained and chosen - ARE tracked.
+*.joblib
+
+# ---------------------------------------------------------------------------
+# Workspaces.
+# Only the graded churn project is published. The remaining workspaces are
+# throwaway upload smoke-tests, and one of them (california-housing-sample-9)
+# carries a misleading R2 of 0.926 against a `latitude` target that would be
+# read as a headline result out of context.
+# ---------------------------------------------------------------------------
+workspaces/*
+!workspaces/churn/
+
+# ---------------------------------------------------------------------------
+# Web application build output.
+# ---------------------------------------------------------------------------
+node_modules/
+.next/
+.next-verify/
+webapp/.uploads/
+
+# Generated GitHub Pages output.
+_site/

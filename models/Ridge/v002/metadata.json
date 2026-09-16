@@ -1,0 +1,154 @@
+{
+  "name": "Ridge",
+  "version": "v002",
+  "estimator_path": "sklearn.linear_model.Ridge",
+  "params": {
+    "alpha": 100.0
+  },
+  "tuned": true,
+  "best_params": {
+    "alpha": 100.0
+  },
+  "tuning_history": [
+    {
+      "alpha": 0.001,
+      "validation_rmse": 64887.427703203
+    },
+    {
+      "alpha": 0.0017782794100389228,
+      "validation_rmse": 64887.42002392709
+    },
+    {
+      "alpha": 0.0031622776601683794,
+      "validation_rmse": 64887.406408382616
+    },
+    {
+      "alpha": 0.005623413251903491,
+      "validation_rmse": 64887.382323313395
+    },
+    {
+      "alpha": 0.01,
+      "validation_rmse": 64887.33989304453
+    },
+    {
+      "alpha": 0.01778279410038923,
+      "validation_rmse": 64887.26569056827
+    },
+    {
+      "alpha": 0.03162277660168379,
+      "validation_rmse": 64887.13761666317
+    },
+    {
+      "alpha": 0.05623413251903491,
+      "validation_rmse": 64886.92172036943
+    },
+    {
+      "alpha": 0.1,
+      "validation_rmse": 64886.573090026795
+    },
+    {
+      "alpha": 0.1778279410038923,
+      "validation_rmse": 64886.05346387762
+    },
+    {
+      "alpha": 0.31622776601683794,
+      "validation_rmse": 64885.39256087374
+    },
+    {
+      "alpha": 0.5623413251903491,
+      "validation_rmse": 64884.81670568025
+    },
+    {
+      "alpha": 1.0,
+      "validation_rmse": 64884.85336709298
+    },
+    {
+      "alpha": 1.7782794100389228,
+      "validation_rmse": 64886.01572053715
+    },
+    {
+      "alpha": 3.1622776601683795,
+      "validation_rmse": 64887.667599991444
+    },
+    {
+      "alpha": 5.623413251903491,
+      "validation_rmse": 64886.89191946351
+    },
+    {
+      "alpha": 10.0,
+      "validation_rmse": 64879.12945098794
+    },
+    {
+      "alpha": 17.78279410038923,
+      "validation_rmse": 64860.564683017124
+    },
+    {
+      "alpha": 31.622776601683793,
+      "validation_rmse": 64831.166158731394
+    },
+    {
+      "alpha": 56.23413251903491,
+      "validation_rmse": 64799.19501813058
+    },
+    {
+      "alpha": 100.0,
+      "validation_rmse": 64787.47785361487
+    },
+    {
+      "alpha": 177.82794100389228,
+      "validation_rmse": 64834.69990340718
+    },
+    {
+      "alpha": 316.22776601683796,
+      "validation_rmse": 64982.53221712153
+    },
+    {
+      "alpha": 562.341325190349,
+      "validation_rmse": 65269.278909850604
+    },
+    {
+      "alpha": 1000.0,
+      "validation_rmse": 65787.17618614667
+    }
+  ],
+  "train_metrics": {
+    "rmse": 65883.98293862847,
+    "mae": 47453.88766549442,
+    "r2": 0.6749214193219906,
+    "mape": 27.471662047581987
+  },
+  "validation_metrics": {
+    "rmse": 64787.47785361487,
+    "mae": 46246.33782090241,
+    "r2": 0.680133757870843,
+    "mape": 28.286901578561523
+  },
+  "training_seconds": 0.147,
+  "n_train_rows": 14448,
+  "n_features": 23,
+  "predictor_columns": [
+    "longitude",
+    "latitude",
+    "housing_median_age",
+    "total_rooms",
+    "total_bedrooms",
+    "population",
+    "households",
+    "median_income",
+    "ocean_proximity",
+    "rooms_per_household",
+    "bedrooms_per_room",
+    "population_per_household",
+    "bedrooms_per_household",
+    "rooms_per_person",
+    "bedrooms_per_person",
+    "log_total_rooms",
+    "log_total_bedrooms",
+    "log_population",
+    "log_households"
+  ],
+  "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+  "random_state": 42,
+  "created_at": "2026-07-20T21:35:30+00:00",
+  "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v002\\model.joblib"
+}

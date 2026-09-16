@@ -1,0 +1,47 @@
+rank,feature,importance_mean,importance_std,distinguishable_from_noise
+1,tenure,0.191509,0.017543,True
+2,MonthlyCharges,0.049949,0.007066,True
+3,TotalCharges,0.020106,0.006028,True
+4,InternetService_DSL,0.012579,0.003378,True
+5,Contract_Two year,0.011497,0.003284,True
+6,InternetService_Fiber optic,0.010964,0.003789,True
+7,Contract_Month-to-month,0.007747,0.003209,True
+8,SeniorCitizen_0,0.002481,0.000899,True
+9,PaperlessBilling_No,0.001861,0.001951,False
+10,PaymentMethod_Electronic check,0.001807,0.000851,True
+11,StreamingMovies_No,0.00171,0.001065,True
+12,gender_Male,0.001586,0.000615,True
+13,StreamingTV_No,0.001447,0.001017,True
+14,Partner_No,0.00138,0.000787,True
+15,PaymentMethod_Credit card (automatic),0.001328,0.001345,False
+16,Dependents_Yes,0.001302,0.001594,False
+17,OnlineSecurity_Yes,0.001069,0.000608,True
+18,StreamingTV_Yes,0.000692,0.001181,False
+19,OnlineSecurity_No,0.000649,0.00064,True
+20,PaymentMethod_Bank transfer (automatic),0.00064,0.000687,False
+21,PaymentMethod_Mailed check,0.000592,0.000674,False
+22,StreamingMovies_Yes,0.00059,0.001549,False
+23,Partner_Yes,0.000505,0.000748,False
+24,TechSupport_Yes,0.000504,0.000597,False
+25,PhoneService_Yes,0.000439,0.000309,True
+26,PhoneService_No,0.000318,0.000559,False
+27,MultipleLines_No phone service,0.000318,0.000559,False
+28,OnlineBackup_Yes,0.000218,0.000209,True
+29,TechSupport_No,0.000206,0.000513,False
+30,Dependents_No,0.000205,0.000248,False
+31,InternetService_No,0.000182,0.001604,False
+32,OnlineSecurity_No internet service,0.000182,0.001604,False
+33,OnlineBackup_No internet service,0.000182,0.001604,False
+34,DeviceProtection_No internet service,0.000182,0.001604,False
+35,TechSupport_No internet service,0.000182,0.001604,False
+36,StreamingTV_No internet service,0.000182,0.001604,False
+37,StreamingMovies_No internet service,0.000182,0.001604,False
+38,OnlineBackup_No,0.000153,0.000142,True
+39,gender_Female,0.000125,0.000958,False
+40,DeviceProtection_No,0.00011,0.000115,False
+41,DeviceProtection_Yes,6e-05,0.000122,False
+42,MultipleLines_No,1.6e-05,0.001119,False
+43,SeniorCitizen_1,-0.000227,0.00037,False
+44,PaperlessBilling_Yes,-0.000244,0.000228,False
+45,Contract_One year,-0.000338,0.000503,False
+46,MultipleLines_Yes,-0.000849,0.000684,False

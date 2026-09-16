@@ -1,0 +1,47 @@
+rank,feature,coefficient,direction,abs_importance,meaning
+1,tenure,-1.341781,decreases the prediction,1.341781,Model input 'tenure'.
+2,MonthlyCharges,-0.796109,decreases the prediction,0.796109,Model input 'MonthlyCharges'.
+3,Contract_Two year,-0.760577,decreases the prediction,0.760577,Model input 'Contract_Two year'.
+4,InternetService_Fiber optic,0.66882,increases the prediction,0.66882,Model input 'InternetService_Fiber optic'.
+5,InternetService_DSL,-0.663744,decreases the prediction,0.663744,Model input 'InternetService_DSL'.
+6,TotalCharges,0.663321,increases the prediction,0.663321,Model input 'TotalCharges'.
+7,Contract_Month-to-month,0.575627,increases the prediction,0.575627,Model input 'Contract_Month-to-month'.
+8,PaperlessBilling_No,-0.376134,decreases the prediction,0.376134,Model input 'PaperlessBilling_No'.
+9,InternetService_No,-0.347265,decreases the prediction,0.347265,Model input 'InternetService_No'.
+10,OnlineSecurity_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'OnlineSecurity_No internet service'.
+11,OnlineBackup_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'OnlineBackup_No internet service'.
+12,DeviceProtection_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'DeviceProtection_No internet service'.
+13,TechSupport_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'TechSupport_No internet service'.
+14,StreamingTV_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'StreamingTV_No internet service'.
+15,StreamingMovies_No internet service,-0.347265,decreases the prediction,0.347265,Model input 'StreamingMovies_No internet service'.
+16,Dependents_Yes,-0.303003,decreases the prediction,0.303003,Model input 'Dependents_Yes'.
+17,MultipleLines_No,-0.266267,decreases the prediction,0.266267,Model input 'MultipleLines_No'.
+18,StreamingMovies_Yes,0.259818,increases the prediction,0.259818,Model input 'StreamingMovies_Yes'.
+19,StreamingMovies_No,-0.254743,decreases the prediction,0.254743,Model input 'StreamingMovies_No'.
+20,SeniorCitizen_0,-0.242599,decreases the prediction,0.242599,Model input 'SeniorCitizen_0'.
+21,PaymentMethod_Credit card (automatic),-0.228498,decreases the prediction,0.228498,Model input 'PaymentMethod_Credit card (automatic)'.
+22,PhoneService_No,-0.221647,decreases the prediction,0.221647,Model input 'PhoneService_No'.
+23,MultipleLines_No phone service,-0.221647,decreases the prediction,0.221647,Model input 'MultipleLines_No phone service'.
+24,StreamingTV_Yes,0.212318,increases the prediction,0.212318,Model input 'StreamingTV_Yes'.
+25,StreamingTV_No,-0.207243,decreases the prediction,0.207243,Model input 'StreamingTV_No'.
+26,PaymentMethod_Bank transfer (automatic),-0.195188,decreases the prediction,0.195188,Model input 'PaymentMethod_Bank transfer (automatic)'.
+27,gender_Female,-0.184616,decreases the prediction,0.184616,Model input 'gender_Female'.
+28,PaymentMethod_Electronic check,0.183506,increases the prediction,0.183506,Model input 'PaymentMethod_Electronic check'.
+29,Partner_Yes,-0.173808,decreases the prediction,0.173808,Model input 'Partner_Yes'.
+30,Partner_No,-0.168382,decreases the prediction,0.168382,Model input 'Partner_No'.
+31,gender_Male,-0.157574,decreases the prediction,0.157574,Model input 'gender_Male'.
+32,Contract_One year,-0.15724,decreases the prediction,0.15724,Model input 'Contract_One year'.
+33,OnlineSecurity_No,0.153056,increases the prediction,0.153056,Model input 'OnlineSecurity_No'.
+34,OnlineSecurity_Yes,-0.147981,decreases the prediction,0.147981,Model input 'OnlineSecurity_Yes'.
+35,MultipleLines_Yes,0.145725,increases the prediction,0.145725,Model input 'MultipleLines_Yes'.
+36,TechSupport_No,0.125823,increases the prediction,0.125823,Model input 'TechSupport_No'.
+37,TechSupport_Yes,-0.120747,decreases the prediction,0.120747,Model input 'TechSupport_Yes'.
+38,PhoneService_Yes,-0.120543,decreases the prediction,0.120543,Model input 'PhoneService_Yes'.
+39,PaymentMethod_Mailed check,-0.10201,decreases the prediction,0.10201,Model input 'PaymentMethod_Mailed check'.
+40,SeniorCitizen_1,-0.099591,decreases the prediction,0.099591,Model input 'SeniorCitizen_1'.
+41,Dependents_No,-0.039187,decreases the prediction,0.039187,Model input 'Dependents_No'.
+42,DeviceProtection_Yes,0.035108,increases the prediction,0.035108,Model input 'DeviceProtection_Yes'.
+43,OnlineBackup_No,0.034454,increases the prediction,0.034454,Model input 'OnlineBackup_No'.
+44,PaperlessBilling_Yes,0.033944,increases the prediction,0.033944,Model input 'PaperlessBilling_Yes'.
+45,DeviceProtection_No,-0.030033,decreases the prediction,0.030033,Model input 'DeviceProtection_No'.
+46,OnlineBackup_Yes,-0.029379,decreases the prediction,0.029379,Model input 'OnlineBackup_Yes'.

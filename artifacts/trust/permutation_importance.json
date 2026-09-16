@@ -1,0 +1,185 @@
+{
+  "artifact": "permutation_importance",
+  "generated_at": "2026-08-09T14:20:53+00:00",
+  "champion": "Ridge v001",
+  "split": "test",
+  "selection_metric": "rmse",
+  "measured_against": "neg_root_mean_squared_error",
+  "n_repeats": 10,
+  "random_state": 42,
+  "n_rows_available": 3096,
+  "n_rows_used": 3096,
+  "subsampled": false,
+  "n_features": 23,
+  "n_distinguishable_from_noise": 21,
+  "importances": [
+    {
+      "rank": 1,
+      "feature": "median_income",
+      "importance_mean": 59073.755486,
+      "importance_std": 853.959255,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 2,
+      "feature": "latitude",
+      "importance_mean": 33631.755872,
+      "importance_std": 905.126941,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 3,
+      "feature": "longitude",
+      "importance_mean": 29640.088124,
+      "importance_std": 841.109604,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 4,
+      "feature": "log_population",
+      "importance_mean": 29168.093188,
+      "importance_std": 731.627076,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 5,
+      "feature": "log_total_rooms",
+      "importance_mean": 11239.693807,
+      "importance_std": 443.842503,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 6,
+      "feature": "bedrooms_per_room",
+      "importance_mean": 8649.270286,
+      "importance_std": 231.347291,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 7,
+      "feature": "log_households",
+      "importance_mean": 4925.544707,
+      "importance_std": 281.790742,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 8,
+      "feature": "households",
+      "importance_mean": 3360.233543,
+      "importance_std": 172.461006,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 9,
+      "feature": "housing_median_age",
+      "importance_mean": 3024.158826,
+      "importance_std": 233.894968,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 10,
+      "feature": "ocean_proximity_INLAND",
+      "importance_mean": 2512.577899,
+      "importance_std": 228.577039,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 11,
+      "feature": "rooms_per_person",
+      "importance_mean": 2115.970558,
+      "importance_std": 222.2888,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 12,
+      "feature": "bedrooms_per_household",
+      "importance_mean": 1871.620288,
+      "importance_std": 212.528138,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 13,
+      "feature": "log_total_bedrooms",
+      "importance_mean": 1758.246068,
+      "importance_std": 139.420803,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 14,
+      "feature": "population",
+      "importance_mean": 450.680615,
+      "importance_std": 81.021049,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 15,
+      "feature": "ocean_proximity_<1H OCEAN",
+      "importance_mean": 416.692241,
+      "importance_std": 112.3029,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 16,
+      "feature": "total_bedrooms",
+      "importance_mean": 366.37167,
+      "importance_std": 75.211274,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 17,
+      "feature": "ocean_proximity_NEAR OCEAN",
+      "importance_mean": 312.614944,
+      "importance_std": 28.571152,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 18,
+      "feature": "rooms_per_household",
+      "importance_mean": 264.688004,
+      "importance_std": 64.497708,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 19,
+      "feature": "total_rooms",
+      "importance_mean": 20.103111,
+      "importance_std": 10.117958,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 20,
+      "feature": "population_per_household",
+      "importance_mean": 5.156946,
+      "importance_std": 3.401944,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 21,
+      "feature": "ocean_proximity_ISLAND",
+      "importance_mean": 2.833246,
+      "importance_std": 0.430697,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 22,
+      "feature": "ocean_proximity_NEAR BAY",
+      "importance_mean": -5.872814,
+      "importance_std": 19.567131,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 23,
+      "feature": "bedrooms_per_person",
+      "importance_mean": -13.680932,
+      "importance_std": 10.309628,
+      "distinguishable_from_noise": false
+    }
+  ],
+  "figure": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\figures\\permutation_importance.png",
+  "interpretation_limits": [
+    "Importance is the drop in the score above when one column is shuffled. It measures what the model relies on, not what causes the outcome.",
+    "Columns are permuted in the post-one-hot design matrix, so a categorical's dummy columns are shuffled independently. A single dummy's importance is meaningful; a categorical's total importance is not the sum of its dummies.",
+    "Correlated columns share credit. When two inputs carry the same signal, shuffling either alone barely moves the score and both look unimportant - read the table as groups, not as independent effects.",
+    "Values at or below zero mean no measurable dependence. They are not clipped, because a negative value is useful evidence of how much noise this measurement carries."
+  ]
+}

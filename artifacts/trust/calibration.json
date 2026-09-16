@@ -1,0 +1,9 @@
+{
+  "artifact": "calibration",
+  "generated_at": "2026-08-09T14:20:54+00:00",
+  "champion": "Ridge v001",
+  "split": "test",
+  "task": "regression",
+  "assessed": false,
+  "reason": "Calibration is a property of probability forecasts; this is a regression model. The equivalent regression diagnostics are the residual plots written by the evaluation stage."
+}

@@ -1,0 +1,24 @@
+rank,feature,coefficient,direction,abs_importance,meaning
+1,median_income,74630.487257,increases the prediction,74630.487257,District median household income (the dominant driver of value).
+2,latitude,-51647.209887,decreases the prediction,51647.209887,North-south location (proxy for region within California).
+3,longitude,-49816.154266,decreases the prediction,49816.154266,East-west location (proxy for coastal/inland position).
+4,log_population,-48747.349376,decreases the prediction,48747.349376,Scale of population (skew-compressed).
+5,ocean_proximity_INLAND,-27387.838469,decreases the prediction,27387.838469,Home is inland (typically the lowest-value segment).
+6,log_total_rooms,25133.808448,increases the prediction,25133.808448,Scale of the housing stock (skew-compressed total rooms).
+7,bedrooms_per_room,24798.110591,increases the prediction,24798.110591,Bedroom share of rooms; higher values flag smaller/denser units.
+8,bedrooms_per_household,-18899.588863,decreases the prediction,18899.588863,Average bedrooms available per household.
+9,rooms_per_person,16238.498548,increases the prediction,16238.498548,Living space per resident.
+10,log_households,16046.009895,increases the prediction,16046.009895,Scale of households (skew-compressed).
+11,housing_median_age,14321.680111,increases the prediction,14321.680111,Typical age of the housing stock in the district.
+12,households,14212.146125,increases the prediction,14212.146125,Number of households in the census block.
+13,ocean_proximity_<1H OCEAN,11595.234671,increases the prediction,11595.234671,Home is within an hour of the ocean (premium coastal access).
+14,ocean_proximity_NEAR OCEAN,9432.648101,increases the prediction,9432.648101,Home is near the ocean (coastal amenity premium).
+15,log_total_bedrooms,8753.175148,increases the prediction,8753.175148,Scale of bedrooms (skew-compressed total bedrooms).
+16,rooms_per_household,5406.581624,increases the prediction,5406.581624,Average home size (rooms per household); a wealth/space proxy.
+17,total_bedrooms,-5266.859116,decreases the prediction,5266.859116,Total bedrooms across all homes in the census block.
+18,population,-5056.630041,decreases the prediction,5056.630041,Resident population of the census block.
+19,ocean_proximity_NEAR BAY,3854.506414,increases the prediction,3854.506414,"Home is near the bay (established, higher-value metro areas)."
+20,ocean_proximity_ISLAND,2505.449283,increases the prediction,2505.449283,"Home is on an island (rare, high-value segment)."
+21,population_per_household,2028.269095,increases the prediction,2028.269095,Average household occupancy (crowding).
+22,bedrooms_per_person,-829.881066,decreases the prediction,829.881066,Bedrooms available per resident.
+23,total_rooms,654.76239,increases the prediction,654.76239,Total rooms across all homes in the census block.

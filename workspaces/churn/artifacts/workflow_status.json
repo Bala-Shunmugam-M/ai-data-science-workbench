@@ -1,0 +1,11 @@
+{
+  "trust": {
+    "last_run": "2026-08-08T18:46:07+00:00",
+    "duration_s": 8.94,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\subgroup_fairness.json",
+      "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\model_card.md"
+    ]
+  }
+}

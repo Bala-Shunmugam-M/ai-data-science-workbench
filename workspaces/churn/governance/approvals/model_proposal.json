@@ -1,0 +1,106 @@
+{
+  "artifact": "model_proposal",
+  "generated_at": "2026-07-26T20:27:19+00:00",
+  "task": "classification",
+  "selection_metric": "roc_auc",
+  "recommended_models": [
+    "LogisticRegression",
+    "DecisionTreeClassifier",
+    "RandomForestClassifier"
+  ],
+  "candidate_catalog": [
+    {
+      "name": "LogisticRegression",
+      "estimator_path": "sklearn.linear_model.LogisticRegression",
+      "family": "linear",
+      "task": "classification",
+      "search_space": {
+        "C": {
+          "name": "C",
+          "scale": "log",
+          "low": 0.01,
+          "high": 100.0,
+          "num": 25
+        }
+      },
+      "default_params": {
+        "max_iter": 2000,
+        "solver": "liblinear"
+      },
+      "tunable": true,
+      "strengths": [
+        "Fully interpretable: each coefficient is a log-odds effect, and exp(coef) reads as an odds ratio for the churn briefing.",
+        "Well-calibrated probabilities, ideal for the retention simulator.",
+        "Single regularisation knob (C) tuned on the validation split."
+      ],
+      "limitations": [
+        "Linear decision boundary; cannot capture interactions unless engineered.",
+        "Sensitive to strong multicollinearity among predictors."
+      ],
+      "interpretability": "Highest among the churn models: signed coefficients convert directly to odds ratios per driver.",
+      "suitability": "The interpretable baseline for churn: quantifies which factors drive churn after controlling for the others."
+    },
+    {
+      "name": "DecisionTreeClassifier",
+      "estimator_path": "sklearn.tree.DecisionTreeClassifier",
+      "family": "tree",
+      "task": "classification",
+      "search_space": {
+        "max_depth": {
+          "name": "max_depth",
+          "scale": "int",
+          "low": 2,
+          "high": 12,
+          "num": 25
+        }
+      },
+      "default_params": {
+        "class_weight": "balanced"
+      },
+      "tunable": true,
+      "strengths": [
+        "Produces human-readable if-then rules the retention team can act on.",
+        "Captures non-linear splits and interactions automatically.",
+        "class_weight='balanced' counters the churn class imbalance."
+      ],
+      "limitations": [
+        "A single tree can overfit; depth is capped and tuned on validation.",
+        "Less stable than an ensemble; small data changes can reshape splits."
+      ],
+      "interpretability": "Very high: the fitted tree is a flowchart of decision rules; feature_importances_ rank the drivers.",
+      "suitability": "The interpretable non-linear model for churn: gives advisors concrete rules ('month-to-month + high charges -> high risk')."
+    },
+    {
+      "name": "RandomForestClassifier",
+      "estimator_path": "sklearn.ensemble.RandomForestClassifier",
+      "family": "ensemble",
+      "task": "classification",
+      "search_space": {
+        "max_depth": {
+          "name": "max_depth",
+          "scale": "int",
+          "low": 4,
+          "high": 16,
+          "num": 25
+        }
+      },
+      "default_params": {
+        "n_estimators": 300,
+        "class_weight": "balanced",
+        "n_jobs": -1
+      },
+      "tunable": true,
+      "strengths": [
+        "Strongest predictive accuracy of the churn models via bagged trees.",
+        "Robust to noise and multicollinearity; low-variance predictions.",
+        "permutation/impurity feature importances still explain the drivers."
+      ],
+      "limitations": [
+        "Not a single readable rule set; interpret via importances, not a tree.",
+        "Heavier to train and score than the linear/tree baselines."
+      ],
+      "interpretability": "Moderate: no single flowchart, but feature_importances_ and partial effects rank the churn drivers.",
+      "suitability": "The accuracy benchmark for churn every simpler model is measured against; powers the retention simulator's risk scores."
+    }
+  ]
+}

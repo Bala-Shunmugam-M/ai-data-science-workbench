@@ -1,0 +1,30 @@
+{
+  "artifact": "feature_approval",
+  "generated_at": "2026-07-26T20:27:19+00:00",
+  "target_column": "Churn",
+  "dropped_columns": [
+    "customerID"
+  ],
+  "approved_predictor_columns": [
+    "gender",
+    "SeniorCitizen",
+    "Partner",
+    "Dependents",
+    "tenure",
+    "PhoneService",
+    "MultipleLines",
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "DeviceProtection",
+    "TechSupport",
+    "StreamingTV",
+    "StreamingMovies",
+    "Contract",
+    "PaperlessBilling",
+    "PaymentMethod",
+    "MonthlyCharges",
+    "TotalCharges"
+  ],
+  "note": "Churn uses all non-identifier columns as predictors."
+}

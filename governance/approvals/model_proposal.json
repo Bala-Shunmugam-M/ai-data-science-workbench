@@ -1,0 +1,198 @@
+{
+  "artifact": "model_proposal",
+  "generated_at": "2026-07-20T21:35:30+00:00",
+  "modelling_scope": "linear family only (team decision; catalogue extensible)",
+  "data_summary": {
+    "n_rows": 14448,
+    "n_predictors": 19,
+    "predictors": [
+      "longitude",
+      "latitude",
+      "housing_median_age",
+      "total_rooms",
+      "total_bedrooms",
+      "population",
+      "households",
+      "median_income",
+      "ocean_proximity",
+      "rooms_per_household",
+      "bedrooms_per_room",
+      "population_per_household",
+      "bedrooms_per_household",
+      "rooms_per_person",
+      "bedrooms_per_person",
+      "log_total_rooms",
+      "log_total_bedrooms",
+      "log_population",
+      "log_households"
+    ],
+    "numeric_predictors": [
+      "longitude",
+      "latitude",
+      "housing_median_age",
+      "total_rooms",
+      "total_bedrooms",
+      "population",
+      "households",
+      "median_income",
+      "rooms_per_household",
+      "bedrooms_per_room",
+      "population_per_household",
+      "bedrooms_per_household",
+      "rooms_per_person",
+      "bedrooms_per_person",
+      "log_total_rooms",
+      "log_total_bedrooms",
+      "log_population",
+      "log_households"
+    ],
+    "categorical_predictors": [
+      "ocean_proximity"
+    ],
+    "columns_with_missing": {
+      "total_bedrooms": 140,
+      "bedrooms_per_room": 140,
+      "bedrooms_per_household": 140,
+      "bedrooms_per_person": 140,
+      "log_total_bedrooms": 140
+    },
+    "target_column": "median_house_value"
+  },
+  "multicollinearity_flags": [
+    {
+      "feature_1": "longitude",
+      "feature_2": "latitude",
+      "absolute_correlation": 0.9247
+    },
+    {
+      "feature_1": "total_rooms",
+      "feature_2": "total_bedrooms",
+      "absolute_correlation": 0.9293
+    },
+    {
+      "feature_1": "total_rooms",
+      "feature_2": "population",
+      "absolute_correlation": 0.8532
+    },
+    {
+      "feature_1": "total_rooms",
+      "feature_2": "households",
+      "absolute_correlation": 0.9174
+    },
+    {
+      "feature_1": "total_bedrooms",
+      "feature_2": "population",
+      "absolute_correlation": 0.8739
+    },
+    {
+      "feature_1": "total_bedrooms",
+      "feature_2": "households",
+      "absolute_correlation": 0.9797
+    },
+    {
+      "feature_1": "population",
+      "feature_2": "households",
+      "absolute_correlation": 0.9026
+    }
+  ],
+  "multicollinearity_note": "7 predictor pair(s) exceed |r| >= 0.8; this motivates the regularised Ridge and Lasso candidates alongside the plain LinearRegression baseline.",
+  "recommended_models": [
+    "LinearRegression",
+    "Ridge",
+    "Lasso"
+  ],
+  "rationale": "The problem is a continuous house-value regression assessed on interpretability and managerial defensibility. The linear family gives directly readable coefficients. LinearRegression is the transparent baseline; Ridge adds L2 shrinkage to stabilise the collinear count predictors; Lasso adds L1 selection to surface a parsimonious driver list for the executive briefing.",
+  "validation_strategy": {
+    "doctrine": "train / validation / test are kept strictly separated.",
+    "fit": "All estimators and all fitted transforms (impute, encode, scale) are fit on the training split only.",
+    "tune": "Ridge and Lasso alpha are tuned by scoring each candidate on the dedicated validation split (25-point log-spaced grid); k-fold over train+validation is intentionally NOT used.",
+    "select": "The champion is the model with the best validation RMSE.",
+    "final_test": "Only the champion is evaluated once on the untouched test split; the test split is never used for tuning or selection.",
+    "metrics": [
+      "rmse",
+      "mae",
+      "r2"
+    ]
+  },
+  "candidate_catalog": [
+    {
+      "name": "LinearRegression",
+      "estimator_path": "sklearn.linear_model.LinearRegression",
+      "family": "linear",
+      "search_space": {},
+      "default_params": {},
+      "tunable": false,
+      "strengths": [
+        "Fully transparent: one coefficient per predictor, no hyperparameters.",
+        "Fast to fit and score; an interpretable managerial baseline.",
+        "Coefficients read directly as marginal dollar effects."
+      ],
+      "limitations": [
+        "No regularisation, so it is sensitive to the strong multicollinearity among the room/bedroom/population/household counts.",
+        "Cannot capture the coastal/geographic nonlinearity flagged in EDA.",
+        "Coefficients can become unstable when predictors are near-collinear."
+      ],
+      "interpretability": "Highest: each standardized coefficient is a direct, signed feature effect with no shrinkage to explain away.",
+      "suitability": "A defensible, transparent baseline for house-price regression and the reference point every other model must beat."
+    },
+    {
+      "name": "Ridge",
+      "estimator_path": "sklearn.linear_model.Ridge",
+      "family": "linear",
+      "search_space": {
+        "alpha": {
+          "name": "alpha",
+          "scale": "log",
+          "low": 0.001,
+          "high": 1000.0,
+          "num": 25
+        }
+      },
+      "default_params": {},
+      "tunable": true,
+      "strengths": [
+        "L2 shrinkage stabilises coefficients under the heavy multicollinearity present in the housing counts.",
+        "Keeps every predictor while damping variance; robust, well-conditioned.",
+        "Single interpretable regularisation strength (alpha) tuned on validation."
+      ],
+      "limitations": [
+        "Does not zero out predictors, so it offers no feature selection.",
+        "Still a linear model: no interaction or curvature unless engineered.",
+        "Coefficients are shrunk, so raw magnitudes understate isolated effects."
+      ],
+      "interpretability": "High: coefficients remain signed and comparable after standardization; shrinkage is a single, explainable knob.",
+      "suitability": "Strong default for this collinear predictor set; expected to improve coefficient stability over plain LinearRegression."
+    },
+    {
+      "name": "Lasso",
+      "estimator_path": "sklearn.linear_model.Lasso",
+      "family": "linear",
+      "search_space": {
+        "alpha": {
+          "name": "alpha",
+          "scale": "log",
+          "low": 0.0001,
+          "high": 10.0,
+          "num": 25
+        }
+      },
+      "default_params": {
+        "max_iter": 10000,
+        "tol": 0.1
+      },
+      "tunable": true,
+      "strengths": [
+        "L1 penalty performs automatic feature selection, zeroing weak predictors for a sparse, easily-communicated model.",
+        "Useful for isolating the handful of true value drivers.",
+        "Single interpretable regularisation strength (alpha) tuned on validation."
+      ],
+      "limitations": [
+        "Among a group of collinear predictors it keeps one somewhat arbitrarily, which can complicate causal reading.",
+        "Can be numerically slow to converge at very small alpha (max_iter raised).",
+        "Still linear: no curvature or interactions unless engineered."
+      ],
+      "interpretability": "High and sparse: the surviving non-zero coefficients are the model's shortlist of value drivers for the managerial report.",
+      "suitability": "Complements Ridge by producing a parsimonious driver list, aiding the executive briefing's 'top drivers' narrative."
+    }
+  ]
+}

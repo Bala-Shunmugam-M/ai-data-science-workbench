@@ -1,0 +1,1008 @@
+{
+  "artifact": "model_card",
+  "generated_at": "2026-08-09T14:20:54+00:00",
+  "project": {
+    "display_name": "California Housing",
+    "target": "median_house_value",
+    "task": "regression",
+    "selection_metric": "rmse"
+  },
+  "model": {
+    "name": "Ridge",
+    "version": "v001",
+    "registered_at": "2026-07-20T17:23:18+00:00",
+    "params": {
+      "alpha": 100.0
+    },
+    "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+    "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v001\\model.joblib"
+  },
+  "intended_use": null,
+  "data": {
+    "train_rows": 14448,
+    "validation_rows": 3096,
+    "test_rows": 3096
+  },
+  "performance": {
+    "selection_metric": "rmse",
+    "n_models_compared": 6,
+    "validation_metrics": {
+      "rmse": 64787.47785361487,
+      "mae": 46246.33782090241,
+      "r2": 0.680133757870843,
+      "mape": 28.286901578561523
+    },
+    "test_metrics": {
+      "rmse": 66680.80871331149,
+      "mae": 48731.4185299291,
+      "r2": 0.6665125391478672,
+      "mape": 28.323672260501958
+    },
+    "selection_narrative": "6 candidate model(s) were compared on the untouched validation split using RMSE as the selection metric (lower is better).\n  - Ridge (v001): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Ridge (v002): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Lasso (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - Lasso (v001): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v001): RMSE 64,887, MAE 46,301, R2 0.679.\nRidge (v001) had the best validation RMSE and was promoted to champion.\nThe champion was then evaluated once on the held-out test split: RMSE 66,681, MAE 48,731, R2 0.667. The test split was used only for this single final measurement, never for tuning or selection.",
+    "metrics_stale": false,
+    "evaluated_model": null
+  },
+  "drivers": {
+    "artifact": "coefficient_interpretation",
+    "generated_at": "2026-08-02T13:43:07+00:00",
+    "champion": "Ridge v001",
+    "kind": "coefficient",
+    "intercept": 209063.76101638886,
+    "coefficients": [
+      {
+        "rank": 1,
+        "feature": "median_income",
+        "coefficient": 74630.487257,
+        "direction": "increases the prediction",
+        "abs_importance": 74630.487257,
+        "meaning": "District median household income (the dominant driver of value)."
+      },
+      {
+        "rank": 2,
+        "feature": "latitude",
+        "coefficient": -51647.209887,
+        "direction": "decreases the prediction",
+        "abs_importance": 51647.209887,
+        "meaning": "North-south location (proxy for region within California)."
+      },
+      {
+        "rank": 3,
+        "feature": "longitude",
+        "coefficient": -49816.154266,
+        "direction": "decreases the prediction",
+        "abs_importance": 49816.154266,
+        "meaning": "East-west location (proxy for coastal/inland position)."
+      },
+      {
+        "rank": 4,
+        "feature": "log_population",
+        "coefficient": -48747.349376,
+        "direction": "decreases the prediction",
+        "abs_importance": 48747.349376,
+        "meaning": "Scale of population (skew-compressed)."
+      },
+      {
+        "rank": 5,
+        "feature": "ocean_proximity_INLAND",
+        "coefficient": -27387.838469,
+        "direction": "decreases the prediction",
+        "abs_importance": 27387.838469,
+        "meaning": "Home is inland (typically the lowest-value segment)."
+      },
+      {
+        "rank": 6,
+        "feature": "log_total_rooms",
+        "coefficient": 25133.808448,
+        "direction": "increases the prediction",
+        "abs_importance": 25133.808448,
+        "meaning": "Scale of the housing stock (skew-compressed total rooms)."
+      },
+      {
+        "rank": 7,
+        "feature": "bedrooms_per_room",
+        "coefficient": 24798.110591,
+        "direction": "increases the prediction",
+        "abs_importance": 24798.110591,
+        "meaning": "Bedroom share of rooms; higher values flag smaller/denser units."
+      },
+      {
+        "rank": 8,
+        "feature": "bedrooms_per_household",
+        "coefficient": -18899.588863,
+        "direction": "decreases the prediction",
+        "abs_importance": 18899.588863,
+        "meaning": "Average bedrooms available per household."
+      },
+      {
+        "rank": 9,
+        "feature": "rooms_per_person",
+        "coefficient": 16238.498548,
+        "direction": "increases the prediction",
+        "abs_importance": 16238.498548,
+        "meaning": "Living space per resident."
+      },
+      {
+        "rank": 10,
+        "feature": "log_households",
+        "coefficient": 16046.009895,
+        "direction": "increases the prediction",
+        "abs_importance": 16046.009895,
+        "meaning": "Scale of households (skew-compressed)."
+      },
+      {
+        "rank": 11,
+        "feature": "housing_median_age",
+        "coefficient": 14321.680111,
+        "direction": "increases the prediction",
+        "abs_importance": 14321.680111,
+        "meaning": "Typical age of the housing stock in the district."
+      },
+      {
+        "rank": 12,
+        "feature": "households",
+        "coefficient": 14212.146125,
+        "direction": "increases the prediction",
+        "abs_importance": 14212.146125,
+        "meaning": "Number of households in the census block."
+      },
+      {
+        "rank": 13,
+        "feature": "ocean_proximity_<1H OCEAN",
+        "coefficient": 11595.234671,
+        "direction": "increases the prediction",
+        "abs_importance": 11595.234671,
+        "meaning": "Home is within an hour of the ocean (premium coastal access)."
+      },
+      {
+        "rank": 14,
+        "feature": "ocean_proximity_NEAR OCEAN",
+        "coefficient": 9432.648101,
+        "direction": "increases the prediction",
+        "abs_importance": 9432.648101,
+        "meaning": "Home is near the ocean (coastal amenity premium)."
+      },
+      {
+        "rank": 15,
+        "feature": "log_total_bedrooms",
+        "coefficient": 8753.175148,
+        "direction": "increases the prediction",
+        "abs_importance": 8753.175148,
+        "meaning": "Scale of bedrooms (skew-compressed total bedrooms)."
+      },
+      {
+        "rank": 16,
+        "feature": "rooms_per_household",
+        "coefficient": 5406.581624,
+        "direction": "increases the prediction",
+        "abs_importance": 5406.581624,
+        "meaning": "Average home size (rooms per household); a wealth/space proxy."
+      },
+      {
+        "rank": 17,
+        "feature": "total_bedrooms",
+        "coefficient": -5266.859116,
+        "direction": "decreases the prediction",
+        "abs_importance": 5266.859116,
+        "meaning": "Total bedrooms across all homes in the census block."
+      },
+      {
+        "rank": 18,
+        "feature": "population",
+        "coefficient": -5056.630041,
+        "direction": "decreases the prediction",
+        "abs_importance": 5056.630041,
+        "meaning": "Resident population of the census block."
+      },
+      {
+        "rank": 19,
+        "feature": "ocean_proximity_NEAR BAY",
+        "coefficient": 3854.506414,
+        "direction": "increases the prediction",
+        "abs_importance": 3854.506414,
+        "meaning": "Home is near the bay (established, higher-value metro areas)."
+      },
+      {
+        "rank": 20,
+        "feature": "ocean_proximity_ISLAND",
+        "coefficient": 2505.449283,
+        "direction": "increases the prediction",
+        "abs_importance": 2505.449283,
+        "meaning": "Home is on an island (rare, high-value segment)."
+      },
+      {
+        "rank": 21,
+        "feature": "population_per_household",
+        "coefficient": 2028.269095,
+        "direction": "increases the prediction",
+        "abs_importance": 2028.269095,
+        "meaning": "Average household occupancy (crowding)."
+      },
+      {
+        "rank": 22,
+        "feature": "bedrooms_per_person",
+        "coefficient": -829.881066,
+        "direction": "decreases the prediction",
+        "abs_importance": 829.881066,
+        "meaning": "Bedrooms available per resident."
+      },
+      {
+        "rank": 23,
+        "feature": "total_rooms",
+        "coefficient": 654.76239,
+        "direction": "increases the prediction",
+        "abs_importance": 654.76239,
+        "meaning": "Total rooms across all homes in the census block."
+      }
+    ]
+  },
+  "permutation_importance": {
+    "artifact": "permutation_importance",
+    "generated_at": "2026-08-09T14:20:53+00:00",
+    "champion": "Ridge v001",
+    "split": "test",
+    "selection_metric": "rmse",
+    "measured_against": "neg_root_mean_squared_error",
+    "n_repeats": 10,
+    "random_state": 42,
+    "n_rows_available": 3096,
+    "n_rows_used": 3096,
+    "subsampled": false,
+    "n_features": 23,
+    "n_distinguishable_from_noise": 21,
+    "importances": [
+      {
+        "rank": 1,
+        "feature": "median_income",
+        "importance_mean": 59073.755486,
+        "importance_std": 853.959255,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 2,
+        "feature": "latitude",
+        "importance_mean": 33631.755872,
+        "importance_std": 905.126941,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 3,
+        "feature": "longitude",
+        "importance_mean": 29640.088124,
+        "importance_std": 841.109604,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 4,
+        "feature": "log_population",
+        "importance_mean": 29168.093188,
+        "importance_std": 731.627076,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 5,
+        "feature": "log_total_rooms",
+        "importance_mean": 11239.693807,
+        "importance_std": 443.842503,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 6,
+        "feature": "bedrooms_per_room",
+        "importance_mean": 8649.270286,
+        "importance_std": 231.347291,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 7,
+        "feature": "log_households",
+        "importance_mean": 4925.544707,
+        "importance_std": 281.790742,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 8,
+        "feature": "households",
+        "importance_mean": 3360.233543,
+        "importance_std": 172.461006,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 9,
+        "feature": "housing_median_age",
+        "importance_mean": 3024.158826,
+        "importance_std": 233.894968,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 10,
+        "feature": "ocean_proximity_INLAND",
+        "importance_mean": 2512.577899,
+        "importance_std": 228.577039,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 11,
+        "feature": "rooms_per_person",
+        "importance_mean": 2115.970558,
+        "importance_std": 222.2888,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 12,
+        "feature": "bedrooms_per_household",
+        "importance_mean": 1871.620288,
+        "importance_std": 212.528138,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 13,
+        "feature": "log_total_bedrooms",
+        "importance_mean": 1758.246068,
+        "importance_std": 139.420803,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 14,
+        "feature": "population",
+        "importance_mean": 450.680615,
+        "importance_std": 81.021049,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 15,
+        "feature": "ocean_proximity_<1H OCEAN",
+        "importance_mean": 416.692241,
+        "importance_std": 112.3029,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 16,
+        "feature": "total_bedrooms",
+        "importance_mean": 366.37167,
+        "importance_std": 75.211274,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 17,
+        "feature": "ocean_proximity_NEAR OCEAN",
+        "importance_mean": 312.614944,
+        "importance_std": 28.571152,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 18,
+        "feature": "rooms_per_household",
+        "importance_mean": 264.688004,
+        "importance_std": 64.497708,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 19,
+        "feature": "total_rooms",
+        "importance_mean": 20.103111,
+        "importance_std": 10.117958,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 20,
+        "feature": "population_per_household",
+        "importance_mean": 5.156946,
+        "importance_std": 3.401944,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 21,
+        "feature": "ocean_proximity_ISLAND",
+        "importance_mean": 2.833246,
+        "importance_std": 0.430697,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 22,
+        "feature": "ocean_proximity_NEAR BAY",
+        "importance_mean": -5.872814,
+        "importance_std": 19.567131,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 23,
+        "feature": "bedrooms_per_person",
+        "importance_mean": -13.680932,
+        "importance_std": 10.309628,
+        "distinguishable_from_noise": false
+      }
+    ],
+    "figure": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\figures\\permutation_importance.png",
+    "interpretation_limits": [
+      "Importance is the drop in the score above when one column is shuffled. It measures what the model relies on, not what causes the outcome.",
+      "Columns are permuted in the post-one-hot design matrix, so a categorical's dummy columns are shuffled independently. A single dummy's importance is meaningful; a categorical's total importance is not the sum of its dummies.",
+      "Correlated columns share credit. When two inputs carry the same signal, shuffling either alone barely moves the score and both look unimportant - read the table as groups, not as independent effects.",
+      "Values at or below zero mean no measurable dependence. They are not clipped, because a negative value is useful evidence of how much noise this measurement carries."
+    ]
+  },
+  "fairness": {
+    "artifact": "subgroup_fairness",
+    "generated_at": "2026-08-09T14:20:53+00:00",
+    "champion": "Ridge v001",
+    "split": "test",
+    "task": "regression",
+    "n_rows": 3096,
+    "min_group_size": 30,
+    "max_levels": 10,
+    "columns_audited": [
+      "ocean_proximity"
+    ],
+    "columns_skipped": [],
+    "ranked_by": "the absolute value of each metric set's headline gap, largest first",
+    "audits": [
+      {
+        "column": "ocean_proximity",
+        "metric_set": "regression",
+        "n_groups": 5,
+        "groups": [
+          {
+            "group": "<1H OCEAN",
+            "n": 1382,
+            "share": 0.446382,
+            "reliable": true,
+            "mean_error": -1981.324292,
+            "mae": 49915.971381,
+            "rmse": 68913.25966
+          },
+          {
+            "group": "INLAND",
+            "n": 983,
+            "share": 0.317506,
+            "reliable": true,
+            "mean_error": 69.025051,
+            "mae": 35863.853444,
+            "rmse": 49014.228228
+          },
+          {
+            "group": "ISLAND",
+            "n": 1,
+            "share": 0.000323,
+            "reliable": false,
+            "mean_error": 241531.537695,
+            "mae": 241531.537695,
+            "rmse": 241531.537695
+          },
+          {
+            "group": "NEAR BAY",
+            "n": 313,
+            "share": 0.101098,
+            "reliable": true,
+            "mean_error": -2413.451641,
+            "mae": 61665.82816,
+            "rmse": 77085.033087
+          },
+          {
+            "group": "NEAR OCEAN",
+            "n": 417,
+            "share": 0.13469,
+            "reliable": true,
+            "mean_error": 7742.867579,
+            "mae": 64967.615428,
+            "rmse": 83721.86819
+          }
+        ],
+        "gaps": {
+          "mean_error_gap": 10156.31922,
+          "mae_gap": 29103.761984,
+          "rmse_gap": 34707.639962,
+          "n_groups_compared": 4,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [
+          {
+            "group": "ISLAND",
+            "n": 1,
+            "reason": "fewer than 30 rows"
+          }
+        ]
+      }
+    ],
+    "figure": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\figures\\subgroup_mean_error.png",
+    "interpretation_limits": [
+      "These are gaps, not verdicts. Whether a gap is acceptable depends on the domain, the decision the prediction feeds, and the law that applies - none of which this artifact knows.",
+      "EVERY low-cardinality column is audited, including columns that are model features by design. A large gap across a service tier or a contract type is usually the model working, not failing - which is why 'selection_amplification' is reported: it is the part of the gap the model adds on top of the difference that is really there.",
+      "A subgroup column may itself be a model input, or may be excluded from the model entirely. Either way the gap is real; the remedy is not the same, and removing the column does not remove the gap.",
+      "Groups with fewer than 30 rows are reported but excluded from the gap arithmetic; see 'excluded_from_gaps'.",
+      "Gaps are measured on one split. They are estimates with sampling error, and small gaps between similarly sized groups may not replicate."
+    ]
+  },
+  "calibration": {
+    "artifact": "calibration",
+    "generated_at": "2026-08-09T14:20:54+00:00",
+    "champion": "Ridge v001",
+    "split": "test",
+    "task": "regression",
+    "assessed": false,
+    "reason": "Calibration is a property of probability forecasts; this is a regression model. The equivalent regression diagnostics are the residual plots written by the evaluation stage."
+  },
+  "governance": {
+    "feature_approval": {
+      "artifact": "feature_approval",
+      "generated_at": "2026-07-20T21:35:30+00:00",
+      "target_column": "median_house_value",
+      "approved_features": [
+        "rooms_per_household",
+        "bedrooms_per_room",
+        "population_per_household",
+        "bedrooms_per_household",
+        "rooms_per_person",
+        "bedrooms_per_person",
+        "log_total_rooms",
+        "log_total_bedrooms",
+        "log_population",
+        "log_households"
+      ],
+      "approved_count": 10,
+      "base_predictor_columns": [
+        "longitude",
+        "latitude",
+        "housing_median_age",
+        "total_rooms",
+        "total_bedrooms",
+        "population",
+        "households",
+        "median_income",
+        "ocean_proximity"
+      ],
+      "approved_engineered_features": [
+        "rooms_per_household",
+        "bedrooms_per_room",
+        "population_per_household",
+        "bedrooms_per_household",
+        "rooms_per_person",
+        "bedrooms_per_person",
+        "log_total_rooms",
+        "log_total_bedrooms",
+        "log_population",
+        "log_households"
+      ],
+      "approved_predictor_columns": [
+        "longitude",
+        "latitude",
+        "housing_median_age",
+        "total_rooms",
+        "total_bedrooms",
+        "population",
+        "households",
+        "median_income",
+        "ocean_proximity",
+        "rooms_per_household",
+        "bedrooms_per_room",
+        "population_per_household",
+        "bedrooms_per_household",
+        "rooms_per_person",
+        "bedrooms_per_person",
+        "log_total_rooms",
+        "log_total_bedrooms",
+        "log_population",
+        "log_households"
+      ],
+      "features": [
+        {
+          "feature_name": "rooms_per_household",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "total_rooms",
+            "households"
+          ],
+          "formula": "total_rooms / households",
+          "business_meaning": "Average housing-space availability per household.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-001",
+          "approved": true
+        },
+        {
+          "feature_name": "bedrooms_per_room",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "total_bedrooms",
+            "total_rooms"
+          ],
+          "formula": "total_bedrooms / total_rooms",
+          "business_meaning": "Bedroom share within the housing stock.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-002",
+          "approved": true
+        },
+        {
+          "feature_name": "population_per_household",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "population",
+            "households"
+          ],
+          "formula": "population / households",
+          "business_meaning": "Average household occupancy.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-003",
+          "approved": true
+        },
+        {
+          "feature_name": "bedrooms_per_household",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "total_bedrooms",
+            "households"
+          ],
+          "formula": "total_bedrooms / households",
+          "business_meaning": "Average bedroom availability per household.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-004",
+          "approved": true
+        },
+        {
+          "feature_name": "rooms_per_person",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "total_rooms",
+            "population"
+          ],
+          "formula": "total_rooms / population",
+          "business_meaning": "Housing-space availability per person.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-005",
+          "approved": true
+        },
+        {
+          "feature_name": "bedrooms_per_person",
+          "feature_group": "Deterministic",
+          "feature_subtype": "Ratio",
+          "source_columns": [
+            "total_bedrooms",
+            "population"
+          ],
+          "formula": "total_bedrooms / population",
+          "business_meaning": "Bedroom availability per person.",
+          "rationale": "Separates observational-unit scale from density, composition, or resource availability.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Denominator must be non-zero (NaN on zero); preserve missing values.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-006",
+          "approved": true
+        },
+        {
+          "feature_name": "coastal_access_group",
+          "feature_group": "Domain",
+          "feature_subtype": "Category consolidation",
+          "source_columns": [
+            "ocean_proximity"
+          ],
+          "formula": "Business-approved grouping of proximity categories",
+          "business_meaning": "Simplified market-access / coastal-amenity segment.",
+          "rationale": "May improve interpretability when individual categories are sparse.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": false,
+          "validation_required": "Grouping must be approved and applied identically to every split.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "LOW",
+          "analyst_decision": "REQUIRES DOMAIN APPROVAL",
+          "feature_id": "FEAT-007",
+          "approved": false
+        },
+        {
+          "feature_name": "log_total_rooms",
+          "feature_group": "Statistical",
+          "feature_subtype": "Log transform",
+          "source_columns": [
+            "total_rooms"
+          ],
+          "formula": "log1p(total_rooms)",
+          "business_meaning": "Compresses the right-skewed scale of total_rooms.",
+          "rationale": "EDA shows right-skewed count distributions; log1p stabilises scale.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Input must be non-negative (log1p defined for >= 0).",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-008",
+          "approved": true
+        },
+        {
+          "feature_name": "log_total_bedrooms",
+          "feature_group": "Statistical",
+          "feature_subtype": "Log transform",
+          "source_columns": [
+            "total_bedrooms"
+          ],
+          "formula": "log1p(total_bedrooms)",
+          "business_meaning": "Compresses the right-skewed scale of total_bedrooms.",
+          "rationale": "EDA shows right-skewed count distributions; log1p stabilises scale.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Input must be non-negative (log1p defined for >= 0).",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-009",
+          "approved": true
+        },
+        {
+          "feature_name": "log_population",
+          "feature_group": "Statistical",
+          "feature_subtype": "Log transform",
+          "source_columns": [
+            "population"
+          ],
+          "formula": "log1p(population)",
+          "business_meaning": "Compresses the right-skewed scale of population.",
+          "rationale": "EDA shows right-skewed count distributions; log1p stabilises scale.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Input must be non-negative (log1p defined for >= 0).",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-010",
+          "approved": true
+        },
+        {
+          "feature_name": "log_households",
+          "feature_group": "Statistical",
+          "feature_subtype": "Log transform",
+          "source_columns": [
+            "households"
+          ],
+          "formula": "log1p(households)",
+          "business_meaning": "Compresses the right-skewed scale of households.",
+          "rationale": "EDA shows right-skewed count distributions; log1p stabilises scale.",
+          "automatic": true,
+          "optional": false,
+          "requires_training_fit": false,
+          "validation_required": "Input must be non-negative (log1p defined for >= 0).",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "APPROVE FOR IMPLEMENTATION",
+          "feature_id": "FEAT-011",
+          "approved": true
+        },
+        {
+          "feature_name": "longitude_latitude_interaction",
+          "feature_group": "Statistical",
+          "feature_subtype": "Interaction",
+          "source_columns": [
+            "longitude",
+            "latitude"
+          ],
+          "formula": "longitude * latitude",
+          "business_meaning": "Joint geographic effect.",
+          "rationale": "Interaction hypothesis; not justified by marginal effects alone.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": false,
+          "validation_required": "Retain only with conceptual justification and validated value.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "EVALUATE, DO NOT IMPOSE",
+          "feature_id": "FEAT-012",
+          "approved": false
+        },
+        {
+          "feature_name": "income_age_interaction",
+          "feature_group": "Statistical",
+          "feature_subtype": "Interaction",
+          "source_columns": [
+            "median_income",
+            "housing_median_age"
+          ],
+          "formula": "median_income * housing_median_age",
+          "business_meaning": "Income effect may vary with housing age.",
+          "rationale": "Interaction hypothesis; not justified by marginal effects alone.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": false,
+          "validation_required": "Retain only with conceptual justification and validated value.",
+          "leakage_risk": "LOW",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "EVALUATE, DO NOT IMPOSE",
+          "feature_id": "FEAT-013",
+          "approved": false
+        },
+        {
+          "feature_name": "standardized_numeric_predictors",
+          "feature_group": "Machine Learning",
+          "feature_subtype": "Scaling",
+          "source_columns": [
+            "longitude",
+            "latitude",
+            "housing_median_age",
+            "total_rooms",
+            "total_bedrooms",
+            "population",
+            "households",
+            "median_income"
+          ],
+          "formula": "StandardScaler fitted on training data",
+          "business_meaning": "Places numerical predictors on comparable scales.",
+          "rationale": "Required for stable gradient-based optimisation.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": true,
+          "validation_required": "Fit on training data only; reuse for validation/test.",
+          "leakage_risk": "HIGH",
+          "implementing_script": "src/preprocessing/scaler.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVED (executed in preprocessing scaler)",
+          "feature_id": "FEAT-014",
+          "approved": false
+        },
+        {
+          "feature_name": "one_hot_categorical_predictors",
+          "feature_group": "Machine Learning",
+          "feature_subtype": "Categorical encoding",
+          "source_columns": [
+            "ocean_proximity"
+          ],
+          "formula": "OneHotEncoder(handle_unknown='ignore') fitted on training data",
+          "business_meaning": "Represents categorical differences without imposing order.",
+          "rationale": "Required by linear and gradient-based estimators.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": true,
+          "validation_required": "Fit category levels on training data only.",
+          "leakage_risk": "HIGH",
+          "implementing_script": "src/preprocessing/encoder.py",
+          "priority": "HIGH",
+          "analyst_decision": "APPROVED (executed in preprocessing encoder)",
+          "feature_id": "FEAT-015",
+          "approved": false
+        },
+        {
+          "feature_name": "centered_numeric_predictors",
+          "feature_group": "Inferential",
+          "feature_subtype": "Centering",
+          "source_columns": [
+            "longitude",
+            "latitude",
+            "housing_median_age",
+            "total_rooms",
+            "total_bedrooms",
+            "population",
+            "households",
+            "median_income"
+          ],
+          "formula": "x - training mean",
+          "business_meaning": "Makes the intercept and interaction terms interpretable.",
+          "rationale": "Reduces nonessential collinearity in polynomial/interaction specs.",
+          "automatic": false,
+          "optional": true,
+          "requires_training_fit": true,
+          "validation_required": "Estimate centering constants from training data only.",
+          "leakage_risk": "HIGH",
+          "implementing_script": "src/feature_engineering/transformers.py",
+          "priority": "MEDIUM",
+          "analyst_decision": "USE WHEN POLYNOMIAL OR INTERACTION TERMS ENTER",
+          "feature_id": "FEAT-016",
+          "approved": false
+        }
+      ]
+    },
+    "model_approval": {
+      "artifact": "model_approval",
+      "generated_at": "2026-07-20T21:35:30+00:00",
+      "approved_models": [
+        "LinearRegression",
+        "Ridge",
+        "Lasso"
+      ],
+      "approved_count": 3,
+      "recommended_models": [
+        "LinearRegression",
+        "Ridge",
+        "Lasso"
+      ],
+      "note": "Training refuses any model not listed in approved_models."
+    },
+    "audit_events": 34,
+    "experiment_runs": 6,
+    "lineage_nodes": 4
+  },
+  "sources": {
+    "evaluation_report": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\model_evaluation_report.json",
+      "exists": true
+    },
+    "drivers": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\explainability\\coefficient_interpretation.json",
+      "exists": true
+    },
+    "permutation_importance": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\permutation_importance.json",
+      "exists": true
+    },
+    "subgroup_fairness": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\subgroup_fairness.json",
+      "exists": true
+    },
+    "calibration": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\calibration.json",
+      "exists": true
+    },
+    "feature_approval": {
+      "path": "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\feature_approval.json",
+      "exists": true
+    },
+    "model_approval": {
+      "path": "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\model_approval.json",
+      "exists": true
+    },
+    "audit_log": {
+      "path": "D:\\AI\\ai-data-science-workbench\\governance\\audit\\audit_log.jsonl",
+      "exists": true
+    },
+    "lineage": {
+      "path": "D:\\AI\\ai-data-science-workbench\\governance\\lineage\\lineage.json",
+      "exists": true
+    },
+    "experiments": {
+      "path": "D:\\AI\\ai-data-science-workbench\\artifacts\\experiments\\experiments.jsonl",
+      "exists": true
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "artifact": "model_approval",
+  "generated_at": "2026-07-20T21:35:30+00:00",
+  "approved_models": [
+    "LinearRegression",
+    "Ridge",
+    "Lasso"
+  ],
+  "approved_count": 3,
+  "recommended_models": [
+    "LinearRegression",
+    "Ridge",
+    "Lasso"
+  ],
+  "note": "Training refuses any model not listed in approved_models."
+}

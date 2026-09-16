@@ -1,0 +1,908 @@
+{
+  "artifact": "subgroup_fairness",
+  "generated_at": "2026-08-09T14:23:49+00:00",
+  "champion": "LogisticRegression v001",
+  "split": "test",
+  "task": "classification",
+  "n_rows": 1057,
+  "min_group_size": 30,
+  "max_levels": 10,
+  "columns_audited": [
+    "InternetService",
+    "OnlineSecurity",
+    "OnlineBackup",
+    "Contract",
+    "TechSupport",
+    "PaymentMethod",
+    "DeviceProtection",
+    "StreamingTV",
+    "StreamingMovies",
+    "SeniorCitizen",
+    "PaperlessBilling",
+    "Dependents",
+    "Partner",
+    "MultipleLines",
+    "PhoneService",
+    "gender"
+  ],
+  "columns_skipped": [],
+  "ranked_by": "the absolute value of each metric set's headline gap, largest first",
+  "audits": [
+    {
+      "column": "InternetService",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "DSL",
+          "n": 377,
+          "share": 0.35667,
+          "reliable": true,
+          "base_rate": 0.196286,
+          "selection_rate": 0.066313,
+          "tpr": 0.243243,
+          "fpr": 0.023102,
+          "precision": 0.72,
+          "accuracy": 0.832891
+        },
+        {
+          "group": "Fiber optic",
+          "n": 441,
+          "share": 0.417219,
+          "reliable": true,
+          "base_rate": 0.414966,
+          "selection_rate": 0.435374,
+          "tpr": 0.715847,
+          "fpr": 0.236434,
+          "precision": 0.682292,
+          "accuracy": 0.743764
+        },
+        {
+          "group": "No",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.314548,
+        "selection_rate_gap": 0.435374,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.715847,
+        "fpr_gap": 0.236434,
+        "precision_gap": 0.037708,
+        "accuracy_gap": 0.155818,
+        "selection_amplification": 0.120826,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "OnlineSecurity",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 521,
+          "share": 0.492904,
+          "reliable": true,
+          "base_rate": 0.414587,
+          "selection_rate": 0.397313,
+          "tpr": 0.662037,
+          "fpr": 0.209836,
+          "precision": 0.690821,
+          "accuracy": 0.737044
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 297,
+          "share": 0.280984,
+          "reliable": true,
+          "base_rate": 0.138047,
+          "selection_rate": 0.03367,
+          "tpr": 0.146341,
+          "fpr": 0.015625,
+          "precision": 0.6,
+          "accuracy": 0.868687
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.314169,
+        "selection_rate_gap": 0.397313,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.662037,
+        "fpr_gap": 0.209836,
+        "precision_gap": 0.090821,
+        "accuracy_gap": 0.162538,
+        "selection_amplification": 0.083144,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "OnlineBackup",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 463,
+          "share": 0.438032,
+          "reliable": true,
+          "base_rate": 0.410367,
+          "selection_rate": 0.382289,
+          "tpr": 0.647368,
+          "fpr": 0.197802,
+          "precision": 0.694915,
+          "accuracy": 0.738661
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 355,
+          "share": 0.335856,
+          "reliable": true,
+          "base_rate": 0.188732,
+          "selection_rate": 0.112676,
+          "tpr": 0.38806,
+          "fpr": 0.048611,
+          "precision": 0.65,
+          "accuracy": 0.84507
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.309949,
+        "selection_rate_gap": 0.382289,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.647368,
+        "fpr_gap": 0.197802,
+        "precision_gap": 0.044915,
+        "accuracy_gap": 0.160921,
+        "selection_amplification": 0.07234,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "Contract",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "Month-to-month",
+          "n": 572,
+          "share": 0.541154,
+          "reliable": true,
+          "base_rate": 0.424825,
+          "selection_rate": 0.379371,
+          "tpr": 0.613169,
+          "fpr": 0.206687,
+          "precision": 0.686636,
+          "accuracy": 0.716783
+        },
+        {
+          "group": "One year",
+          "n": 229,
+          "share": 0.216651,
+          "reliable": true,
+          "base_rate": 0.144105,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.855895
+        },
+        {
+          "group": "Two year",
+          "n": 256,
+          "share": 0.242195,
+          "reliable": true,
+          "base_rate": 0.019531,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.980469
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.405294,
+        "selection_rate_gap": 0.379371,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.613169,
+        "fpr_gap": 0.206687,
+        "precision_gap": null,
+        "accuracy_gap": 0.263686,
+        "selection_amplification": -0.025923,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 1
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "TechSupport",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 538,
+          "share": 0.508988,
+          "reliable": true,
+          "base_rate": 0.405204,
+          "selection_rate": 0.379182,
+          "tpr": 0.651376,
+          "fpr": 0.19375,
+          "precision": 0.696078,
+          "accuracy": 0.743494
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 280,
+          "share": 0.264901,
+          "reliable": true,
+          "base_rate": 0.139286,
+          "selection_rate": 0.046429,
+          "tpr": 0.179487,
+          "fpr": 0.024896,
+          "precision": 0.538462,
+          "accuracy": 0.864286
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.304786,
+        "selection_rate_gap": 0.379182,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.651376,
+        "fpr_gap": 0.19375,
+        "precision_gap": 0.157616,
+        "accuracy_gap": 0.156088,
+        "selection_amplification": 0.074396,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "PaymentMethod",
+      "metric_set": "binary_classification",
+      "n_groups": 4,
+      "groups": [
+        {
+          "group": "Bank transfer (automatic)",
+          "n": 232,
+          "share": 0.219489,
+          "reliable": true,
+          "base_rate": 0.155172,
+          "selection_rate": 0.077586,
+          "tpr": 0.361111,
+          "fpr": 0.02551,
+          "precision": 0.722222,
+          "accuracy": 0.87931
+        },
+        {
+          "group": "Credit card (automatic)",
+          "n": 232,
+          "share": 0.219489,
+          "reliable": true,
+          "base_rate": 0.159483,
+          "selection_rate": 0.081897,
+          "tpr": 0.351351,
+          "fpr": 0.030769,
+          "precision": 0.684211,
+          "accuracy": 0.87069
+        },
+        {
+          "group": "Electronic check",
+          "n": 349,
+          "share": 0.33018,
+          "reliable": true,
+          "base_rate": 0.464183,
+          "selection_rate": 0.455587,
+          "tpr": 0.691358,
+          "fpr": 0.251337,
+          "precision": 0.704403,
+          "accuracy": 0.722063
+        },
+        {
+          "group": "Mailed check",
+          "n": 244,
+          "share": 0.230842,
+          "reliable": true,
+          "base_rate": 0.188525,
+          "selection_rate": 0.086066,
+          "tpr": 0.23913,
+          "fpr": 0.050505,
+          "precision": 0.52381,
+          "accuracy": 0.815574
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.309011,
+        "selection_rate_gap": 0.378001,
+        "selection_rate_ratio": 0.170299,
+        "tpr_gap": 0.452228,
+        "fpr_gap": 0.225827,
+        "precision_gap": 0.198412,
+        "accuracy_gap": 0.157247,
+        "selection_amplification": 0.06899,
+        "n_groups_compared": 4,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "DeviceProtection",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 458,
+          "share": 0.433302,
+          "reliable": true,
+          "base_rate": 0.375546,
+          "selection_rate": 0.358079,
+          "tpr": 0.645349,
+          "fpr": 0.185315,
+          "precision": 0.676829,
+          "accuracy": 0.751092
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 360,
+          "share": 0.340587,
+          "reliable": true,
+          "base_rate": 0.236111,
+          "selection_rate": 0.147222,
+          "tpr": 0.447059,
+          "fpr": 0.054545,
+          "precision": 0.716981,
+          "accuracy": 0.827778
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.275128,
+        "selection_rate_gap": 0.358079,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.645349,
+        "fpr_gap": 0.185315,
+        "precision_gap": 0.040152,
+        "accuracy_gap": 0.14849,
+        "selection_amplification": 0.082951,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "StreamingTV",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 438,
+          "share": 0.41438,
+          "reliable": true,
+          "base_rate": 0.340183,
+          "selection_rate": 0.285388,
+          "tpr": 0.590604,
+          "fpr": 0.128028,
+          "precision": 0.704,
+          "accuracy": 0.776256
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 380,
+          "share": 0.359508,
+          "reliable": true,
+          "base_rate": 0.284211,
+          "selection_rate": 0.242105,
+          "tpr": 0.564815,
+          "fpr": 0.113971,
+          "precision": 0.663043,
+          "accuracy": 0.794737
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.239765,
+        "selection_rate_gap": 0.285388,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.590604,
+        "fpr_gap": 0.128028,
+        "precision_gap": 0.040957,
+        "accuracy_gap": 0.123326,
+        "selection_amplification": 0.045623,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "StreamingMovies",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 441,
+          "share": 0.417219,
+          "reliable": true,
+          "base_rate": 0.335601,
+          "selection_rate": 0.276644,
+          "tpr": 0.587838,
+          "fpr": 0.119454,
+          "precision": 0.713115,
+          "accuracy": 0.782313
+        },
+        {
+          "group": "No internet service",
+          "n": 239,
+          "share": 0.226112,
+          "reliable": true,
+          "base_rate": 0.100418,
+          "selection_rate": 0.0,
+          "tpr": 0.0,
+          "fpr": 0.0,
+          "precision": null,
+          "accuracy": 0.899582
+        },
+        {
+          "group": "Yes",
+          "n": 377,
+          "share": 0.35667,
+          "reliable": true,
+          "base_rate": 0.289125,
+          "selection_rate": 0.251989,
+          "tpr": 0.568807,
+          "fpr": 0.123134,
+          "precision": 0.652632,
+          "accuracy": 0.787798
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.235183,
+        "selection_rate_gap": 0.276644,
+        "selection_rate_ratio": 0.0,
+        "tpr_gap": 0.587838,
+        "fpr_gap": 0.123134,
+        "precision_gap": 0.060483,
+        "accuracy_gap": 0.117269,
+        "selection_amplification": 0.041461,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {
+          "precision": 2
+        }
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "SeniorCitizen",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "0",
+          "n": 896,
+          "share": 0.847682,
+          "reliable": true,
+          "base_rate": 0.234375,
+          "selection_rate": 0.170759,
+          "tpr": 0.495238,
+          "fpr": 0.071429,
+          "precision": 0.679739,
+          "accuracy": 0.827009
+        },
+        {
+          "group": "1",
+          "n": 161,
+          "share": 0.152318,
+          "reliable": true,
+          "base_rate": 0.440994,
+          "selection_rate": 0.397516,
+          "tpr": 0.633803,
+          "fpr": 0.211111,
+          "precision": 0.703125,
+          "accuracy": 0.720497
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.206619,
+        "selection_rate_gap": 0.226757,
+        "selection_rate_ratio": 0.429565,
+        "tpr_gap": 0.138565,
+        "fpr_gap": 0.139682,
+        "precision_gap": 0.023386,
+        "accuracy_gap": 0.106512,
+        "selection_amplification": 0.020138,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "PaperlessBilling",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "No",
+          "n": 450,
+          "share": 0.425733,
+          "reliable": true,
+          "base_rate": 0.182222,
+          "selection_rate": 0.084444,
+          "tpr": 0.292683,
+          "fpr": 0.038043,
+          "precision": 0.631579,
+          "accuracy": 0.84
+        },
+        {
+          "group": "Yes",
+          "n": 607,
+          "share": 0.574267,
+          "reliable": true,
+          "base_rate": 0.327842,
+          "selection_rate": 0.294893,
+          "tpr": 0.628141,
+          "fpr": 0.132353,
+          "precision": 0.698324,
+          "accuracy": 0.789127
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.14562,
+        "selection_rate_gap": 0.210449,
+        "selection_rate_ratio": 0.286355,
+        "tpr_gap": 0.335458,
+        "fpr_gap": 0.09431,
+        "precision_gap": 0.066745,
+        "accuracy_gap": 0.050873,
+        "selection_amplification": 0.064829,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "Dependents",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "No",
+          "n": 728,
+          "share": 0.688742,
+          "reliable": true,
+          "base_rate": 0.31456,
+          "selection_rate": 0.263736,
+          "tpr": 0.580786,
+          "fpr": 0.118236,
+          "precision": 0.692708,
+          "accuracy": 0.787088
+        },
+        {
+          "group": "Yes",
+          "n": 329,
+          "share": 0.311258,
+          "reliable": true,
+          "base_rate": 0.158055,
+          "selection_rate": 0.075988,
+          "tpr": 0.307692,
+          "fpr": 0.032491,
+          "precision": 0.64,
+          "accuracy": 0.863222
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.156505,
+        "selection_rate_gap": 0.187748,
+        "selection_rate_ratio": 0.288121,
+        "tpr_gap": 0.273094,
+        "fpr_gap": 0.085745,
+        "precision_gap": 0.052708,
+        "accuracy_gap": 0.076134,
+        "selection_amplification": 0.031243,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "Partner",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "No",
+          "n": 544,
+          "share": 0.514664,
+          "reliable": true,
+          "base_rate": 0.327206,
+          "selection_rate": 0.292279,
+          "tpr": 0.595506,
+          "fpr": 0.144809,
+          "precision": 0.666667,
+          "accuracy": 0.770221
+        },
+        {
+          "group": "Yes",
+          "n": 513,
+          "share": 0.485336,
+          "reliable": true,
+          "base_rate": 0.20078,
+          "selection_rate": 0.11306,
+          "tpr": 0.417476,
+          "fpr": 0.036585,
+          "precision": 0.741379,
+          "accuracy": 0.853801
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.126426,
+        "selection_rate_gap": 0.179219,
+        "selection_rate_ratio": 0.386822,
+        "tpr_gap": 0.17803,
+        "fpr_gap": 0.108224,
+        "precision_gap": 0.074712,
+        "accuracy_gap": 0.08358,
+        "selection_amplification": 0.052793,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "MultipleLines",
+      "metric_set": "binary_classification",
+      "n_groups": 3,
+      "groups": [
+        {
+          "group": "No",
+          "n": 529,
+          "share": 0.500473,
+          "reliable": true,
+          "base_rate": 0.258979,
+          "selection_rate": 0.175803,
+          "tpr": 0.459854,
+          "fpr": 0.076531,
+          "precision": 0.677419,
+          "accuracy": 0.803403
+        },
+        {
+          "group": "No phone service",
+          "n": 97,
+          "share": 0.091769,
+          "reliable": true,
+          "base_rate": 0.268041,
+          "selection_rate": 0.154639,
+          "tpr": 0.5,
+          "fpr": 0.028169,
+          "precision": 0.866667,
+          "accuracy": 0.845361
+        },
+        {
+          "group": "Yes",
+          "n": 431,
+          "share": 0.407758,
+          "reliable": true,
+          "base_rate": 0.273782,
+          "selection_rate": 0.2529,
+          "tpr": 0.618644,
+          "fpr": 0.115016,
+          "precision": 0.669725,
+          "accuracy": 0.812065
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.014803,
+        "selection_rate_gap": 0.098261,
+        "selection_rate_ratio": 0.611463,
+        "tpr_gap": 0.15879,
+        "fpr_gap": 0.086847,
+        "precision_gap": 0.196942,
+        "accuracy_gap": 0.041958,
+        "selection_amplification": 0.083458,
+        "n_groups_compared": 3,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "PhoneService",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "No",
+          "n": 97,
+          "share": 0.091769,
+          "reliable": true,
+          "base_rate": 0.268041,
+          "selection_rate": 0.154639,
+          "tpr": 0.5,
+          "fpr": 0.028169,
+          "precision": 0.866667,
+          "accuracy": 0.845361
+        },
+        {
+          "group": "Yes",
+          "n": 960,
+          "share": 0.908231,
+          "reliable": true,
+          "base_rate": 0.265625,
+          "selection_rate": 0.210417,
+          "tpr": 0.533333,
+          "fpr": 0.093617,
+          "precision": 0.673267,
+          "accuracy": 0.807292
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.002416,
+        "selection_rate_gap": 0.055778,
+        "selection_rate_ratio": 0.734917,
+        "tpr_gap": 0.033333,
+        "fpr_gap": 0.065448,
+        "precision_gap": 0.1934,
+        "accuracy_gap": 0.038069,
+        "selection_amplification": 0.053362,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    },
+    {
+      "column": "gender",
+      "metric_set": "binary_classification",
+      "n_groups": 2,
+      "groups": [
+        {
+          "group": "Female",
+          "n": 505,
+          "share": 0.477767,
+          "reliable": true,
+          "base_rate": 0.291089,
+          "selection_rate": 0.219802,
+          "tpr": 0.482993,
+          "fpr": 0.111732,
+          "precision": 0.63964,
+          "accuracy": 0.770297
+        },
+        {
+          "group": "Male",
+          "n": 552,
+          "share": 0.522233,
+          "reliable": true,
+          "base_rate": 0.242754,
+          "selection_rate": 0.192029,
+          "tpr": 0.58209,
+          "fpr": 0.066986,
+          "precision": 0.735849,
+          "accuracy": 0.847826
+        }
+      ],
+      "gaps": {
+        "base_rate_gap": 0.048335,
+        "selection_rate_gap": 0.027773,
+        "selection_rate_ratio": 0.873645,
+        "tpr_gap": 0.099097,
+        "fpr_gap": 0.044746,
+        "precision_gap": 0.096209,
+        "accuracy_gap": 0.077529,
+        "selection_amplification": -0.020562,
+        "n_groups_compared": 2,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [],
+      "gaps_measurable": true
+    }
+  ],
+  "figure": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\figures\\subgroup_accuracy.png",
+  "interpretation_limits": [
+    "These are gaps, not verdicts. Whether a gap is acceptable depends on the domain, the decision the prediction feeds, and the law that applies - none of which this artifact knows.",
+    "EVERY low-cardinality column is audited, including columns that are model features by design. A large gap across a service tier or a contract type is usually the model working, not failing - which is why 'selection_amplification' is reported: it is the part of the gap the model adds on top of the difference that is really there.",
+    "A subgroup column may itself be a model input, or may be excluded from the model entirely. Either way the gap is real; the remedy is not the same, and removing the column does not remove the gap.",
+    "Groups with fewer than 30 rows are reported but excluded from the gap arithmetic; see 'excluded_from_gaps'.",
+    "Gaps are measured on one split. They are estimates with sampling error, and small gaps between similarly sized groups may not replicate."
+  ]
+}

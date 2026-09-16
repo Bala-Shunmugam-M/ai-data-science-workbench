@@ -1,0 +1,193 @@
+{
+  "artifact": "coefficient_interpretation",
+  "generated_at": "2026-08-02T13:43:07+00:00",
+  "champion": "Ridge v001",
+  "kind": "coefficient",
+  "intercept": 209063.76101638886,
+  "coefficients": [
+    {
+      "rank": 1,
+      "feature": "median_income",
+      "coefficient": 74630.487257,
+      "direction": "increases the prediction",
+      "abs_importance": 74630.487257,
+      "meaning": "District median household income (the dominant driver of value)."
+    },
+    {
+      "rank": 2,
+      "feature": "latitude",
+      "coefficient": -51647.209887,
+      "direction": "decreases the prediction",
+      "abs_importance": 51647.209887,
+      "meaning": "North-south location (proxy for region within California)."
+    },
+    {
+      "rank": 3,
+      "feature": "longitude",
+      "coefficient": -49816.154266,
+      "direction": "decreases the prediction",
+      "abs_importance": 49816.154266,
+      "meaning": "East-west location (proxy for coastal/inland position)."
+    },
+    {
+      "rank": 4,
+      "feature": "log_population",
+      "coefficient": -48747.349376,
+      "direction": "decreases the prediction",
+      "abs_importance": 48747.349376,
+      "meaning": "Scale of population (skew-compressed)."
+    },
+    {
+      "rank": 5,
+      "feature": "ocean_proximity_INLAND",
+      "coefficient": -27387.838469,
+      "direction": "decreases the prediction",
+      "abs_importance": 27387.838469,
+      "meaning": "Home is inland (typically the lowest-value segment)."
+    },
+    {
+      "rank": 6,
+      "feature": "log_total_rooms",
+      "coefficient": 25133.808448,
+      "direction": "increases the prediction",
+      "abs_importance": 25133.808448,
+      "meaning": "Scale of the housing stock (skew-compressed total rooms)."
+    },
+    {
+      "rank": 7,
+      "feature": "bedrooms_per_room",
+      "coefficient": 24798.110591,
+      "direction": "increases the prediction",
+      "abs_importance": 24798.110591,
+      "meaning": "Bedroom share of rooms; higher values flag smaller/denser units."
+    },
+    {
+      "rank": 8,
+      "feature": "bedrooms_per_household",
+      "coefficient": -18899.588863,
+      "direction": "decreases the prediction",
+      "abs_importance": 18899.588863,
+      "meaning": "Average bedrooms available per household."
+    },
+    {
+      "rank": 9,
+      "feature": "rooms_per_person",
+      "coefficient": 16238.498548,
+      "direction": "increases the prediction",
+      "abs_importance": 16238.498548,
+      "meaning": "Living space per resident."
+    },
+    {
+      "rank": 10,
+      "feature": "log_households",
+      "coefficient": 16046.009895,
+      "direction": "increases the prediction",
+      "abs_importance": 16046.009895,
+      "meaning": "Scale of households (skew-compressed)."
+    },
+    {
+      "rank": 11,
+      "feature": "housing_median_age",
+      "coefficient": 14321.680111,
+      "direction": "increases the prediction",
+      "abs_importance": 14321.680111,
+      "meaning": "Typical age of the housing stock in the district."
+    },
+    {
+      "rank": 12,
+      "feature": "households",
+      "coefficient": 14212.146125,
+      "direction": "increases the prediction",
+      "abs_importance": 14212.146125,
+      "meaning": "Number of households in the census block."
+    },
+    {
+      "rank": 13,
+      "feature": "ocean_proximity_<1H OCEAN",
+      "coefficient": 11595.234671,
+      "direction": "increases the prediction",
+      "abs_importance": 11595.234671,
+      "meaning": "Home is within an hour of the ocean (premium coastal access)."
+    },
+    {
+      "rank": 14,
+      "feature": "ocean_proximity_NEAR OCEAN",
+      "coefficient": 9432.648101,
+      "direction": "increases the prediction",
+      "abs_importance": 9432.648101,
+      "meaning": "Home is near the ocean (coastal amenity premium)."
+    },
+    {
+      "rank": 15,
+      "feature": "log_total_bedrooms",
+      "coefficient": 8753.175148,
+      "direction": "increases the prediction",
+      "abs_importance": 8753.175148,
+      "meaning": "Scale of bedrooms (skew-compressed total bedrooms)."
+    },
+    {
+      "rank": 16,
+      "feature": "rooms_per_household",
+      "coefficient": 5406.581624,
+      "direction": "increases the prediction",
+      "abs_importance": 5406.581624,
+      "meaning": "Average home size (rooms per household); a wealth/space proxy."
+    },
+    {
+      "rank": 17,
+      "feature": "total_bedrooms",
+      "coefficient": -5266.859116,
+      "direction": "decreases the prediction",
+      "abs_importance": 5266.859116,
+      "meaning": "Total bedrooms across all homes in the census block."
+    },
+    {
+      "rank": 18,
+      "feature": "population",
+      "coefficient": -5056.630041,
+      "direction": "decreases the prediction",
+      "abs_importance": 5056.630041,
+      "meaning": "Resident population of the census block."
+    },
+    {
+      "rank": 19,
+      "feature": "ocean_proximity_NEAR BAY",
+      "coefficient": 3854.506414,
+      "direction": "increases the prediction",
+      "abs_importance": 3854.506414,
+      "meaning": "Home is near the bay (established, higher-value metro areas)."
+    },
+    {
+      "rank": 20,
+      "feature": "ocean_proximity_ISLAND",
+      "coefficient": 2505.449283,
+      "direction": "increases the prediction",
+      "abs_importance": 2505.449283,
+      "meaning": "Home is on an island (rare, high-value segment)."
+    },
+    {
+      "rank": 21,
+      "feature": "population_per_household",
+      "coefficient": 2028.269095,
+      "direction": "increases the prediction",
+      "abs_importance": 2028.269095,
+      "meaning": "Average household occupancy (crowding)."
+    },
+    {
+      "rank": 22,
+      "feature": "bedrooms_per_person",
+      "coefficient": -829.881066,
+      "direction": "decreases the prediction",
+      "abs_importance": 829.881066,
+      "meaning": "Bedrooms available per resident."
+    },
+    {
+      "rank": 23,
+      "feature": "total_rooms",
+      "coefficient": 654.76239,
+      "direction": "increases the prediction",
+      "abs_importance": 654.76239,
+      "meaning": "Total rooms across all homes in the census block."
+    }
+  ]
+}

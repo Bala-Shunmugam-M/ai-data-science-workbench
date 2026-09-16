@@ -1,0 +1,96 @@
+{
+  "artifact": "model_evaluation_report",
+  "generated_at": "2026-07-26T20:27:55+00:00",
+  "task": "regression",
+  "selection_metric": "rmse",
+  "n_models_compared": 6,
+  "validation_comparison": [
+    {
+      "name": "LinearRegression",
+      "version": "v001",
+      "validation_metrics": {
+        "rmse": 64887.43759422965,
+        "mae": 46300.76391775423,
+        "r2": 0.6791459616611555,
+        "mape": 28.599185876830546
+      }
+    },
+    {
+      "name": "Ridge",
+      "version": "v001",
+      "validation_metrics": {
+        "rmse": 64787.47785361487,
+        "mae": 46246.33782090241,
+        "r2": 0.680133757870843,
+        "mape": 28.286901578561523
+      }
+    },
+    {
+      "name": "Lasso",
+      "version": "v001",
+      "validation_metrics": {
+        "rmse": 64887.43494233497,
+        "mae": 46300.76369616628,
+        "r2": 0.6791459878872211,
+        "mape": 28.599183302180958
+      }
+    },
+    {
+      "name": "LinearRegression",
+      "version": "v002",
+      "validation_metrics": {
+        "rmse": 64887.43759422965,
+        "mae": 46300.76391775423,
+        "r2": 0.6791459616611555,
+        "mape": 28.599185876830546
+      }
+    },
+    {
+      "name": "Ridge",
+      "version": "v002",
+      "validation_metrics": {
+        "rmse": 64787.47785361487,
+        "mae": 46246.33782090241,
+        "r2": 0.680133757870843,
+        "mape": 28.286901578561523
+      }
+    },
+    {
+      "name": "Lasso",
+      "version": "v002",
+      "validation_metrics": {
+        "rmse": 64887.43494233497,
+        "mae": 46300.76369616628,
+        "r2": 0.6791459878872211,
+        "mape": 28.599183302180958
+      }
+    }
+  ],
+  "champion": {
+    "name": "Ridge",
+    "version": "v001",
+    "validation_metrics": {
+      "rmse": 64787.47785361487,
+      "mae": 46246.33782090241,
+      "r2": 0.680133757870843,
+      "mape": 28.286901578561523
+    },
+    "test_metrics": {
+      "rmse": 66680.80871331149,
+      "mae": 48731.4185299291,
+      "r2": 0.6665125391478672,
+      "mape": 28.323672260501958
+    }
+  },
+  "champion_figures": {
+    "residuals_vs_predicted": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\residuals_vs_predicted.png",
+    "residual_histogram": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\residual_histogram.png",
+    "predicted_vs_actual": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\predicted_vs_actual.png"
+  },
+  "selection_narrative": "6 candidate model(s) were compared on the untouched validation split using RMSE as the selection metric (lower is better).\n  - Ridge (v001): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Ridge (v002): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Lasso (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - Lasso (v001): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v001): RMSE 64,887, MAE 46,301, R2 0.679.\nRidge (v001) had the best validation RMSE and was promoted to champion.\nThe champion was then evaluated once on the held-out test split: RMSE 66,681, MAE 48,731, R2 0.667. The test split was used only for this single final measurement, never for tuning or selection.",
+  "residual_figures": {
+    "residuals_vs_predicted": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\residuals_vs_predicted.png",
+    "residual_histogram": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\residual_histogram.png",
+    "predicted_vs_actual": "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\figures\\predicted_vs_actual.png"
+  }
+}

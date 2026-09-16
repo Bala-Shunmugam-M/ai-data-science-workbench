@@ -1,0 +1,16 @@
+{
+  "artifact": "model_approval",
+  "generated_at": "2026-07-26T20:27:19+00:00",
+  "approved_models": [
+    "LogisticRegression",
+    "DecisionTreeClassifier",
+    "RandomForestClassifier"
+  ],
+  "approved_count": 3,
+  "recommended_models": [
+    "LogisticRegression",
+    "DecisionTreeClassifier",
+    "RandomForestClassifier"
+  ],
+  "note": "Training refuses any model not listed in approved_models."
+}

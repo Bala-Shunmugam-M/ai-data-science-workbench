@@ -1,0 +1,100 @@
+{
+  "propose": {
+    "last_run": "2026-07-20T21:35:30+00:00",
+    "duration_s": 0.046,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\model_proposal.json"
+    ]
+  },
+  "approve": {
+    "last_run": "2026-07-20T21:35:30+00:00",
+    "duration_s": 0.005,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\feature_approval.json",
+      "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\model_approval.json"
+    ]
+  },
+  "train": {
+    "last_run": "2026-07-20T21:37:16+00:00",
+    "duration_s": 105.83,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\models\\model_registry.json"
+    ]
+  },
+  "evaluate": {
+    "last_run": "2026-07-20T21:37:17+00:00",
+    "duration_s": 0.741,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\model_comparison.csv",
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\evaluation\\model_evaluation_report.json",
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\final_model_selection.json"
+    ]
+  },
+  "explain": {
+    "last_run": "2026-07-20T21:37:17+00:00",
+    "duration_s": 0.199,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\reports\\executive_briefing.md",
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\explainability\\coefficient_interpretation.csv"
+    ]
+  },
+  "report": {
+    "last_run": "2026-07-20T21:37:17+00:00",
+    "duration_s": 0.021,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\artifacts\\reports\\project_report.html"
+    ]
+  },
+  "ingest": {
+    "last_run": "2026-07-20T21:35:19+00:00",
+    "duration_s": 0.235,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\data\\raw\\housing.csv"
+    ]
+  },
+  "preprocess": {
+    "last_run": "2026-07-20T21:35:20+00:00",
+    "duration_s": 0.372,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\data\\processed\\housing_clean.csv",
+      "D:\\AI\\ai-data-science-workbench\\data\\splits\\train.csv",
+      "D:\\AI\\ai-data-science-workbench\\data\\splits\\validation.csv",
+      "D:\\AI\\ai-data-science-workbench\\data\\splits\\test.csv"
+    ]
+  },
+  "understand": {
+    "last_run": "2026-07-20T21:35:20+00:00",
+    "duration_s": 0.099,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\results\\data_understanding\\dataset_summary.csv"
+    ]
+  },
+  "eda": {
+    "last_run": "2026-07-20T21:35:30+00:00",
+    "duration_s": 9.814,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\results\\eda\\eda_report.txt"
+    ]
+  },
+  "features": {
+    "last_run": "2026-07-20T21:35:30+00:00",
+    "duration_s": 0.338,
+    "status": "ok",
+    "outputs": [
+      "D:\\AI\\ai-data-science-workbench\\governance\\approvals\\feature_proposal.json",
+      "D:\\AI\\ai-data-science-workbench\\data\\engineered\\train.csv",
+      "D:\\AI\\ai-data-science-workbench\\data\\engineered\\validation.csv",
+      "D:\\AI\\ai-data-science-workbench\\data\\engineered\\test.csv"
+    ]
+  }
+}

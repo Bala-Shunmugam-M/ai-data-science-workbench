@@ -1,0 +1,156 @@
+{
+  "name": "Lasso",
+  "version": "v001",
+  "estimator_path": "sklearn.linear_model.Lasso",
+  "params": {
+    "max_iter": 10000,
+    "tol": 0.1,
+    "alpha": 0.0017782794100389228
+  },
+  "tuned": true,
+  "best_params": {
+    "alpha": 0.0017782794100389228
+  },
+  "tuning_history": [
+    {
+      "alpha": 0.0001,
+      "validation_rmse": 64887.4370218964
+    },
+    {
+      "alpha": 0.00016155980984398745,
+      "validation_rmse": 64887.43632423132
+    },
+    {
+      "alpha": 0.0002610157215682536,
+      "validation_rmse": 64887.436077475184
+    },
+    {
+      "alpha": 0.00042169650342858224,
+      "validation_rmse": 64887.43578289724
+    },
+    {
+      "alpha": 0.0006812920690579615,
+      "validation_rmse": 64887.43544478601
+    },
+    {
+      "alpha": 0.0011006941712522103,
+      "validation_rmse": 64887.43512307819
+    },
+    {
+      "alpha": 0.0017782794100389228,
+      "validation_rmse": 64887.43494233497
+    },
+    {
+      "alpha": 0.0028729848333536655,
+      "validation_rmse": 64887.435181172106
+    },
+    {
+      "alpha": 0.004641588833612782,
+      "validation_rmse": 64887.436472379144
+    },
+    {
+      "alpha": 0.007498942093324558,
+      "validation_rmse": 64887.43997416079
+    },
+    {
+      "alpha": 0.012115276586285889,
+      "validation_rmse": 64887.44847942144
+    },
+    {
+      "alpha": 0.019573417814876617,
+      "validation_rmse": 64887.46770699123
+    },
+    {
+      "alpha": 0.03162277660168379,
+      "validation_rmse": 64887.51159376857
+    },
+    {
+      "alpha": 0.051089697745069294,
+      "validation_rmse": 64887.61743274359
+    },
+    {
+      "alpha": 0.0825404185268019,
+      "validation_rmse": 64887.84747295646
+    },
+    {
+      "alpha": 0.1333521432163324,
+      "validation_rmse": 64888.20661015388
+    },
+    {
+      "alpha": 0.21544346900318845,
+      "validation_rmse": 64889.0260657557
+    },
+    {
+      "alpha": 0.3480700588428413,
+      "validation_rmse": 64890.9844821552
+    },
+    {
+      "alpha": 0.5623413251903491,
+      "validation_rmse": 64891.718154112044
+    },
+    {
+      "alpha": 0.9085175756516871,
+      "validation_rmse": 64892.30842669724
+    },
+    {
+      "alpha": 1.4677992676220706,
+      "validation_rmse": 64892.80458269641
+    },
+    {
+      "alpha": 2.371373705661655,
+      "validation_rmse": 64892.562256537974
+    },
+    {
+      "alpha": 3.8311868495572927,
+      "validation_rmse": 64892.31111116434
+    },
+    {
+      "alpha": 6.18965818891261,
+      "validation_rmse": 64893.57081894078
+    },
+    {
+      "alpha": 10.0,
+      "validation_rmse": 64897.18911216557
+    }
+  ],
+  "train_metrics": {
+    "rmse": 65747.0525082783,
+    "mae": 47485.20253348829,
+    "r2": 0.6762712737436692,
+    "mape": 27.745582831449113
+  },
+  "validation_metrics": {
+    "rmse": 64887.43494233497,
+    "mae": 46300.76369616628,
+    "r2": 0.6791459878872211,
+    "mape": 28.599183302180958
+  },
+  "training_seconds": 237.4319,
+  "n_train_rows": 14448,
+  "n_features": 23,
+  "predictor_columns": [
+    "longitude",
+    "latitude",
+    "housing_median_age",
+    "total_rooms",
+    "total_bedrooms",
+    "population",
+    "households",
+    "median_income",
+    "ocean_proximity",
+    "rooms_per_household",
+    "bedrooms_per_room",
+    "population_per_household",
+    "bedrooms_per_household",
+    "rooms_per_person",
+    "bedrooms_per_person",
+    "log_total_rooms",
+    "log_total_bedrooms",
+    "log_population",
+    "log_households"
+  ],
+  "data_hash": "3120788253c6558524af37ab52893dd5216febfd36f74cfafeb6f41a0590293d",
+  "random_state": 42,
+  "created_at": "2026-07-20T17:27:16+00:00",
+  "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Lasso\\v001\\model.joblib"
+}

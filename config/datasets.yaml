@@ -1,0 +1,68 @@
+# -----------------------------------------------------------------------------
+# AI Data Science Workbench - dataset registry.
+# The platform is dataset-agnostic; each entry describes one registrable
+# project. Each entry declares its learning task and how downstream stages
+# should treat it:
+#
+#   task              regression | classification
+#   target            the label column
+#   categorical_columns  columns one-hot encoded by the modelling matrix
+#   stratify          income | target | none   (split strategy)
+#   selection_metric  rmse | roc_auc | ...      (champion-selection metric)
+#   positive_class    (classification only) the label counted as the positive
+#
+# The first registered project is the professor's California Housing pipeline
+# (regression). The second is Customer Churn (classification).
+# -----------------------------------------------------------------------------
+datasets:
+  california_housing:
+    display_name: "California Housing"
+    source: "kagglehub"
+    kaggle_id: "harrywang/housing"
+    file: "housing.csv"
+    task: "regression"
+    target: "median_house_value"
+    stratify: "income"
+    selection_metric: "rmse"
+    categorical_columns: ["ocean_proximity"]
+    description: >
+      Block-group level California housing data; regression target is the
+      median house value. Showcase project for the workbench.
+
+  churn:
+    display_name: "Customer Churn (Telco)"
+    source: "kagglehub"
+    kaggle_id: "blastchar/telco-customer-churn"
+    file: "WA_Fn-UseC_-Telco-Customer-Churn.csv"
+    task: "classification"
+    target: "Churn"
+    positive_class: "Yes"
+    stratify: "target"
+    selection_metric: "roc_auc"
+    # Columns treated as nominal categoricals by the modelling matrix. customerID
+    # is an identifier and is dropped (never a predictor); everything else here
+    # is one-hot encoded.
+    drop_columns: ["customerID"]
+    categorical_columns:
+      - "gender"
+      - "Partner"
+      - "Dependents"
+      - "PhoneService"
+      - "MultipleLines"
+      - "InternetService"
+      - "OnlineSecurity"
+      - "OnlineBackup"
+      - "DeviceProtection"
+      - "TechSupport"
+      - "StreamingTV"
+      - "StreamingMovies"
+      - "Contract"
+      - "PaperlessBilling"
+      - "PaymentMethod"
+      - "SeniorCitizen"
+    # Business inputs for the retention simulator (defaults; tunable live in GUI).
+    monthly_revenue_column: "MonthlyCharges"
+    description: >
+      Telco customer-level data; binary classification target is whether the
+      customer churned (Yes/No). Showcases logistic regression, decision trees,
+      and random forests plus an interactive retention simulator.

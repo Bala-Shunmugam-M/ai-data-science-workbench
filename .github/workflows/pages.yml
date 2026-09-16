@@ -1,0 +1,64 @@
+name: Deploy report site
+
+# Publishes the two graded projects' generated reports, model cards and
+# fairness audits to GitHub Pages.
+#
+# The site is built from artifacts COMMITTED to the repository, not from a
+# fresh CI run. That is deliberate: the published numbers are then exactly the
+# ones defended in the project report, and they change only when the author
+# re-runs the pipeline and commits the result - never silently, because a
+# runner happened to produce something slightly different.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# GITHUB_TOKEN needs write access to Pages; id-token is required by the
+# deploy-pages action's OIDC handshake.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Never cancel a deploy that is already running; queue behind it instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build site
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Build the site from committed artifacts
+        run: python .github/scripts/build_pages.py
+
+      - name: Confirm the site is not empty
+        run: |
+          test -f _site/index.html || { echo "no index.html"; exit 1; }
+          echo "Published files:"
+          find _site -type f | sort
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy to Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,39 @@
+# -----------------------------------------------------------------------------
+# AI Data Science Workbench - global settings.
+# Declarative configuration read by the pipelines. Values here mirror
+# config/constants.py; constants.py remains the authority for code paths.
+# -----------------------------------------------------------------------------
+project:
+  name: "AI Data Science Workbench"
+  showcase_dataset: "california_housing"
+  course: "Machine Learning (23BA045E), Amrita School of Business"
+
+reproducibility:
+  random_state: 42
+
+split:
+  strategy: "stratified"
+  stratify_on: "income_category"
+  income_bins: [0.0, 1.5, 3.0, 4.5, 6.0, .inf]
+  income_labels: [1, 2, 3, 4, 5]
+  fractions:
+    train: 0.70
+    validation: 0.15
+    test: 0.15
+
+preprocessing:
+  # total_bedrooms is imputed AFTER the split, fit on train only.
+  imputation:
+    total_bedrooms: "median"
+  scaling: "standard"
+  categorical_encoding: "one_hot"
+
+eda:
+  iqr_multiplier: 1.5
+  modified_z_threshold: 3.5
+  high_pairwise_correlation: 0.80
+  material_outlier_percentage: 5.0
+
+logging:
+  level: "INFO"
+  file: "artifacts/logs/workbench.log"

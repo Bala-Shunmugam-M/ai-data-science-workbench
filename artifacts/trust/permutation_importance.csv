@@ -1,0 +1,24 @@
+rank,feature,importance_mean,importance_std,distinguishable_from_noise
+1,median_income,59073.755486,853.959255,True
+2,latitude,33631.755872,905.126941,True
+3,longitude,29640.088124,841.109604,True
+4,log_population,29168.093188,731.627076,True
+5,log_total_rooms,11239.693807,443.842503,True
+6,bedrooms_per_room,8649.270286,231.347291,True
+7,log_households,4925.544707,281.790742,True
+8,households,3360.233543,172.461006,True
+9,housing_median_age,3024.158826,233.894968,True
+10,ocean_proximity_INLAND,2512.577899,228.577039,True
+11,rooms_per_person,2115.970558,222.2888,True
+12,bedrooms_per_household,1871.620288,212.528138,True
+13,log_total_bedrooms,1758.246068,139.420803,True
+14,population,450.680615,81.021049,True
+15,ocean_proximity_<1H OCEAN,416.692241,112.3029,True
+16,total_bedrooms,366.37167,75.211274,True
+17,ocean_proximity_NEAR OCEAN,312.614944,28.571152,True
+18,rooms_per_household,264.688004,64.497708,True
+19,total_rooms,20.103111,10.117958,True
+20,population_per_household,5.156946,3.401944,True
+21,ocean_proximity_ISLAND,2.833246,0.430697,True
+22,ocean_proximity_NEAR BAY,-5.872814,19.567131,False
+23,bedrooms_per_person,-13.680932,10.309628,False

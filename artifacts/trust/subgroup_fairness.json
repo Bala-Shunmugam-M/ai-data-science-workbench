@@ -1,0 +1,91 @@
+{
+  "artifact": "subgroup_fairness",
+  "generated_at": "2026-08-09T14:20:53+00:00",
+  "champion": "Ridge v001",
+  "split": "test",
+  "task": "regression",
+  "n_rows": 3096,
+  "min_group_size": 30,
+  "max_levels": 10,
+  "columns_audited": [
+    "ocean_proximity"
+  ],
+  "columns_skipped": [],
+  "ranked_by": "the absolute value of each metric set's headline gap, largest first",
+  "audits": [
+    {
+      "column": "ocean_proximity",
+      "metric_set": "regression",
+      "n_groups": 5,
+      "groups": [
+        {
+          "group": "<1H OCEAN",
+          "n": 1382,
+          "share": 0.446382,
+          "reliable": true,
+          "mean_error": -1981.324292,
+          "mae": 49915.971381,
+          "rmse": 68913.25966
+        },
+        {
+          "group": "INLAND",
+          "n": 983,
+          "share": 0.317506,
+          "reliable": true,
+          "mean_error": 69.025051,
+          "mae": 35863.853444,
+          "rmse": 49014.228228
+        },
+        {
+          "group": "ISLAND",
+          "n": 1,
+          "share": 0.000323,
+          "reliable": false,
+          "mean_error": 241531.537695,
+          "mae": 241531.537695,
+          "rmse": 241531.537695
+        },
+        {
+          "group": "NEAR BAY",
+          "n": 313,
+          "share": 0.101098,
+          "reliable": true,
+          "mean_error": -2413.451641,
+          "mae": 61665.82816,
+          "rmse": 77085.033087
+        },
+        {
+          "group": "NEAR OCEAN",
+          "n": 417,
+          "share": 0.13469,
+          "reliable": true,
+          "mean_error": 7742.867579,
+          "mae": 64967.615428,
+          "rmse": 83721.86819
+        }
+      ],
+      "gaps": {
+        "mean_error_gap": 10156.31922,
+        "mae_gap": 29103.761984,
+        "rmse_gap": 34707.639962,
+        "n_groups_compared": 4,
+        "n_groups_compared_per_metric": {}
+      },
+      "excluded_from_gaps": [
+        {
+          "group": "ISLAND",
+          "n": 1,
+          "reason": "fewer than 30 rows"
+        }
+      ]
+    }
+  ],
+  "figure": "D:\\AI\\ai-data-science-workbench\\artifacts\\trust\\figures\\subgroup_mean_error.png",
+  "interpretation_limits": [
+    "These are gaps, not verdicts. Whether a gap is acceptable depends on the domain, the decision the prediction feeds, and the law that applies - none of which this artifact knows.",
+    "EVERY low-cardinality column is audited, including columns that are model features by design. A large gap across a service tier or a contract type is usually the model working, not failing - which is why 'selection_amplification' is reported: it is the part of the gap the model adds on top of the difference that is really there.",
+    "A subgroup column may itself be a model input, or may be excluded from the model entirely. Either way the gap is real; the remedy is not the same, and removing the column does not remove the gap.",
+    "Groups with fewer than 30 rows are reported but excluded from the gap arithmetic; see 'excluded_from_gaps'.",
+    "Gaps are measured on one split. They are estimates with sampling error, and small gaps between similarly sized groups may not replicate."
+  ]
+}

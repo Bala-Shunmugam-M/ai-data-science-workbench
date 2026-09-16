@@ -1,0 +1,27 @@
+{
+  "artifact": "final_model_selection",
+  "generated_at": "2026-07-26T20:27:55+00:00",
+  "task": "regression",
+  "selection_metric": "rmse",
+  "champion_name": "Ridge",
+  "champion_version": "v001",
+  "test_metrics": {
+    "rmse": 66680.80871331149,
+    "mae": 48731.4185299291,
+    "r2": 0.6665125391478672,
+    "mape": 28.323672260501958
+  },
+  "validation_metrics": {
+    "rmse": 64787.47785361487,
+    "mae": 46246.33782090241,
+    "r2": 0.680133757870843,
+    "mape": 28.286901578561523
+  },
+  "selection_rationale": "6 candidate model(s) were compared on the untouched validation split using RMSE as the selection metric (lower is better).\n  - Ridge (v001): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Ridge (v002): RMSE 64,787, MAE 46,246, R2 0.680.\n  - Lasso (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - Lasso (v001): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v002): RMSE 64,887, MAE 46,301, R2 0.679.\n  - LinearRegression (v001): RMSE 64,887, MAE 46,301, R2 0.679.\nRidge (v001) had the best validation RMSE and was promoted to champion.\nThe champion was then evaluated once on the held-out test split: RMSE 66,681, MAE 48,731, R2 0.667. The test split was used only for this single final measurement, never for tuning or selection.",
+  "model_path": "D:\\AI\\ai-data-science-workbench\\models\\Ridge\\v001\\model.joblib",
+  "test_rmse": 66680.80871331149,
+  "test_mae": 48731.4185299291,
+  "test_r2": 0.6665125391478672,
+  "test_mape": 28.323672260501958,
+  "validation_rmse": 64787.47785361487
+}

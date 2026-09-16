@@ -1,0 +1,44 @@
+column,metric_set,group,n,share,reliable,base_rate,selection_rate,tpr,fpr,precision,accuracy
+InternetService,binary_classification,DSL,377,0.35667,True,0.196286,0.066313,0.243243,0.023102,0.72,0.832891
+InternetService,binary_classification,Fiber optic,441,0.417219,True,0.414966,0.435374,0.715847,0.236434,0.682292,0.743764
+InternetService,binary_classification,No,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+OnlineSecurity,binary_classification,No,521,0.492904,True,0.414587,0.397313,0.662037,0.209836,0.690821,0.737044
+OnlineSecurity,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+OnlineSecurity,binary_classification,Yes,297,0.280984,True,0.138047,0.03367,0.146341,0.015625,0.6,0.868687
+OnlineBackup,binary_classification,No,463,0.438032,True,0.410367,0.382289,0.647368,0.197802,0.694915,0.738661
+OnlineBackup,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+OnlineBackup,binary_classification,Yes,355,0.335856,True,0.188732,0.112676,0.38806,0.048611,0.65,0.84507
+Contract,binary_classification,Month-to-month,572,0.541154,True,0.424825,0.379371,0.613169,0.206687,0.686636,0.716783
+Contract,binary_classification,One year,229,0.216651,True,0.144105,0.0,0.0,0.0,,0.855895
+Contract,binary_classification,Two year,256,0.242195,True,0.019531,0.0,0.0,0.0,,0.980469
+TechSupport,binary_classification,No,538,0.508988,True,0.405204,0.379182,0.651376,0.19375,0.696078,0.743494
+TechSupport,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+TechSupport,binary_classification,Yes,280,0.264901,True,0.139286,0.046429,0.179487,0.024896,0.538462,0.864286
+PaymentMethod,binary_classification,Bank transfer (automatic),232,0.219489,True,0.155172,0.077586,0.361111,0.02551,0.722222,0.87931
+PaymentMethod,binary_classification,Credit card (automatic),232,0.219489,True,0.159483,0.081897,0.351351,0.030769,0.684211,0.87069
+PaymentMethod,binary_classification,Electronic check,349,0.33018,True,0.464183,0.455587,0.691358,0.251337,0.704403,0.722063
+PaymentMethod,binary_classification,Mailed check,244,0.230842,True,0.188525,0.086066,0.23913,0.050505,0.52381,0.815574
+DeviceProtection,binary_classification,No,458,0.433302,True,0.375546,0.358079,0.645349,0.185315,0.676829,0.751092
+DeviceProtection,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+DeviceProtection,binary_classification,Yes,360,0.340587,True,0.236111,0.147222,0.447059,0.054545,0.716981,0.827778
+StreamingTV,binary_classification,No,438,0.41438,True,0.340183,0.285388,0.590604,0.128028,0.704,0.776256
+StreamingTV,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+StreamingTV,binary_classification,Yes,380,0.359508,True,0.284211,0.242105,0.564815,0.113971,0.663043,0.794737
+StreamingMovies,binary_classification,No,441,0.417219,True,0.335601,0.276644,0.587838,0.119454,0.713115,0.782313
+StreamingMovies,binary_classification,No internet service,239,0.226112,True,0.100418,0.0,0.0,0.0,,0.899582
+StreamingMovies,binary_classification,Yes,377,0.35667,True,0.289125,0.251989,0.568807,0.123134,0.652632,0.787798
+SeniorCitizen,binary_classification,0,896,0.847682,True,0.234375,0.170759,0.495238,0.071429,0.679739,0.827009
+SeniorCitizen,binary_classification,1,161,0.152318,True,0.440994,0.397516,0.633803,0.211111,0.703125,0.720497
+PaperlessBilling,binary_classification,No,450,0.425733,True,0.182222,0.084444,0.292683,0.038043,0.631579,0.84
+PaperlessBilling,binary_classification,Yes,607,0.574267,True,0.327842,0.294893,0.628141,0.132353,0.698324,0.789127
+Dependents,binary_classification,No,728,0.688742,True,0.31456,0.263736,0.580786,0.118236,0.692708,0.787088
+Dependents,binary_classification,Yes,329,0.311258,True,0.158055,0.075988,0.307692,0.032491,0.64,0.863222
+Partner,binary_classification,No,544,0.514664,True,0.327206,0.292279,0.595506,0.144809,0.666667,0.770221
+Partner,binary_classification,Yes,513,0.485336,True,0.20078,0.11306,0.417476,0.036585,0.741379,0.853801
+MultipleLines,binary_classification,No,529,0.500473,True,0.258979,0.175803,0.459854,0.076531,0.677419,0.803403
+MultipleLines,binary_classification,No phone service,97,0.091769,True,0.268041,0.154639,0.5,0.028169,0.866667,0.845361
+MultipleLines,binary_classification,Yes,431,0.407758,True,0.273782,0.2529,0.618644,0.115016,0.669725,0.812065
+PhoneService,binary_classification,No,97,0.091769,True,0.268041,0.154639,0.5,0.028169,0.866667,0.845361
+PhoneService,binary_classification,Yes,960,0.908231,True,0.265625,0.210417,0.533333,0.093617,0.673267,0.807292
+gender,binary_classification,Female,505,0.477767,True,0.291089,0.219802,0.482993,0.111732,0.63964,0.770297
+gender,binary_classification,Male,552,0.522233,True,0.242754,0.192029,0.58209,0.066986,0.735849,0.847826

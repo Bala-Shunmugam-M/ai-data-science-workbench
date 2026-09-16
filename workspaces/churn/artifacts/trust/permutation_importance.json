@@ -1,0 +1,346 @@
+{
+  "artifact": "permutation_importance",
+  "generated_at": "2026-08-09T14:23:50+00:00",
+  "champion": "LogisticRegression v001",
+  "split": "test",
+  "selection_metric": "roc_auc",
+  "measured_against": "roc_auc",
+  "n_repeats": 10,
+  "random_state": 42,
+  "n_rows_available": 1057,
+  "n_rows_used": 1057,
+  "subsampled": false,
+  "n_features": 46,
+  "n_distinguishable_from_noise": 18,
+  "importances": [
+    {
+      "rank": 1,
+      "feature": "tenure",
+      "importance_mean": 0.191509,
+      "importance_std": 0.017543,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 2,
+      "feature": "MonthlyCharges",
+      "importance_mean": 0.049949,
+      "importance_std": 0.007066,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 3,
+      "feature": "TotalCharges",
+      "importance_mean": 0.020106,
+      "importance_std": 0.006028,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 4,
+      "feature": "InternetService_DSL",
+      "importance_mean": 0.012579,
+      "importance_std": 0.003378,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 5,
+      "feature": "Contract_Two year",
+      "importance_mean": 0.011497,
+      "importance_std": 0.003284,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 6,
+      "feature": "InternetService_Fiber optic",
+      "importance_mean": 0.010964,
+      "importance_std": 0.003789,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 7,
+      "feature": "Contract_Month-to-month",
+      "importance_mean": 0.007747,
+      "importance_std": 0.003209,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 8,
+      "feature": "SeniorCitizen_0",
+      "importance_mean": 0.002481,
+      "importance_std": 0.000899,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 9,
+      "feature": "PaperlessBilling_No",
+      "importance_mean": 0.001861,
+      "importance_std": 0.001951,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 10,
+      "feature": "PaymentMethod_Electronic check",
+      "importance_mean": 0.001807,
+      "importance_std": 0.000851,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 11,
+      "feature": "StreamingMovies_No",
+      "importance_mean": 0.00171,
+      "importance_std": 0.001065,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 12,
+      "feature": "gender_Male",
+      "importance_mean": 0.001586,
+      "importance_std": 0.000615,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 13,
+      "feature": "StreamingTV_No",
+      "importance_mean": 0.001447,
+      "importance_std": 0.001017,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 14,
+      "feature": "Partner_No",
+      "importance_mean": 0.00138,
+      "importance_std": 0.000787,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 15,
+      "feature": "PaymentMethod_Credit card (automatic)",
+      "importance_mean": 0.001328,
+      "importance_std": 0.001345,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 16,
+      "feature": "Dependents_Yes",
+      "importance_mean": 0.001302,
+      "importance_std": 0.001594,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 17,
+      "feature": "OnlineSecurity_Yes",
+      "importance_mean": 0.001069,
+      "importance_std": 0.000608,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 18,
+      "feature": "StreamingTV_Yes",
+      "importance_mean": 0.000692,
+      "importance_std": 0.001181,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 19,
+      "feature": "OnlineSecurity_No",
+      "importance_mean": 0.000649,
+      "importance_std": 0.00064,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 20,
+      "feature": "PaymentMethod_Bank transfer (automatic)",
+      "importance_mean": 0.00064,
+      "importance_std": 0.000687,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 21,
+      "feature": "PaymentMethod_Mailed check",
+      "importance_mean": 0.000592,
+      "importance_std": 0.000674,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 22,
+      "feature": "StreamingMovies_Yes",
+      "importance_mean": 0.00059,
+      "importance_std": 0.001549,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 23,
+      "feature": "Partner_Yes",
+      "importance_mean": 0.000505,
+      "importance_std": 0.000748,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 24,
+      "feature": "TechSupport_Yes",
+      "importance_mean": 0.000504,
+      "importance_std": 0.000597,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 25,
+      "feature": "PhoneService_Yes",
+      "importance_mean": 0.000439,
+      "importance_std": 0.000309,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 26,
+      "feature": "PhoneService_No",
+      "importance_mean": 0.000318,
+      "importance_std": 0.000559,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 27,
+      "feature": "MultipleLines_No phone service",
+      "importance_mean": 0.000318,
+      "importance_std": 0.000559,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 28,
+      "feature": "OnlineBackup_Yes",
+      "importance_mean": 0.000218,
+      "importance_std": 0.000209,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 29,
+      "feature": "TechSupport_No",
+      "importance_mean": 0.000206,
+      "importance_std": 0.000513,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 30,
+      "feature": "Dependents_No",
+      "importance_mean": 0.000205,
+      "importance_std": 0.000248,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 31,
+      "feature": "InternetService_No",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 32,
+      "feature": "OnlineSecurity_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 33,
+      "feature": "OnlineBackup_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 34,
+      "feature": "DeviceProtection_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 35,
+      "feature": "TechSupport_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 36,
+      "feature": "StreamingTV_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 37,
+      "feature": "StreamingMovies_No internet service",
+      "importance_mean": 0.000182,
+      "importance_std": 0.001604,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 38,
+      "feature": "OnlineBackup_No",
+      "importance_mean": 0.000153,
+      "importance_std": 0.000142,
+      "distinguishable_from_noise": true
+    },
+    {
+      "rank": 39,
+      "feature": "gender_Female",
+      "importance_mean": 0.000125,
+      "importance_std": 0.000958,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 40,
+      "feature": "DeviceProtection_No",
+      "importance_mean": 0.00011,
+      "importance_std": 0.000115,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 41,
+      "feature": "DeviceProtection_Yes",
+      "importance_mean": 6e-05,
+      "importance_std": 0.000122,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 42,
+      "feature": "MultipleLines_No",
+      "importance_mean": 1.6e-05,
+      "importance_std": 0.001119,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 43,
+      "feature": "SeniorCitizen_1",
+      "importance_mean": -0.000227,
+      "importance_std": 0.00037,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 44,
+      "feature": "PaperlessBilling_Yes",
+      "importance_mean": -0.000244,
+      "importance_std": 0.000228,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 45,
+      "feature": "Contract_One year",
+      "importance_mean": -0.000338,
+      "importance_std": 0.000503,
+      "distinguishable_from_noise": false
+    },
+    {
+      "rank": 46,
+      "feature": "MultipleLines_Yes",
+      "importance_mean": -0.000849,
+      "importance_std": 0.000684,
+      "distinguishable_from_noise": false
+    }
+  ],
+  "figure": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\figures\\permutation_importance.png",
+  "interpretation_limits": [
+    "Importance is the drop in the score above when one column is shuffled. It measures what the model relies on, not what causes the outcome.",
+    "Columns are permuted in the post-one-hot design matrix, so a categorical's dummy columns are shuffled independently. A single dummy's importance is meaningful; a categorical's total importance is not the sum of its dummies.",
+    "Correlated columns share credit. When two inputs carry the same signal, shuffling either alone barely moves the score and both look unimportant - read the table as groups, not as independent effects.",
+    "Values at or below zero mean no measurable dependence. They are not clipped, because a negative value is useful evidence of how much noise this measurement carries."
+  ]
+}

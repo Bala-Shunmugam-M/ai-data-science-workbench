@@ -1,0 +1,1881 @@
+{
+  "artifact": "model_card",
+  "generated_at": "2026-08-09T14:23:51+00:00",
+  "project": {
+    "display_name": "Customer Churn (Telco)",
+    "target": "Churn",
+    "task": "classification",
+    "selection_metric": "roc_auc"
+  },
+  "model": {
+    "name": "LogisticRegression",
+    "version": "v001",
+    "registered_at": "2026-07-26T11:06:26+00:00",
+    "params": {
+      "max_iter": 2000,
+      "solver": "liblinear",
+      "C": 2.154434690031882
+    },
+    "data_hash": "41cdaed48c20190eb70e9afcce0138d763889304479b0bc696d14bee58bb0fb5",
+    "model_path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\models\\LogisticRegression\\v001\\model.joblib"
+  },
+  "intended_use": null,
+  "data": {
+    "train_rows": 4930,
+    "validation_rows": 1056,
+    "test_rows": 1057
+  },
+  "performance": {
+    "selection_metric": "roc_auc",
+    "n_models_compared": 6,
+    "validation_metrics": {
+      "accuracy": 0.8077651515151515,
+      "precision": 0.6498054474708171,
+      "recall": 0.5964285714285714,
+      "f1": 0.6219739292364991,
+      "roc_auc": 0.8454643777614139
+    },
+    "test_metrics": {
+      "accuracy": 0.8107852412488175,
+      "precision": 0.6866359447004609,
+      "recall": 0.5302491103202847,
+      "f1": 0.5983935742971888,
+      "roc_auc": 0.844778405547199
+    },
+    "selection_narrative": "6 candidate model(s) were compared on the untouched validation split using ROC-AUC as the selection metric (higher is better).\n  - LogisticRegression (v001): ROC-AUC 0.845, ACCURACY 0.808, PRECISION 0.650, RECALL 0.596, F1 0.622.\n  - LogisticRegression (v002): ROC-AUC 0.845, ACCURACY 0.808, PRECISION 0.650, RECALL 0.596, F1 0.622.\n  - RandomForestClassifier (v002): ROC-AUC 0.845, ACCURACY 0.736, PRECISION 0.501, RECALL 0.836, F1 0.627.\n  - RandomForestClassifier (v001): ROC-AUC 0.845, ACCURACY 0.736, PRECISION 0.501, RECALL 0.836, F1 0.627.\n  - DecisionTreeClassifier (v001): ROC-AUC 0.839, ACCURACY 0.750, PRECISION 0.519, RECALL 0.775, F1 0.622.\n  - DecisionTreeClassifier (v002): ROC-AUC 0.839, ACCURACY 0.750, PRECISION 0.519, RECALL 0.775, F1 0.622.\nLogisticRegression (v001) had the best validation ROC-AUC and was promoted to champion.\nThe champion was then evaluated once on the held-out test split: ROC-AUC 0.845, ACCURACY 0.811, PRECISION 0.687, RECALL 0.530, F1 0.598. The test split was used only for this single final measurement, never for tuning or selection.",
+    "metrics_stale": false,
+    "evaluated_model": null
+  },
+  "drivers": {
+    "artifact": "coefficient_interpretation",
+    "generated_at": "2026-08-02T13:46:08+00:00",
+    "champion": "LogisticRegression v001",
+    "kind": "coefficient",
+    "intercept": -0.34218982489523453,
+    "coefficients": [
+      {
+        "rank": 1,
+        "feature": "tenure",
+        "coefficient": -1.341781,
+        "direction": "decreases the prediction",
+        "abs_importance": 1.341781,
+        "meaning": "Model input 'tenure'."
+      },
+      {
+        "rank": 2,
+        "feature": "MonthlyCharges",
+        "coefficient": -0.796109,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.796109,
+        "meaning": "Model input 'MonthlyCharges'."
+      },
+      {
+        "rank": 3,
+        "feature": "Contract_Two year",
+        "coefficient": -0.760577,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.760577,
+        "meaning": "Model input 'Contract_Two year'."
+      },
+      {
+        "rank": 4,
+        "feature": "InternetService_Fiber optic",
+        "coefficient": 0.66882,
+        "direction": "increases the prediction",
+        "abs_importance": 0.66882,
+        "meaning": "Model input 'InternetService_Fiber optic'."
+      },
+      {
+        "rank": 5,
+        "feature": "InternetService_DSL",
+        "coefficient": -0.663744,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.663744,
+        "meaning": "Model input 'InternetService_DSL'."
+      },
+      {
+        "rank": 6,
+        "feature": "TotalCharges",
+        "coefficient": 0.663321,
+        "direction": "increases the prediction",
+        "abs_importance": 0.663321,
+        "meaning": "Model input 'TotalCharges'."
+      },
+      {
+        "rank": 7,
+        "feature": "Contract_Month-to-month",
+        "coefficient": 0.575627,
+        "direction": "increases the prediction",
+        "abs_importance": 0.575627,
+        "meaning": "Model input 'Contract_Month-to-month'."
+      },
+      {
+        "rank": 8,
+        "feature": "PaperlessBilling_No",
+        "coefficient": -0.376134,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.376134,
+        "meaning": "Model input 'PaperlessBilling_No'."
+      },
+      {
+        "rank": 9,
+        "feature": "InternetService_No",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'InternetService_No'."
+      },
+      {
+        "rank": 10,
+        "feature": "OnlineSecurity_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'OnlineSecurity_No internet service'."
+      },
+      {
+        "rank": 11,
+        "feature": "OnlineBackup_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'OnlineBackup_No internet service'."
+      },
+      {
+        "rank": 12,
+        "feature": "DeviceProtection_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'DeviceProtection_No internet service'."
+      },
+      {
+        "rank": 13,
+        "feature": "TechSupport_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'TechSupport_No internet service'."
+      },
+      {
+        "rank": 14,
+        "feature": "StreamingTV_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'StreamingTV_No internet service'."
+      },
+      {
+        "rank": 15,
+        "feature": "StreamingMovies_No internet service",
+        "coefficient": -0.347265,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.347265,
+        "meaning": "Model input 'StreamingMovies_No internet service'."
+      },
+      {
+        "rank": 16,
+        "feature": "Dependents_Yes",
+        "coefficient": -0.303003,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.303003,
+        "meaning": "Model input 'Dependents_Yes'."
+      },
+      {
+        "rank": 17,
+        "feature": "MultipleLines_No",
+        "coefficient": -0.266267,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.266267,
+        "meaning": "Model input 'MultipleLines_No'."
+      },
+      {
+        "rank": 18,
+        "feature": "StreamingMovies_Yes",
+        "coefficient": 0.259818,
+        "direction": "increases the prediction",
+        "abs_importance": 0.259818,
+        "meaning": "Model input 'StreamingMovies_Yes'."
+      },
+      {
+        "rank": 19,
+        "feature": "StreamingMovies_No",
+        "coefficient": -0.254743,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.254743,
+        "meaning": "Model input 'StreamingMovies_No'."
+      },
+      {
+        "rank": 20,
+        "feature": "SeniorCitizen_0",
+        "coefficient": -0.242599,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.242599,
+        "meaning": "Model input 'SeniorCitizen_0'."
+      },
+      {
+        "rank": 21,
+        "feature": "PaymentMethod_Credit card (automatic)",
+        "coefficient": -0.228498,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.228498,
+        "meaning": "Model input 'PaymentMethod_Credit card (automatic)'."
+      },
+      {
+        "rank": 22,
+        "feature": "PhoneService_No",
+        "coefficient": -0.221647,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.221647,
+        "meaning": "Model input 'PhoneService_No'."
+      },
+      {
+        "rank": 23,
+        "feature": "MultipleLines_No phone service",
+        "coefficient": -0.221647,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.221647,
+        "meaning": "Model input 'MultipleLines_No phone service'."
+      },
+      {
+        "rank": 24,
+        "feature": "StreamingTV_Yes",
+        "coefficient": 0.212318,
+        "direction": "increases the prediction",
+        "abs_importance": 0.212318,
+        "meaning": "Model input 'StreamingTV_Yes'."
+      },
+      {
+        "rank": 25,
+        "feature": "StreamingTV_No",
+        "coefficient": -0.207243,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.207243,
+        "meaning": "Model input 'StreamingTV_No'."
+      },
+      {
+        "rank": 26,
+        "feature": "PaymentMethod_Bank transfer (automatic)",
+        "coefficient": -0.195188,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.195188,
+        "meaning": "Model input 'PaymentMethod_Bank transfer (automatic)'."
+      },
+      {
+        "rank": 27,
+        "feature": "gender_Female",
+        "coefficient": -0.184616,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.184616,
+        "meaning": "Model input 'gender_Female'."
+      },
+      {
+        "rank": 28,
+        "feature": "PaymentMethod_Electronic check",
+        "coefficient": 0.183506,
+        "direction": "increases the prediction",
+        "abs_importance": 0.183506,
+        "meaning": "Model input 'PaymentMethod_Electronic check'."
+      },
+      {
+        "rank": 29,
+        "feature": "Partner_Yes",
+        "coefficient": -0.173808,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.173808,
+        "meaning": "Model input 'Partner_Yes'."
+      },
+      {
+        "rank": 30,
+        "feature": "Partner_No",
+        "coefficient": -0.168382,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.168382,
+        "meaning": "Model input 'Partner_No'."
+      },
+      {
+        "rank": 31,
+        "feature": "gender_Male",
+        "coefficient": -0.157574,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.157574,
+        "meaning": "Model input 'gender_Male'."
+      },
+      {
+        "rank": 32,
+        "feature": "Contract_One year",
+        "coefficient": -0.15724,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.15724,
+        "meaning": "Model input 'Contract_One year'."
+      },
+      {
+        "rank": 33,
+        "feature": "OnlineSecurity_No",
+        "coefficient": 0.153056,
+        "direction": "increases the prediction",
+        "abs_importance": 0.153056,
+        "meaning": "Model input 'OnlineSecurity_No'."
+      },
+      {
+        "rank": 34,
+        "feature": "OnlineSecurity_Yes",
+        "coefficient": -0.147981,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.147981,
+        "meaning": "Model input 'OnlineSecurity_Yes'."
+      },
+      {
+        "rank": 35,
+        "feature": "MultipleLines_Yes",
+        "coefficient": 0.145725,
+        "direction": "increases the prediction",
+        "abs_importance": 0.145725,
+        "meaning": "Model input 'MultipleLines_Yes'."
+      },
+      {
+        "rank": 36,
+        "feature": "TechSupport_No",
+        "coefficient": 0.125823,
+        "direction": "increases the prediction",
+        "abs_importance": 0.125823,
+        "meaning": "Model input 'TechSupport_No'."
+      },
+      {
+        "rank": 37,
+        "feature": "TechSupport_Yes",
+        "coefficient": -0.120747,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.120747,
+        "meaning": "Model input 'TechSupport_Yes'."
+      },
+      {
+        "rank": 38,
+        "feature": "PhoneService_Yes",
+        "coefficient": -0.120543,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.120543,
+        "meaning": "Model input 'PhoneService_Yes'."
+      },
+      {
+        "rank": 39,
+        "feature": "PaymentMethod_Mailed check",
+        "coefficient": -0.10201,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.10201,
+        "meaning": "Model input 'PaymentMethod_Mailed check'."
+      },
+      {
+        "rank": 40,
+        "feature": "SeniorCitizen_1",
+        "coefficient": -0.099591,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.099591,
+        "meaning": "Model input 'SeniorCitizen_1'."
+      },
+      {
+        "rank": 41,
+        "feature": "Dependents_No",
+        "coefficient": -0.039187,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.039187,
+        "meaning": "Model input 'Dependents_No'."
+      },
+      {
+        "rank": 42,
+        "feature": "DeviceProtection_Yes",
+        "coefficient": 0.035108,
+        "direction": "increases the prediction",
+        "abs_importance": 0.035108,
+        "meaning": "Model input 'DeviceProtection_Yes'."
+      },
+      {
+        "rank": 43,
+        "feature": "OnlineBackup_No",
+        "coefficient": 0.034454,
+        "direction": "increases the prediction",
+        "abs_importance": 0.034454,
+        "meaning": "Model input 'OnlineBackup_No'."
+      },
+      {
+        "rank": 44,
+        "feature": "PaperlessBilling_Yes",
+        "coefficient": 0.033944,
+        "direction": "increases the prediction",
+        "abs_importance": 0.033944,
+        "meaning": "Model input 'PaperlessBilling_Yes'."
+      },
+      {
+        "rank": 45,
+        "feature": "DeviceProtection_No",
+        "coefficient": -0.030033,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.030033,
+        "meaning": "Model input 'DeviceProtection_No'."
+      },
+      {
+        "rank": 46,
+        "feature": "OnlineBackup_Yes",
+        "coefficient": -0.029379,
+        "direction": "decreases the prediction",
+        "abs_importance": 0.029379,
+        "meaning": "Model input 'OnlineBackup_Yes'."
+      }
+    ]
+  },
+  "permutation_importance": {
+    "artifact": "permutation_importance",
+    "generated_at": "2026-08-09T14:23:50+00:00",
+    "champion": "LogisticRegression v001",
+    "split": "test",
+    "selection_metric": "roc_auc",
+    "measured_against": "roc_auc",
+    "n_repeats": 10,
+    "random_state": 42,
+    "n_rows_available": 1057,
+    "n_rows_used": 1057,
+    "subsampled": false,
+    "n_features": 46,
+    "n_distinguishable_from_noise": 18,
+    "importances": [
+      {
+        "rank": 1,
+        "feature": "tenure",
+        "importance_mean": 0.191509,
+        "importance_std": 0.017543,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 2,
+        "feature": "MonthlyCharges",
+        "importance_mean": 0.049949,
+        "importance_std": 0.007066,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 3,
+        "feature": "TotalCharges",
+        "importance_mean": 0.020106,
+        "importance_std": 0.006028,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 4,
+        "feature": "InternetService_DSL",
+        "importance_mean": 0.012579,
+        "importance_std": 0.003378,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 5,
+        "feature": "Contract_Two year",
+        "importance_mean": 0.011497,
+        "importance_std": 0.003284,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 6,
+        "feature": "InternetService_Fiber optic",
+        "importance_mean": 0.010964,
+        "importance_std": 0.003789,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 7,
+        "feature": "Contract_Month-to-month",
+        "importance_mean": 0.007747,
+        "importance_std": 0.003209,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 8,
+        "feature": "SeniorCitizen_0",
+        "importance_mean": 0.002481,
+        "importance_std": 0.000899,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 9,
+        "feature": "PaperlessBilling_No",
+        "importance_mean": 0.001861,
+        "importance_std": 0.001951,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 10,
+        "feature": "PaymentMethod_Electronic check",
+        "importance_mean": 0.001807,
+        "importance_std": 0.000851,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 11,
+        "feature": "StreamingMovies_No",
+        "importance_mean": 0.00171,
+        "importance_std": 0.001065,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 12,
+        "feature": "gender_Male",
+        "importance_mean": 0.001586,
+        "importance_std": 0.000615,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 13,
+        "feature": "StreamingTV_No",
+        "importance_mean": 0.001447,
+        "importance_std": 0.001017,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 14,
+        "feature": "Partner_No",
+        "importance_mean": 0.00138,
+        "importance_std": 0.000787,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 15,
+        "feature": "PaymentMethod_Credit card (automatic)",
+        "importance_mean": 0.001328,
+        "importance_std": 0.001345,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 16,
+        "feature": "Dependents_Yes",
+        "importance_mean": 0.001302,
+        "importance_std": 0.001594,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 17,
+        "feature": "OnlineSecurity_Yes",
+        "importance_mean": 0.001069,
+        "importance_std": 0.000608,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 18,
+        "feature": "StreamingTV_Yes",
+        "importance_mean": 0.000692,
+        "importance_std": 0.001181,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 19,
+        "feature": "OnlineSecurity_No",
+        "importance_mean": 0.000649,
+        "importance_std": 0.00064,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 20,
+        "feature": "PaymentMethod_Bank transfer (automatic)",
+        "importance_mean": 0.00064,
+        "importance_std": 0.000687,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 21,
+        "feature": "PaymentMethod_Mailed check",
+        "importance_mean": 0.000592,
+        "importance_std": 0.000674,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 22,
+        "feature": "StreamingMovies_Yes",
+        "importance_mean": 0.00059,
+        "importance_std": 0.001549,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 23,
+        "feature": "Partner_Yes",
+        "importance_mean": 0.000505,
+        "importance_std": 0.000748,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 24,
+        "feature": "TechSupport_Yes",
+        "importance_mean": 0.000504,
+        "importance_std": 0.000597,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 25,
+        "feature": "PhoneService_Yes",
+        "importance_mean": 0.000439,
+        "importance_std": 0.000309,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 26,
+        "feature": "PhoneService_No",
+        "importance_mean": 0.000318,
+        "importance_std": 0.000559,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 27,
+        "feature": "MultipleLines_No phone service",
+        "importance_mean": 0.000318,
+        "importance_std": 0.000559,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 28,
+        "feature": "OnlineBackup_Yes",
+        "importance_mean": 0.000218,
+        "importance_std": 0.000209,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 29,
+        "feature": "TechSupport_No",
+        "importance_mean": 0.000206,
+        "importance_std": 0.000513,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 30,
+        "feature": "Dependents_No",
+        "importance_mean": 0.000205,
+        "importance_std": 0.000248,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 31,
+        "feature": "InternetService_No",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 32,
+        "feature": "OnlineSecurity_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 33,
+        "feature": "OnlineBackup_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 34,
+        "feature": "DeviceProtection_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 35,
+        "feature": "TechSupport_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 36,
+        "feature": "StreamingTV_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 37,
+        "feature": "StreamingMovies_No internet service",
+        "importance_mean": 0.000182,
+        "importance_std": 0.001604,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 38,
+        "feature": "OnlineBackup_No",
+        "importance_mean": 0.000153,
+        "importance_std": 0.000142,
+        "distinguishable_from_noise": true
+      },
+      {
+        "rank": 39,
+        "feature": "gender_Female",
+        "importance_mean": 0.000125,
+        "importance_std": 0.000958,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 40,
+        "feature": "DeviceProtection_No",
+        "importance_mean": 0.00011,
+        "importance_std": 0.000115,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 41,
+        "feature": "DeviceProtection_Yes",
+        "importance_mean": 6e-05,
+        "importance_std": 0.000122,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 42,
+        "feature": "MultipleLines_No",
+        "importance_mean": 1.6e-05,
+        "importance_std": 0.001119,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 43,
+        "feature": "SeniorCitizen_1",
+        "importance_mean": -0.000227,
+        "importance_std": 0.00037,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 44,
+        "feature": "PaperlessBilling_Yes",
+        "importance_mean": -0.000244,
+        "importance_std": 0.000228,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 45,
+        "feature": "Contract_One year",
+        "importance_mean": -0.000338,
+        "importance_std": 0.000503,
+        "distinguishable_from_noise": false
+      },
+      {
+        "rank": 46,
+        "feature": "MultipleLines_Yes",
+        "importance_mean": -0.000849,
+        "importance_std": 0.000684,
+        "distinguishable_from_noise": false
+      }
+    ],
+    "figure": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\figures\\permutation_importance.png",
+    "interpretation_limits": [
+      "Importance is the drop in the score above when one column is shuffled. It measures what the model relies on, not what causes the outcome.",
+      "Columns are permuted in the post-one-hot design matrix, so a categorical's dummy columns are shuffled independently. A single dummy's importance is meaningful; a categorical's total importance is not the sum of its dummies.",
+      "Correlated columns share credit. When two inputs carry the same signal, shuffling either alone barely moves the score and both look unimportant - read the table as groups, not as independent effects.",
+      "Values at or below zero mean no measurable dependence. They are not clipped, because a negative value is useful evidence of how much noise this measurement carries."
+    ]
+  },
+  "fairness": {
+    "artifact": "subgroup_fairness",
+    "generated_at": "2026-08-09T14:23:49+00:00",
+    "champion": "LogisticRegression v001",
+    "split": "test",
+    "task": "classification",
+    "n_rows": 1057,
+    "min_group_size": 30,
+    "max_levels": 10,
+    "columns_audited": [
+      "InternetService",
+      "OnlineSecurity",
+      "OnlineBackup",
+      "Contract",
+      "TechSupport",
+      "PaymentMethod",
+      "DeviceProtection",
+      "StreamingTV",
+      "StreamingMovies",
+      "SeniorCitizen",
+      "PaperlessBilling",
+      "Dependents",
+      "Partner",
+      "MultipleLines",
+      "PhoneService",
+      "gender"
+    ],
+    "columns_skipped": [],
+    "ranked_by": "the absolute value of each metric set's headline gap, largest first",
+    "audits": [
+      {
+        "column": "InternetService",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "DSL",
+            "n": 377,
+            "share": 0.35667,
+            "reliable": true,
+            "base_rate": 0.196286,
+            "selection_rate": 0.066313,
+            "tpr": 0.243243,
+            "fpr": 0.023102,
+            "precision": 0.72,
+            "accuracy": 0.832891
+          },
+          {
+            "group": "Fiber optic",
+            "n": 441,
+            "share": 0.417219,
+            "reliable": true,
+            "base_rate": 0.414966,
+            "selection_rate": 0.435374,
+            "tpr": 0.715847,
+            "fpr": 0.236434,
+            "precision": 0.682292,
+            "accuracy": 0.743764
+          },
+          {
+            "group": "No",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.314548,
+          "selection_rate_gap": 0.435374,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.715847,
+          "fpr_gap": 0.236434,
+          "precision_gap": 0.037708,
+          "accuracy_gap": 0.155818,
+          "selection_amplification": 0.120826,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "OnlineSecurity",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 521,
+            "share": 0.492904,
+            "reliable": true,
+            "base_rate": 0.414587,
+            "selection_rate": 0.397313,
+            "tpr": 0.662037,
+            "fpr": 0.209836,
+            "precision": 0.690821,
+            "accuracy": 0.737044
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 297,
+            "share": 0.280984,
+            "reliable": true,
+            "base_rate": 0.138047,
+            "selection_rate": 0.03367,
+            "tpr": 0.146341,
+            "fpr": 0.015625,
+            "precision": 0.6,
+            "accuracy": 0.868687
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.314169,
+          "selection_rate_gap": 0.397313,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.662037,
+          "fpr_gap": 0.209836,
+          "precision_gap": 0.090821,
+          "accuracy_gap": 0.162538,
+          "selection_amplification": 0.083144,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "OnlineBackup",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 463,
+            "share": 0.438032,
+            "reliable": true,
+            "base_rate": 0.410367,
+            "selection_rate": 0.382289,
+            "tpr": 0.647368,
+            "fpr": 0.197802,
+            "precision": 0.694915,
+            "accuracy": 0.738661
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 355,
+            "share": 0.335856,
+            "reliable": true,
+            "base_rate": 0.188732,
+            "selection_rate": 0.112676,
+            "tpr": 0.38806,
+            "fpr": 0.048611,
+            "precision": 0.65,
+            "accuracy": 0.84507
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.309949,
+          "selection_rate_gap": 0.382289,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.647368,
+          "fpr_gap": 0.197802,
+          "precision_gap": 0.044915,
+          "accuracy_gap": 0.160921,
+          "selection_amplification": 0.07234,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "Contract",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "Month-to-month",
+            "n": 572,
+            "share": 0.541154,
+            "reliable": true,
+            "base_rate": 0.424825,
+            "selection_rate": 0.379371,
+            "tpr": 0.613169,
+            "fpr": 0.206687,
+            "precision": 0.686636,
+            "accuracy": 0.716783
+          },
+          {
+            "group": "One year",
+            "n": 229,
+            "share": 0.216651,
+            "reliable": true,
+            "base_rate": 0.144105,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.855895
+          },
+          {
+            "group": "Two year",
+            "n": 256,
+            "share": 0.242195,
+            "reliable": true,
+            "base_rate": 0.019531,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.980469
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.405294,
+          "selection_rate_gap": 0.379371,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.613169,
+          "fpr_gap": 0.206687,
+          "precision_gap": null,
+          "accuracy_gap": 0.263686,
+          "selection_amplification": -0.025923,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 1
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "TechSupport",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 538,
+            "share": 0.508988,
+            "reliable": true,
+            "base_rate": 0.405204,
+            "selection_rate": 0.379182,
+            "tpr": 0.651376,
+            "fpr": 0.19375,
+            "precision": 0.696078,
+            "accuracy": 0.743494
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 280,
+            "share": 0.264901,
+            "reliable": true,
+            "base_rate": 0.139286,
+            "selection_rate": 0.046429,
+            "tpr": 0.179487,
+            "fpr": 0.024896,
+            "precision": 0.538462,
+            "accuracy": 0.864286
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.304786,
+          "selection_rate_gap": 0.379182,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.651376,
+          "fpr_gap": 0.19375,
+          "precision_gap": 0.157616,
+          "accuracy_gap": 0.156088,
+          "selection_amplification": 0.074396,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "PaymentMethod",
+        "metric_set": "binary_classification",
+        "n_groups": 4,
+        "groups": [
+          {
+            "group": "Bank transfer (automatic)",
+            "n": 232,
+            "share": 0.219489,
+            "reliable": true,
+            "base_rate": 0.155172,
+            "selection_rate": 0.077586,
+            "tpr": 0.361111,
+            "fpr": 0.02551,
+            "precision": 0.722222,
+            "accuracy": 0.87931
+          },
+          {
+            "group": "Credit card (automatic)",
+            "n": 232,
+            "share": 0.219489,
+            "reliable": true,
+            "base_rate": 0.159483,
+            "selection_rate": 0.081897,
+            "tpr": 0.351351,
+            "fpr": 0.030769,
+            "precision": 0.684211,
+            "accuracy": 0.87069
+          },
+          {
+            "group": "Electronic check",
+            "n": 349,
+            "share": 0.33018,
+            "reliable": true,
+            "base_rate": 0.464183,
+            "selection_rate": 0.455587,
+            "tpr": 0.691358,
+            "fpr": 0.251337,
+            "precision": 0.704403,
+            "accuracy": 0.722063
+          },
+          {
+            "group": "Mailed check",
+            "n": 244,
+            "share": 0.230842,
+            "reliable": true,
+            "base_rate": 0.188525,
+            "selection_rate": 0.086066,
+            "tpr": 0.23913,
+            "fpr": 0.050505,
+            "precision": 0.52381,
+            "accuracy": 0.815574
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.309011,
+          "selection_rate_gap": 0.378001,
+          "selection_rate_ratio": 0.170299,
+          "tpr_gap": 0.452228,
+          "fpr_gap": 0.225827,
+          "precision_gap": 0.198412,
+          "accuracy_gap": 0.157247,
+          "selection_amplification": 0.06899,
+          "n_groups_compared": 4,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "DeviceProtection",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 458,
+            "share": 0.433302,
+            "reliable": true,
+            "base_rate": 0.375546,
+            "selection_rate": 0.358079,
+            "tpr": 0.645349,
+            "fpr": 0.185315,
+            "precision": 0.676829,
+            "accuracy": 0.751092
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 360,
+            "share": 0.340587,
+            "reliable": true,
+            "base_rate": 0.236111,
+            "selection_rate": 0.147222,
+            "tpr": 0.447059,
+            "fpr": 0.054545,
+            "precision": 0.716981,
+            "accuracy": 0.827778
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.275128,
+          "selection_rate_gap": 0.358079,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.645349,
+          "fpr_gap": 0.185315,
+          "precision_gap": 0.040152,
+          "accuracy_gap": 0.14849,
+          "selection_amplification": 0.082951,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "StreamingTV",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 438,
+            "share": 0.41438,
+            "reliable": true,
+            "base_rate": 0.340183,
+            "selection_rate": 0.285388,
+            "tpr": 0.590604,
+            "fpr": 0.128028,
+            "precision": 0.704,
+            "accuracy": 0.776256
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 380,
+            "share": 0.359508,
+            "reliable": true,
+            "base_rate": 0.284211,
+            "selection_rate": 0.242105,
+            "tpr": 0.564815,
+            "fpr": 0.113971,
+            "precision": 0.663043,
+            "accuracy": 0.794737
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.239765,
+          "selection_rate_gap": 0.285388,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.590604,
+          "fpr_gap": 0.128028,
+          "precision_gap": 0.040957,
+          "accuracy_gap": 0.123326,
+          "selection_amplification": 0.045623,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "StreamingMovies",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 441,
+            "share": 0.417219,
+            "reliable": true,
+            "base_rate": 0.335601,
+            "selection_rate": 0.276644,
+            "tpr": 0.587838,
+            "fpr": 0.119454,
+            "precision": 0.713115,
+            "accuracy": 0.782313
+          },
+          {
+            "group": "No internet service",
+            "n": 239,
+            "share": 0.226112,
+            "reliable": true,
+            "base_rate": 0.100418,
+            "selection_rate": 0.0,
+            "tpr": 0.0,
+            "fpr": 0.0,
+            "precision": null,
+            "accuracy": 0.899582
+          },
+          {
+            "group": "Yes",
+            "n": 377,
+            "share": 0.35667,
+            "reliable": true,
+            "base_rate": 0.289125,
+            "selection_rate": 0.251989,
+            "tpr": 0.568807,
+            "fpr": 0.123134,
+            "precision": 0.652632,
+            "accuracy": 0.787798
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.235183,
+          "selection_rate_gap": 0.276644,
+          "selection_rate_ratio": 0.0,
+          "tpr_gap": 0.587838,
+          "fpr_gap": 0.123134,
+          "precision_gap": 0.060483,
+          "accuracy_gap": 0.117269,
+          "selection_amplification": 0.041461,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {
+            "precision": 2
+          }
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "SeniorCitizen",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "0",
+            "n": 896,
+            "share": 0.847682,
+            "reliable": true,
+            "base_rate": 0.234375,
+            "selection_rate": 0.170759,
+            "tpr": 0.495238,
+            "fpr": 0.071429,
+            "precision": 0.679739,
+            "accuracy": 0.827009
+          },
+          {
+            "group": "1",
+            "n": 161,
+            "share": 0.152318,
+            "reliable": true,
+            "base_rate": 0.440994,
+            "selection_rate": 0.397516,
+            "tpr": 0.633803,
+            "fpr": 0.211111,
+            "precision": 0.703125,
+            "accuracy": 0.720497
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.206619,
+          "selection_rate_gap": 0.226757,
+          "selection_rate_ratio": 0.429565,
+          "tpr_gap": 0.138565,
+          "fpr_gap": 0.139682,
+          "precision_gap": 0.023386,
+          "accuracy_gap": 0.106512,
+          "selection_amplification": 0.020138,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "PaperlessBilling",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "No",
+            "n": 450,
+            "share": 0.425733,
+            "reliable": true,
+            "base_rate": 0.182222,
+            "selection_rate": 0.084444,
+            "tpr": 0.292683,
+            "fpr": 0.038043,
+            "precision": 0.631579,
+            "accuracy": 0.84
+          },
+          {
+            "group": "Yes",
+            "n": 607,
+            "share": 0.574267,
+            "reliable": true,
+            "base_rate": 0.327842,
+            "selection_rate": 0.294893,
+            "tpr": 0.628141,
+            "fpr": 0.132353,
+            "precision": 0.698324,
+            "accuracy": 0.789127
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.14562,
+          "selection_rate_gap": 0.210449,
+          "selection_rate_ratio": 0.286355,
+          "tpr_gap": 0.335458,
+          "fpr_gap": 0.09431,
+          "precision_gap": 0.066745,
+          "accuracy_gap": 0.050873,
+          "selection_amplification": 0.064829,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "Dependents",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "No",
+            "n": 728,
+            "share": 0.688742,
+            "reliable": true,
+            "base_rate": 0.31456,
+            "selection_rate": 0.263736,
+            "tpr": 0.580786,
+            "fpr": 0.118236,
+            "precision": 0.692708,
+            "accuracy": 0.787088
+          },
+          {
+            "group": "Yes",
+            "n": 329,
+            "share": 0.311258,
+            "reliable": true,
+            "base_rate": 0.158055,
+            "selection_rate": 0.075988,
+            "tpr": 0.307692,
+            "fpr": 0.032491,
+            "precision": 0.64,
+            "accuracy": 0.863222
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.156505,
+          "selection_rate_gap": 0.187748,
+          "selection_rate_ratio": 0.288121,
+          "tpr_gap": 0.273094,
+          "fpr_gap": 0.085745,
+          "precision_gap": 0.052708,
+          "accuracy_gap": 0.076134,
+          "selection_amplification": 0.031243,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "Partner",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "No",
+            "n": 544,
+            "share": 0.514664,
+            "reliable": true,
+            "base_rate": 0.327206,
+            "selection_rate": 0.292279,
+            "tpr": 0.595506,
+            "fpr": 0.144809,
+            "precision": 0.666667,
+            "accuracy": 0.770221
+          },
+          {
+            "group": "Yes",
+            "n": 513,
+            "share": 0.485336,
+            "reliable": true,
+            "base_rate": 0.20078,
+            "selection_rate": 0.11306,
+            "tpr": 0.417476,
+            "fpr": 0.036585,
+            "precision": 0.741379,
+            "accuracy": 0.853801
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.126426,
+          "selection_rate_gap": 0.179219,
+          "selection_rate_ratio": 0.386822,
+          "tpr_gap": 0.17803,
+          "fpr_gap": 0.108224,
+          "precision_gap": 0.074712,
+          "accuracy_gap": 0.08358,
+          "selection_amplification": 0.052793,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "MultipleLines",
+        "metric_set": "binary_classification",
+        "n_groups": 3,
+        "groups": [
+          {
+            "group": "No",
+            "n": 529,
+            "share": 0.500473,
+            "reliable": true,
+            "base_rate": 0.258979,
+            "selection_rate": 0.175803,
+            "tpr": 0.459854,
+            "fpr": 0.076531,
+            "precision": 0.677419,
+            "accuracy": 0.803403
+          },
+          {
+            "group": "No phone service",
+            "n": 97,
+            "share": 0.091769,
+            "reliable": true,
+            "base_rate": 0.268041,
+            "selection_rate": 0.154639,
+            "tpr": 0.5,
+            "fpr": 0.028169,
+            "precision": 0.866667,
+            "accuracy": 0.845361
+          },
+          {
+            "group": "Yes",
+            "n": 431,
+            "share": 0.407758,
+            "reliable": true,
+            "base_rate": 0.273782,
+            "selection_rate": 0.2529,
+            "tpr": 0.618644,
+            "fpr": 0.115016,
+            "precision": 0.669725,
+            "accuracy": 0.812065
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.014803,
+          "selection_rate_gap": 0.098261,
+          "selection_rate_ratio": 0.611463,
+          "tpr_gap": 0.15879,
+          "fpr_gap": 0.086847,
+          "precision_gap": 0.196942,
+          "accuracy_gap": 0.041958,
+          "selection_amplification": 0.083458,
+          "n_groups_compared": 3,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "PhoneService",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "No",
+            "n": 97,
+            "share": 0.091769,
+            "reliable": true,
+            "base_rate": 0.268041,
+            "selection_rate": 0.154639,
+            "tpr": 0.5,
+            "fpr": 0.028169,
+            "precision": 0.866667,
+            "accuracy": 0.845361
+          },
+          {
+            "group": "Yes",
+            "n": 960,
+            "share": 0.908231,
+            "reliable": true,
+            "base_rate": 0.265625,
+            "selection_rate": 0.210417,
+            "tpr": 0.533333,
+            "fpr": 0.093617,
+            "precision": 0.673267,
+            "accuracy": 0.807292
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.002416,
+          "selection_rate_gap": 0.055778,
+          "selection_rate_ratio": 0.734917,
+          "tpr_gap": 0.033333,
+          "fpr_gap": 0.065448,
+          "precision_gap": 0.1934,
+          "accuracy_gap": 0.038069,
+          "selection_amplification": 0.053362,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      },
+      {
+        "column": "gender",
+        "metric_set": "binary_classification",
+        "n_groups": 2,
+        "groups": [
+          {
+            "group": "Female",
+            "n": 505,
+            "share": 0.477767,
+            "reliable": true,
+            "base_rate": 0.291089,
+            "selection_rate": 0.219802,
+            "tpr": 0.482993,
+            "fpr": 0.111732,
+            "precision": 0.63964,
+            "accuracy": 0.770297
+          },
+          {
+            "group": "Male",
+            "n": 552,
+            "share": 0.522233,
+            "reliable": true,
+            "base_rate": 0.242754,
+            "selection_rate": 0.192029,
+            "tpr": 0.58209,
+            "fpr": 0.066986,
+            "precision": 0.735849,
+            "accuracy": 0.847826
+          }
+        ],
+        "gaps": {
+          "base_rate_gap": 0.048335,
+          "selection_rate_gap": 0.027773,
+          "selection_rate_ratio": 0.873645,
+          "tpr_gap": 0.099097,
+          "fpr_gap": 0.044746,
+          "precision_gap": 0.096209,
+          "accuracy_gap": 0.077529,
+          "selection_amplification": -0.020562,
+          "n_groups_compared": 2,
+          "n_groups_compared_per_metric": {}
+        },
+        "excluded_from_gaps": [],
+        "gaps_measurable": true
+      }
+    ],
+    "figure": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\figures\\subgroup_accuracy.png",
+    "interpretation_limits": [
+      "These are gaps, not verdicts. Whether a gap is acceptable depends on the domain, the decision the prediction feeds, and the law that applies - none of which this artifact knows.",
+      "EVERY low-cardinality column is audited, including columns that are model features by design. A large gap across a service tier or a contract type is usually the model working, not failing - which is why 'selection_amplification' is reported: it is the part of the gap the model adds on top of the difference that is really there.",
+      "A subgroup column may itself be a model input, or may be excluded from the model entirely. Either way the gap is real; the remedy is not the same, and removing the column does not remove the gap.",
+      "Groups with fewer than 30 rows are reported but excluded from the gap arithmetic; see 'excluded_from_gaps'.",
+      "Gaps are measured on one split. They are estimates with sampling error, and small gaps between similarly sized groups may not replicate."
+    ]
+  },
+  "calibration": {
+    "artifact": "calibration",
+    "generated_at": "2026-08-09T14:23:50+00:00",
+    "champion": "LogisticRegression v001",
+    "split": "test",
+    "task": "classification",
+    "assessed": true,
+    "positive_label": "1",
+    "n_rows": 1057,
+    "n_rows_dropped_not_finite": 0,
+    "n_bins": 10,
+    "n_bins_empty": 1,
+    "brier_score": 0.136219,
+    "ece": 0.030095,
+    "mce": 0.180602,
+    "mean_predicted": 0.256572,
+    "base_rate": 0.265847,
+    "global_bias": -0.009275,
+    "reliability": [
+      {
+        "bin": 1,
+        "range_low": 0.0,
+        "range_high": 0.1,
+        "n": 413,
+        "mean_predicted": 0.034562,
+        "observed_frequency": 0.041162,
+        "gap": -0.0066
+      },
+      {
+        "bin": 2,
+        "range_low": 0.1,
+        "range_high": 0.2,
+        "n": 144,
+        "mean_predicted": 0.152942,
+        "observed_frequency": 0.201389,
+        "gap": -0.048447
+      },
+      {
+        "bin": 3,
+        "range_low": 0.2,
+        "range_high": 0.3,
+        "n": 116,
+        "mean_predicted": 0.249964,
+        "observed_frequency": 0.224138,
+        "gap": 0.025826
+      },
+      {
+        "bin": 4,
+        "range_low": 0.3,
+        "range_high": 0.4,
+        "n": 73,
+        "mean_predicted": 0.346225,
+        "observed_frequency": 0.342466,
+        "gap": 0.003759
+      },
+      {
+        "bin": 5,
+        "range_low": 0.4,
+        "range_high": 0.5,
+        "n": 94,
+        "mean_predicted": 0.453292,
+        "observed_frequency": 0.37234,
+        "gap": 0.080951
+      },
+      {
+        "bin": 6,
+        "range_low": 0.5,
+        "range_high": 0.6,
+        "n": 82,
+        "mean_predicted": 0.548776,
+        "observed_frequency": 0.634146,
+        "gap": -0.085371
+      },
+      {
+        "bin": 7,
+        "range_low": 0.6,
+        "range_high": 0.7,
+        "n": 73,
+        "mean_predicted": 0.645532,
+        "observed_frequency": 0.643836,
+        "gap": 0.001696
+      },
+      {
+        "bin": 8,
+        "range_low": 0.7,
+        "range_high": 0.8,
+        "n": 56,
+        "mean_predicted": 0.731766,
+        "observed_frequency": 0.785714,
+        "gap": -0.053949
+      },
+      {
+        "bin": 9,
+        "range_low": 0.8,
+        "range_high": 0.9,
+        "n": 6,
+        "mean_predicted": 0.819398,
+        "observed_frequency": 1.0,
+        "gap": -0.180602
+      }
+    ],
+    "figure": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\figures\\calibration.png",
+    "interpretation_limits": [
+      "Calibration is separate from accuracy. A well-calibrated model can rank poorly, and a model that ranks perfectly can be badly calibrated. ROC-AUC does not measure this.",
+      "Bands with few rows have noisy observed frequencies. Read the reliability table next to its 'n' column, and see 'n_bins_empty' - an empty band is one the model never predicts into.",
+      "This is measured on one split. Recalibrating a model against these numbers would need a separate held-out set, or the correction just fits this split's noise."
+    ]
+  },
+  "governance": {
+    "feature_approval": {
+      "artifact": "feature_approval",
+      "generated_at": "2026-07-26T20:27:19+00:00",
+      "target_column": "Churn",
+      "dropped_columns": [
+        "customerID"
+      ],
+      "approved_predictor_columns": [
+        "gender",
+        "SeniorCitizen",
+        "Partner",
+        "Dependents",
+        "tenure",
+        "PhoneService",
+        "MultipleLines",
+        "InternetService",
+        "OnlineSecurity",
+        "OnlineBackup",
+        "DeviceProtection",
+        "TechSupport",
+        "StreamingTV",
+        "StreamingMovies",
+        "Contract",
+        "PaperlessBilling",
+        "PaymentMethod",
+        "MonthlyCharges",
+        "TotalCharges"
+      ],
+      "note": "Churn uses all non-identifier columns as predictors."
+    },
+    "model_approval": {
+      "artifact": "model_approval",
+      "generated_at": "2026-07-26T20:27:19+00:00",
+      "approved_models": [
+        "LogisticRegression",
+        "DecisionTreeClassifier",
+        "RandomForestClassifier"
+      ],
+      "approved_count": 3,
+      "recommended_models": [
+        "LogisticRegression",
+        "DecisionTreeClassifier",
+        "RandomForestClassifier"
+      ],
+      "note": "Training refuses any model not listed in approved_models."
+    },
+    "audit_events": 22,
+    "experiment_runs": 6,
+    "lineage_nodes": 4
+  },
+  "sources": {
+    "evaluation_report": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\evaluation\\model_evaluation_report.json",
+      "exists": true
+    },
+    "drivers": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\explainability\\coefficient_interpretation.json",
+      "exists": true
+    },
+    "permutation_importance": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\permutation_importance.json",
+      "exists": true
+    },
+    "subgroup_fairness": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\subgroup_fairness.json",
+      "exists": true
+    },
+    "calibration": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\trust\\calibration.json",
+      "exists": true
+    },
+    "feature_approval": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\governance\\approvals\\feature_approval.json",
+      "exists": true
+    },
+    "model_approval": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\governance\\approvals\\model_approval.json",
+      "exists": true
+    },
+    "audit_log": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\governance\\audit\\audit_log.jsonl",
+      "exists": true
+    },
+    "lineage": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\governance\\lineage\\lineage.json",
+      "exists": true
+    },
+    "experiments": {
+      "path": "D:\\AI\\ai-data-science-workbench\\workspaces\\churn\\artifacts\\experiments\\experiments.jsonl",
+      "exists": true
+    }
+  }
+}

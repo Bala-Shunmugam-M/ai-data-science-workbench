@@ -1,0 +1,377 @@
+{
+  "artifact": "coefficient_interpretation",
+  "generated_at": "2026-08-02T13:46:08+00:00",
+  "champion": "LogisticRegression v001",
+  "kind": "coefficient",
+  "intercept": -0.34218982489523453,
+  "coefficients": [
+    {
+      "rank": 1,
+      "feature": "tenure",
+      "coefficient": -1.341781,
+      "direction": "decreases the prediction",
+      "abs_importance": 1.341781,
+      "meaning": "Model input 'tenure'."
+    },
+    {
+      "rank": 2,
+      "feature": "MonthlyCharges",
+      "coefficient": -0.796109,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.796109,
+      "meaning": "Model input 'MonthlyCharges'."
+    },
+    {
+      "rank": 3,
+      "feature": "Contract_Two year",
+      "coefficient": -0.760577,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.760577,
+      "meaning": "Model input 'Contract_Two year'."
+    },
+    {
+      "rank": 4,
+      "feature": "InternetService_Fiber optic",
+      "coefficient": 0.66882,
+      "direction": "increases the prediction",
+      "abs_importance": 0.66882,
+      "meaning": "Model input 'InternetService_Fiber optic'."
+    },
+    {
+      "rank": 5,
+      "feature": "InternetService_DSL",
+      "coefficient": -0.663744,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.663744,
+      "meaning": "Model input 'InternetService_DSL'."
+    },
+    {
+      "rank": 6,
+      "feature": "TotalCharges",
+      "coefficient": 0.663321,
+      "direction": "increases the prediction",
+      "abs_importance": 0.663321,
+      "meaning": "Model input 'TotalCharges'."
+    },
+    {
+      "rank": 7,
+      "feature": "Contract_Month-to-month",
+      "coefficient": 0.575627,
+      "direction": "increases the prediction",
+      "abs_importance": 0.575627,
+      "meaning": "Model input 'Contract_Month-to-month'."
+    },
+    {
+      "rank": 8,
+      "feature": "PaperlessBilling_No",
+      "coefficient": -0.376134,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.376134,
+      "meaning": "Model input 'PaperlessBilling_No'."
+    },
+    {
+      "rank": 9,
+      "feature": "InternetService_No",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'InternetService_No'."
+    },
+    {
+      "rank": 10,
+      "feature": "OnlineSecurity_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'OnlineSecurity_No internet service'."
+    },
+    {
+      "rank": 11,
+      "feature": "OnlineBackup_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'OnlineBackup_No internet service'."
+    },
+    {
+      "rank": 12,
+      "feature": "DeviceProtection_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'DeviceProtection_No internet service'."
+    },
+    {
+      "rank": 13,
+      "feature": "TechSupport_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'TechSupport_No internet service'."
+    },
+    {
+      "rank": 14,
+      "feature": "StreamingTV_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'StreamingTV_No internet service'."
+    },
+    {
+      "rank": 15,
+      "feature": "StreamingMovies_No internet service",
+      "coefficient": -0.347265,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.347265,
+      "meaning": "Model input 'StreamingMovies_No internet service'."
+    },
+    {
+      "rank": 16,
+      "feature": "Dependents_Yes",
+      "coefficient": -0.303003,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.303003,
+      "meaning": "Model input 'Dependents_Yes'."
+    },
+    {
+      "rank": 17,
+      "feature": "MultipleLines_No",
+      "coefficient": -0.266267,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.266267,
+      "meaning": "Model input 'MultipleLines_No'."
+    },
+    {
+      "rank": 18,
+      "feature": "StreamingMovies_Yes",
+      "coefficient": 0.259818,
+      "direction": "increases the prediction",
+      "abs_importance": 0.259818,
+      "meaning": "Model input 'StreamingMovies_Yes'."
+    },
+    {
+      "rank": 19,
+      "feature": "StreamingMovies_No",
+      "coefficient": -0.254743,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.254743,
+      "meaning": "Model input 'StreamingMovies_No'."
+    },
+    {
+      "rank": 20,
+      "feature": "SeniorCitizen_0",
+      "coefficient": -0.242599,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.242599,
+      "meaning": "Model input 'SeniorCitizen_0'."
+    },
+    {
+      "rank": 21,
+      "feature": "PaymentMethod_Credit card (automatic)",
+      "coefficient": -0.228498,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.228498,
+      "meaning": "Model input 'PaymentMethod_Credit card (automatic)'."
+    },
+    {
+      "rank": 22,
+      "feature": "PhoneService_No",
+      "coefficient": -0.221647,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.221647,
+      "meaning": "Model input 'PhoneService_No'."
+    },
+    {
+      "rank": 23,
+      "feature": "MultipleLines_No phone service",
+      "coefficient": -0.221647,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.221647,
+      "meaning": "Model input 'MultipleLines_No phone service'."
+    },
+    {
+      "rank": 24,
+      "feature": "StreamingTV_Yes",
+      "coefficient": 0.212318,
+      "direction": "increases the prediction",
+      "abs_importance": 0.212318,
+      "meaning": "Model input 'StreamingTV_Yes'."
+    },
+    {
+      "rank": 25,
+      "feature": "StreamingTV_No",
+      "coefficient": -0.207243,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.207243,
+      "meaning": "Model input 'StreamingTV_No'."
+    },
+    {
+      "rank": 26,
+      "feature": "PaymentMethod_Bank transfer (automatic)",
+      "coefficient": -0.195188,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.195188,
+      "meaning": "Model input 'PaymentMethod_Bank transfer (automatic)'."
+    },
+    {
+      "rank": 27,
+      "feature": "gender_Female",
+      "coefficient": -0.184616,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.184616,
+      "meaning": "Model input 'gender_Female'."
+    },
+    {
+      "rank": 28,
+      "feature": "PaymentMethod_Electronic check",
+      "coefficient": 0.183506,
+      "direction": "increases the prediction",
+      "abs_importance": 0.183506,
+      "meaning": "Model input 'PaymentMethod_Electronic check'."
+    },
+    {
+      "rank": 29,
+      "feature": "Partner_Yes",
+      "coefficient": -0.173808,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.173808,
+      "meaning": "Model input 'Partner_Yes'."
+    },
+    {
+      "rank": 30,
+      "feature": "Partner_No",
+      "coefficient": -0.168382,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.168382,
+      "meaning": "Model input 'Partner_No'."
+    },
+    {
+      "rank": 31,
+      "feature": "gender_Male",
+      "coefficient": -0.157574,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.157574,
+      "meaning": "Model input 'gender_Male'."
+    },
+    {
+      "rank": 32,
+      "feature": "Contract_One year",
+      "coefficient": -0.15724,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.15724,
+      "meaning": "Model input 'Contract_One year'."
+    },
+    {
+      "rank": 33,
+      "feature": "OnlineSecurity_No",
+      "coefficient": 0.153056,
+      "direction": "increases the prediction",
+      "abs_importance": 0.153056,
+      "meaning": "Model input 'OnlineSecurity_No'."
+    },
+    {
+      "rank": 34,
+      "feature": "OnlineSecurity_Yes",
+      "coefficient": -0.147981,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.147981,
+      "meaning": "Model input 'OnlineSecurity_Yes'."
+    },
+    {
+      "rank": 35,
+      "feature": "MultipleLines_Yes",
+      "coefficient": 0.145725,
+      "direction": "increases the prediction",
+      "abs_importance": 0.145725,
+      "meaning": "Model input 'MultipleLines_Yes'."
+    },
+    {
+      "rank": 36,
+      "feature": "TechSupport_No",
+      "coefficient": 0.125823,
+      "direction": "increases the prediction",
+      "abs_importance": 0.125823,
+      "meaning": "Model input 'TechSupport_No'."
+    },
+    {
+      "rank": 37,
+      "feature": "TechSupport_Yes",
+      "coefficient": -0.120747,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.120747,
+      "meaning": "Model input 'TechSupport_Yes'."
+    },
+    {
+      "rank": 38,
+      "feature": "PhoneService_Yes",
+      "coefficient": -0.120543,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.120543,
+      "meaning": "Model input 'PhoneService_Yes'."
+    },
+    {
+      "rank": 39,
+      "feature": "PaymentMethod_Mailed check",
+      "coefficient": -0.10201,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.10201,
+      "meaning": "Model input 'PaymentMethod_Mailed check'."
+    },
+    {
+      "rank": 40,
+      "feature": "SeniorCitizen_1",
+      "coefficient": -0.099591,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.099591,
+      "meaning": "Model input 'SeniorCitizen_1'."
+    },
+    {
+      "rank": 41,
+      "feature": "Dependents_No",
+      "coefficient": -0.039187,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.039187,
+      "meaning": "Model input 'Dependents_No'."
+    },
+    {
+      "rank": 42,
+      "feature": "DeviceProtection_Yes",
+      "coefficient": 0.035108,
+      "direction": "increases the prediction",
+      "abs_importance": 0.035108,
+      "meaning": "Model input 'DeviceProtection_Yes'."
+    },
+    {
+      "rank": 43,
+      "feature": "OnlineBackup_No",
+      "coefficient": 0.034454,
+      "direction": "increases the prediction",
+      "abs_importance": 0.034454,
+      "meaning": "Model input 'OnlineBackup_No'."
+    },
+    {
+      "rank": 44,
+      "feature": "PaperlessBilling_Yes",
+      "coefficient": 0.033944,
+      "direction": "increases the prediction",
+      "abs_importance": 0.033944,
+      "meaning": "Model input 'PaperlessBilling_Yes'."
+    },
+    {
+      "rank": 45,
+      "feature": "DeviceProtection_No",
+      "coefficient": -0.030033,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.030033,
+      "meaning": "Model input 'DeviceProtection_No'."
+    },
+    {
+      "rank": 46,
+      "feature": "OnlineBackup_Yes",
+      "coefficient": -0.029379,
+      "direction": "decreases the prediction",
+      "abs_importance": 0.029379,
+      "meaning": "Model input 'OnlineBackup_Yes'."
+    }
+  ]
+}
