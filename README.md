@@ -49,6 +49,11 @@ preference: it follows from what each host can actually run.
 | **Streamlit app** | Streamlit Community Cloud | Yes — all 11 pages, including upload and the retention simulator |
 | **Next.js console** | local only | Yes — the full journey UI |
 
+The console cannot be hosted (see below), so it has a **screenshot tour** instead:
+[ai-data-science-workbench-console](https://github.com/Bala-Shunmugam-M/ai-data-science-workbench-console)
+— eight captures of a real run, including the trust audit's subgroup gaps and
+calibration curve. Presentation only; the code lives here, not there.
+
 ### Why the console is not hosted
 
 Its API routes spawn the pipeline as a child process (`webapi/bridge.py`), so a
