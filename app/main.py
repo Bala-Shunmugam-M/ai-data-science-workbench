@@ -30,6 +30,32 @@ if str(PROJECT_ROOT) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
+
+@st.cache_resource(show_spinner=False)
+def _seed_demo_projects() -> list[str]:
+    """
+    Build demo projects on a deployment that has none.
+
+    Hosts without a build step - Streamlit Community Cloud, for instance -
+    start from a bare clone, and this repository publishes the pipeline's code
+    but not its output. Without this a visitor's first view is empty
+    dashboards, which reads as broken software rather than as a missing
+    dataset.
+
+    Cached as a resource so it runs once per process rather than on every
+    rerun. Locally it is a no-op: the churn workspace already has a champion.
+    """
+
+    from src.automl.demo_seed import has_browsable_project, seed
+
+    if has_browsable_project():
+        return []
+    with st.spinner("Preparing demo projects - running the pipeline once..."):
+        return seed()
+
+
+_SEED_LOG = _seed_demo_projects()
+
 from app import project_state  # noqa: E402
 
 _PROJECT = project_state.apply_project()  # activate selected project BEFORE path import

@@ -1,0 +1,42 @@
+# Render Blueprint for the Next.js review console.
+#
+# Connect this repository at https://render.com -> New -> Blueprint, and Render
+# reads this file instead of asking you to fill in a form. Keeping the service
+# definition in the repository means the deployment is reviewable in a diff
+# rather than living in someone's dashboard.
+#
+# WHAT RUNS
+# ---------
+# A Docker image carrying Node and Python together, because the console's API
+# routes spawn the pipeline as a child process. See deploy/render/Dockerfile.
+#
+# FREE TIER, HONESTLY
+# -------------------
+# The free plan sleeps after roughly 15 minutes of inactivity, so the first
+# visit after a quiet spell waits about a minute for the container to wake.
+# It also has 512 MB of memory: fine for the 600-row demo datasets, but a very
+# large upload may be killed rather than analysed.
+
+services:
+  - type: web
+    name: ai-data-science-workbench
+    runtime: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./deploy/render/Dockerfile
+    # The build context is the repository root, not deploy/render/ - the image
+    # needs src/, config/, webapi/ and webapp/.
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      # Debian has python3 but no `python`; the console reads this variable
+      # rather than assuming a binary name.
+      - key: WORKBENCH_PYTHON
+        value: python3
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      # Matplotlib must not try to open a display in a headless container.
+      - key: MPLBACKEND
+        value: Agg

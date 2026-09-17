@@ -1,0 +1,40 @@
+# Keep the build context small and the image reproducible.
+#
+# Without this, `COPY . .` ships the local webapp/node_modules (~486 MB) into
+# the image, where it would then be overwritten by `npm ci` anyway - a slow
+# upload for a directory that gets replaced.
+
+# Dependencies and build output are produced inside the image.
+**/node_modules/
+webapp/.next/
+webapp/.next-verify/
+webapp/out/
+webapp/.uploads/
+
+# Local pipeline output. The image seeds its own demo projects at build time,
+# so shipping local runs would make the deployment's results ambiguous about
+# where they came from.
+workspaces/
+data/
+results/
+models/
+artifacts/
+governance/
+_site/
+
+# Version control and tooling.
+.git/
+.github/
+.claude-flow/
+**/__pycache__/
+**/*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Large deliverables the running app does not read.
+docs/*.pdf
+docs/*.docx
+presentation/*.pptx
