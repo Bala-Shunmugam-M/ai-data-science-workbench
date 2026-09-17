@@ -38,54 +38,143 @@ Needs **Node.js** to serve the site and **Python** on PATH to analyse an upload
 
 ---
 
-## Deployed surfaces
+## Where to find everything
 
-Three ways to reach this project, with different trade-offs. The split is not a
-preference: it follows from what each host can actually run.
+Live sites, repositories and the console's screenshot tour are listed in
+**[LINKS.md](LINKS.md)** — one file, so a URL that changes changes in one place.
 
-| Surface | Host | Interactive? |
-|---|---|---|
-| **Report site** | GitHub Pages | No — generated reports, model cards and fairness audits |
-| **Streamlit app** | Streamlit Community Cloud | Yes — all 11 pages, including upload and the retention simulator |
-| **Next.js console** | local only | Yes — the full journey UI |
+| Surface | Interactive? |
+|---|---|
+| Report site (GitHub Pages) | No — generated reports, model cards, fairness audits |
+| Streamlit app (Community Cloud) | Yes — 11 pages, upload, retention simulator |
+| Next.js console | Local only — see LINKS.md for why |
 
-The console cannot be hosted (see below), so it has a **screenshot tour** instead:
-[ai-data-science-workbench-console](https://github.com/Bala-Shunmugam-M/ai-data-science-workbench-console)
-— eight captures of a real run, including the trust audit's subgroup gaps and
-calibration curve. Presentation only; the code lives here, not there.
+---
 
-### Why the console is not hosted
+## How the pipeline works
 
-Its API routes spawn the pipeline as a child process (`webapi/bridge.py`), so a
-host must run **Node and Python in the same container**. That rules out GitHub
-Pages, Vercel and Netlify outright. Container hosts can do it — a working
-`deploy/render/Dockerfile` and `render.yaml` are in the repository — but every
-remaining free tier (Render, Fly.io, Railway, Koyeb) now requires a payment
-card, and Hugging Face Spaces bills for any Space that runs Python:
+### The shape of it
 
-    docker    BLOCKED - PRO subscription required
-    gradio    BLOCKED - PRO subscription required
-    streamlit BLOCKED - PRO subscription required
-    static    ALLOWED
+Twelve stages, run in a fixed order. The registry order **is** the pipeline
+order; there is no separate schedule to keep in sync.
 
-So the console runs locally, and the Streamlit app carries the live interactive
-demo. Both drive the identical pipeline.
+```
+  ingest → preprocess → understand → eda → features → propose
+     → approve → train → evaluate → explain → trust → report
+        ▲                   ▲
+     human gate        verification gate
+```
 
-### Deploying
+Each stage **declares** its input and output paths. The orchestrator refuses to
+run a stage whose declared inputs are missing and names the prerequisite that
+produces them, so a broken pipeline says *"run `features` first"* rather than
+raising a `KeyError` three frames deep. Status, duration and outputs are written
+to `artifacts/workflow_status.json`, which is what makes `--resume` safe: a stage
+whose outputs already exist is skipped, but its dependency check still runs.
 
-**Report site** — automatic. `.github/workflows/pages.yml` publishes on every
-push to `main`, then verifies the live URL actually serves that build rather
-than trusting the deploy step's exit code.
+### How data moves
 
-**Streamlit app** — at [share.streamlit.io](https://share.streamlit.io), point a
-new app at this repository, branch `main`, main file `app/main.py`. Free, no
-card. On first load it seeds two demo projects by running the real pipeline on
-the committed 600-row samples (`src/automl/demo_seed.py`); the repository ships
-the pipeline's code but not its output, so a bare clone would otherwise show
-empty dashboards.
+Data is never mutated in place. Each stage reads the previous stage's files and
+writes new ones, so any intermediate state can be inspected after the fact:
 
-**Console on a container host** — `render.yaml` is a ready Blueprint if you
-have a host with a card on file.
+```
+data/raw/            the file as it arrived, hashed on ingest
+   ↓ preprocess      clean, then SPLIT, then fit transformers
+data/splits/         train.csv · validation.csv · test.csv          70 / 15 / 15
+   ↓ features        row-wise ratios and logs only (no fitting)
+data/engineered/     train.csv · validation.csv · test.csv
+   ↓ train           design matrix built from APPROVED columns only
+models/<name>/<version>/    model.joblib + metadata.json
+   ↓ evaluate        compare on validation, promote one champion
+artifacts/final_model_selection.json
+   ↓ explain/trust   coefficients, fairness, calibration, model card
+artifacts/{explainability,trust,reports}/
+```
+
+The **order of the second step matters more than anything else here**: the split
+happens *before* any fitted transformation. Imputer medians, scaler means and
+one-hot category lists are all learned from `train` alone and reused unchanged on
+validation and test.
+
+### Why leakage cannot happen by accident
+
+Three mechanisms, none of which rely on remembering to be careful:
+
+**Fitted state travels with the model.** The `ModelingPreprocessor` is pickled
+*inside* the model bundle alongside the estimator. Evaluation, explainability and
+the trust audit therefore transform data with the same object that training used
+— not a similar one. It also means the stored per-feature standard deviations are
+available later to convert standardised coefficients back to raw units.
+
+**The target cannot reach the predictors.** `split_x_y()` raises if the target
+column appears in the predictor list. Leakage becomes a crash, not a better
+score.
+
+**Only approved columns enter the matrix.** The approved predictor set is the
+intersection of schema predictors and approved engineered features that actually
+exist in the engineered training data.
+
+### Model selection
+
+Six models, each with **at most one** tunable hyperparameter — five have exactly
+one, and plain `LinearRegression` has none, which is what makes it the honest
+baseline. That constraint is deliberate: one validation sweep then serves both
+regression and classification, rather than two tuners that drift apart.
+
+1. Sweep 25 candidate values, scoring each on **validation**
+2. Refit the best parameters on **train**
+3. Compare all models on **validation**
+4. Promote the winner to champion and record it in the registry
+5. Score the champion **once** on **test**
+
+Tuning uses the dedicated validation split, not k-fold over train+validation. One
+split, one purpose. A single dictionary — `METRIC_HIGHER_IS_BETTER` — supplies
+the direction, so RMSE (lower wins) and ROC-AUC (higher wins) share one code
+path. That comparison treats NaN explicitly: several metrics return NaN *by
+design* when undefined, and in Python every comparison against NaN is `False`, so
+a naive `>` silently keeps whichever candidate happened to come first.
+
+### What every run leaves behind
+
+The governance trail is not documentation written afterwards; it is written by
+the stages themselves.
+
+| Artifact | Answers |
+|---|---|
+| `models/…/metadata.json` | which parameters, which tuning history, which seed |
+| `models/model_registry.json` | which model is champion |
+| `governance/approvals/*.json` | what was proposed, what a human approved |
+| `governance/audit/audit_log.jsonl` | append-only, 10 event types, flushed immediately |
+| `governance/lineage/lineage.json` | input → script → output, every file SHA-256 hashed |
+| `governance/decisions.json` | five standing methodological decisions, recorded up front |
+| `artifacts/trust/*` | fairness gaps, calibration, permutation importance, model card |
+
+Together they answer the question the project exists for: *six months from now,
+can you prove which data, which parameters and whose approval produced this
+number?*
+
+### The gates
+
+**`approve`** — `require_model_approved()` raises `GovernanceError` before any
+estimator is fitted. Training an unreviewed model is not discouraged; it is
+impossible.
+
+**`trust`** — reads the test split a second time, deliberately. The champion is
+already frozen, and nothing here feeds back into selection or tuning. It produces
+a *report on a decision already made*, not the decision. It audits subgroup
+fairness, isolates **selection amplification** (the part of a gap the model added
+on top of the difference that was genuinely there), measures permutation
+importance against the selection metric rather than impurity, and checks whether
+a predicted 0.8 happens 80% of the time.
+
+### One engine, three front ends
+
+The CLI, the Streamlit app and the Next.js console all call the same composed
+pipeline. That is enforced rather than intended: an earlier version had the CLI
+and the web path each maintaining their own list of calls, and the lists drifted
+— the web path generated the driver table and HTML report, the CLI did not, so
+the same dataset produced different deliverables depending on how it was
+launched.
 
 ---
 
