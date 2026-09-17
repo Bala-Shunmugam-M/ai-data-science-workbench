@@ -83,3 +83,6 @@ webapp/.uploads/
 
 # Generated GitHub Pages output.
 _site/
+
+# Local agent tooling state - not part of the project.
+.claude-flow/
