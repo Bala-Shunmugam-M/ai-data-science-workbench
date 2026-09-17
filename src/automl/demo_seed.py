@@ -73,24 +73,45 @@ DEMOS: tuple[Demo, ...] = (
 )
 
 
-def has_browsable_project() -> bool:
+def is_runnable(workspace: Path) -> bool:
     """
-    True when at least one workspace carries a promoted champion.
+    True when this workspace can actually be USED, not merely read.
 
-    This is the question that matters for a deployment: not "does a workspace
-    directory exist" - the repository ships one for churn - but "is there a
-    finished run a visitor can actually look at".
+    A recorded champion is not sufficient evidence. The repository commits
+    ``workspaces/churn/artifacts/final_model_selection.json`` - which names a
+    champion - while gitignoring the model pickle and the engineered splits it
+    refers to. A clone therefore looks seeded and is not: the dashboards
+    render, and the retention simulator reports that nothing has been trained.
+
+    That is exactly how the first Streamlit Cloud deployment shipped with no
+    demo projects. Checking for the champion's artifacts, rather than for the
+    claim that a champion exists, is the difference.
     """
+
+    selection = workspace / "artifacts" / "final_model_selection.json"
+    try:
+        champion = json.loads(
+            selection.read_text(encoding="utf-8")).get("champion_name")
+    except (OSError, ValueError):
+        return False
+    if not champion:
+        return False
+
+    # The recorded model_path is absolute and was written on whichever machine
+    # trained it, so it is meaningless after a clone. Look for the artifacts
+    # inside this workspace instead.
+    has_model = any(workspace.glob("models/*/*/model.joblib"))
+    has_data = (workspace / "data" / "engineered" / "test.csv").exists()
+    return has_model and has_data
+
+
+def has_browsable_project() -> bool:
+    """True when at least one workspace holds a run a visitor can actually use."""
 
     if not WORKSPACES.is_dir():
         return False
-    for path in WORKSPACES.glob("*/artifacts/final_model_selection.json"):
-        try:
-            if json.loads(path.read_text(encoding="utf-8")).get("champion_name"):
-                return True
-        except (OSError, ValueError):
-            continue
-    return False
+    return any(is_runnable(path)
+               for path in WORKSPACES.iterdir() if path.is_dir())
 
 
 def run_demo(demo: Demo) -> tuple[bool, str]:
