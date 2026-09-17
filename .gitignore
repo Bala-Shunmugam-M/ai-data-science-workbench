@@ -86,3 +86,7 @@ _site/
 
 # Local agent tooling state - not part of the project.
 .claude-flow/
+
+# Project-level launch config is unused: the Browser pane reads the one at the
+# workspace root, not this path.
+.claude/launch.json
