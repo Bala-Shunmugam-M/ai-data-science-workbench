@@ -30,6 +30,11 @@ jobs:
   build:
     name: Build site
     runs-on: ubuntu-latest
+    outputs:
+      # A figure taken from the page this job just produced. The deploy job
+      # asserts the LIVE site serves it, which is what distinguishes "the
+      # deployment worked" from "something is still being served".
+      marker: ${{ steps.marker.outputs.value }}
     steps:
       - uses: actions/checkout@v4
 
@@ -45,6 +50,20 @@ jobs:
           test -f _site/index.html || { echo "no index.html"; exit 1; }
           echo "Published files:"
           find _site -type f | sort
+
+      - name: Fingerprint this build
+        id: marker
+        run: |
+          # A result figure from the page itself, rather than a commit SHA:
+          # the SHA would be present even if the site were rebuilt from stale
+          # artifacts, whereas this changes whenever the numbers change.
+          value=$(grep -oE 'RMSE \$[0-9,]+' _site/index.html | tail -1)
+          if [ -z "$value" ]; then
+            echo "::error::could not fingerprint the built page"
+            exit 1
+          fi
+          echo "value=$value" >> "$GITHUB_OUTPUT"
+          echo "This build serves: $value"
 
       # enablement: true turns Pages on if it is not already configured.
       # Without it the very first push fails, because the workflow runs before
@@ -69,3 +88,55 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+      # A failed deploy leaves the PREVIOUS build serving, so the site looks
+      # healthy while the repository has moved on. deploy-pages reporting
+      # success is therefore not evidence that the new content is reachable;
+      # only fetching it is.
+      - name: Smoke-check the live site
+        run: |
+          set -uo pipefail
+          url="${{ steps.deployment.outputs.page_url }}"
+          expected='${{ needs.build.outputs.marker }}'
+          echo "Checking $url for: $expected"
+
+          # The CDN takes a few seconds to pick up a new deployment, so a
+          # single immediate request would fail intermittently and teach
+          # everyone to ignore this check.
+          serving=""
+          for attempt in 1 2 3 4 5 6; do
+            body=$(curl -fsS --max-time 20 "$url" || true)
+            if printf '%s' "$body" | grep -qF "$expected"; then
+              serving="yes"
+              echo "Attempt $attempt: the live site is serving this build."
+              break
+            fi
+            echo "Attempt $attempt: not serving '$expected' yet; waiting."
+            sleep 10
+          done
+
+          if [ -z "$serving" ]; then
+            echo "::error::The live site is not serving this build. Expected \
+          to find '$expected' at $url - the previous build may still be up."
+            exit 1
+          fi
+
+          # The index can be correct while a linked page 404s, which is the
+          # failure a reader actually hits.
+          failed=0
+          for path in housing/report.html churn/report.html \
+                      housing/model_card.md churn/model_card.md; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 20 "$url$path")
+            if [ "$code" = "200" ]; then
+              echo "  OK   $path"
+            else
+              echo "  FAIL $path -> HTTP $code"
+              failed=1
+            fi
+          done
+
+          if [ "$failed" -ne 0 ]; then
+            echo "::error::One or more published pages are not reachable."
+            exit 1
+          fi
+          echo "Live site verified: $url"
