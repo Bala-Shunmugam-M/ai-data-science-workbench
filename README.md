@@ -34,9 +34,53 @@ minute or two while it installs and builds.
 | `start-webapp.bat` | Dev server instead, with hot reload (slower pages) |
 
 Needs **Node.js** to serve the site and **Python** on PATH to analyse an upload
-— the analysis runs through the same Python pipeline the CLI uses. The site is
-local-only by design: it spawns Python on this machine, so there is nothing to
-deploy to a server.
+— the analysis runs through the same Python pipeline the CLI uses.
+
+---
+
+## Deployed surfaces
+
+Three ways to reach this project, with different trade-offs. The split is not a
+preference: it follows from what each host can actually run.
+
+| Surface | Host | Interactive? |
+|---|---|---|
+| **Report site** | GitHub Pages | No — generated reports, model cards and fairness audits |
+| **Streamlit app** | Streamlit Community Cloud | Yes — all 11 pages, including upload and the retention simulator |
+| **Next.js console** | local only | Yes — the full journey UI |
+
+### Why the console is not hosted
+
+Its API routes spawn the pipeline as a child process (`webapi/bridge.py`), so a
+host must run **Node and Python in the same container**. That rules out GitHub
+Pages, Vercel and Netlify outright. Container hosts can do it — a working
+`deploy/render/Dockerfile` and `render.yaml` are in the repository — but every
+remaining free tier (Render, Fly.io, Railway, Koyeb) now requires a payment
+card, and Hugging Face Spaces bills for any Space that runs Python:
+
+    docker    BLOCKED - PRO subscription required
+    gradio    BLOCKED - PRO subscription required
+    streamlit BLOCKED - PRO subscription required
+    static    ALLOWED
+
+So the console runs locally, and the Streamlit app carries the live interactive
+demo. Both drive the identical pipeline.
+
+### Deploying
+
+**Report site** — automatic. `.github/workflows/pages.yml` publishes on every
+push to `main`, then verifies the live URL actually serves that build rather
+than trusting the deploy step's exit code.
+
+**Streamlit app** — at [share.streamlit.io](https://share.streamlit.io), point a
+new app at this repository, branch `main`, main file `app/main.py`. Free, no
+card. On first load it seeds two demo projects by running the real pipeline on
+the committed 600-row samples (`src/automl/demo_seed.py`); the repository ships
+the pipeline's code but not its output, so a bare clone would otherwise show
+empty dashboards.
+
+**Console on a container host** — `render.yaml` is a ready Blueprint if you
+have a host with a card on file.
 
 ---
 
