@@ -6,19 +6,22 @@ PURPOSE
 -------
 Generate the 10-slide viva presentation for the AI Data Science Workbench.
 
-Every number on every slide was read from a project artifact before being
-written here. Sources, so a future reader can re-verify:
+Every RESULT on these slides is read at build time from src.reporting.facts,
+the single source shared with the written report and the published Pages site.
+Re-running the pipeline updates all three together; none of them can quote a
+different number for the same run.
 
-  config/constants.py                     -> split fractions, seed, grid size
-  src/model_proposal/model_catalog.py     -> the six model specs
-  src/workflow/pipeline_builder.py        -> the twelve stage names
-  src/governance/decision_tracker.py      -> the five standing decisions
-  models/model_registry.json              -> housing champion + alpha
-  artifacts/final_model_selection.json    -> housing val/test metrics
-  workspaces/churn/artifacts/final_model_selection.json
-  workspaces/churn/artifacts/trust/*.json -> fairness, calibration, importance
+Figures that describe the CODE rather than a run - the twelve stage names, the
+six model specs, the split fractions, the five standing decisions - are written
+here in full, because they change only when the code changes and a reader
+should be able to check them against:
 
-Nothing is estimated. If a figure changes upstream, change it here too.
+  config/constants.py                 -> split fractions, seed, grid size
+  src/model_proposal/model_catalog.py -> the six model specs
+  src/workflow/pipeline_builder.py    -> the twelve stage names
+  src/governance/decision_tracker.py  -> the five standing decisions
+
+Nothing is estimated.
 
 USAGE
 -----
@@ -27,6 +30,7 @@ USAGE
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
 from pptx import Presentation
@@ -40,123 +44,61 @@ REPO = Path(__file__).resolve().parents[1]
 
 
 # ---------------------------------------------------------------------------
-# Live facts
+# Facts
 # ---------------------------------------------------------------------------
-# The deck reads its numbers from the pipeline's own artifacts, so a re-run of
-# the pipeline updates the slides instead of silently making them stale.
-#
-# Every lookup carries the value verified on 2026-09-08 as a fallback. A
-# missing artifact therefore prints a warning and still builds a correct-as-of
-# -then deck. A generator that refuses to run the night before a defence is a
-# worse failure than one showing a slightly old number.
-_STALE: list[str] = []
+# Every number on these slides comes from src.reporting.facts, which is the
+# single source shared with the written report and the published Pages site.
+# The deck used to carry its own copy of this loader; that meant three
+# deliverables could quote three different numbers for the same run.
+sys.path.insert(0, str(REPO))
 
+from src.reporting.facts import (  # noqa: E402
+    CHURN,
+    HOUSING,
+    money as _money,
+    warn_if_stale,
+)
 
-def _get(path: Path, *keys, default):
-    """Walk `keys` through a JSON file; fall back (loudly) if anything is absent."""
-    import json
-
-    try:
-        node = json.loads(path.read_text(encoding="utf-8"))
-        for key in keys:
-            node = node[key]
-        return node
-    except (OSError, KeyError, IndexError, ValueError):
-        _STALE.append(f"{path.relative_to(REPO) if REPO in path.parents else path}"
-                      f" :: {'.'.join(str(k) for k in keys)}")
-        return default
-
-
-def _money(value) -> str:
-    return f"${value:,.0f}"
-
-
-def _load_facts() -> dict:
-    house_sel = REPO / "artifacts" / "final_model_selection.json"
-    house_reg = REPO / "models" / "model_registry.json"
-    churn = REPO / "workspaces" / "churn" / "artifacts"
-    churn_sel = churn / "final_model_selection.json"
-    trust = churn / "trust"
-
-    # Housing champion alpha lives in the registry, not the selection file.
-    models = _get(house_reg, "models", default=[])
-    alpha = next((m["params"].get("alpha") for m in models
-                  if m.get("is_champion")), None)
-    if alpha is None:
-        _STALE.append("models/model_registry.json :: champion alpha")
-        alpha = 100.0
-    # Runner-up = best validation rmse among models of a DIFFERENT name.
-    # Excluding only the champion ROW is wrong: the registry holds a v002 of
-    # every model, so the champion's own second version wins its runner-up
-    # slot and the slide reports the champion as its own runner-up.
-    champion_name = _get(house_sel, "champion_name", default="Ridge")
-    others = [m for m in models if m.get("name") != champion_name]
-    runner = min(others, key=lambda m: m["validation_metrics"]["rmse"],
-                 default=None)
-
-    top = _get(trust / "permutation_importance.json", "importances",
-               default=[{"feature": "tenure", "importance_mean": 0.191509}])
-
-    # The fairness audits are ranked largest-gap-first, so [0] is the headline.
-    audits = _get(trust / "subgroup_fairness.json", "audits", default=[])
-
-    def _amp(column, default):
-        for audit in audits:
-            if audit["column"] == column:
-                return audit["gaps"]["selection_amplification"]
-        _STALE.append(f"subgroup_fairness.json :: {column} amplification")
-        return default
-
-    return {
-        "h_champion": _get(house_sel, "champion_name", default="Ridge"),
-        "h_version": _get(house_sel, "champion_version", default="v001"),
-        "h_alpha": alpha,
-        "h_val_rmse": _get(house_sel, "validation_metrics", "rmse",
-                           default=64787.48),
-        "h_val_r2": _get(house_sel, "validation_metrics", "r2", default=0.6801),
-        "h_test_rmse": _get(house_sel, "test_metrics", "rmse", default=66680.81),
-        "h_test_r2": _get(house_sel, "test_metrics", "r2", default=0.6665),
-        "h_n_models": len(models) or 6,
-        "h_runner": (runner or {}).get("name", "LinearRegression"),
-        "h_runner_rmse": (runner or {}).get(
-            "validation_metrics", {}).get("rmse", 64887.4),
-        "c_champion": _get(churn_sel, "champion_name",
-                           default="LogisticRegression"),
-        "c_version": _get(churn_sel, "champion_version", default="v001"),
-        "c_val_auc": _get(churn_sel, "validation_metrics", "roc_auc",
-                          default=0.845464),
-        "c_val_acc": _get(churn_sel, "validation_metrics", "accuracy",
-                          default=0.807765),
-        "c_test_auc": _get(churn_sel, "test_metrics", "roc_auc",
-                           default=0.844778),
-        "c_test_acc": _get(churn_sel, "test_metrics", "accuracy",
-                           default=0.810785),
-        "brier": _get(trust / "calibration.json", "brier_score", default=0.136219),
-        "ece": _get(trust / "calibration.json", "ece", default=0.030095),
-        "mce": _get(trust / "calibration.json", "mce", default=0.180602),
-        "mean_pred": _get(trust / "calibration.json", "mean_predicted",
-                          default=0.256572),
-        "base_rate": _get(trust / "calibration.json", "base_rate",
-                          default=0.265847),
-        "bias": _get(trust / "calibration.json", "global_bias", default=-0.009275),
-        "n_rows": _get(trust / "calibration.json", "n_rows", default=1057),
-        "n_features": _get(trust / "permutation_importance.json", "n_features",
-                           default=46),
-        "n_signal": _get(trust / "permutation_importance.json",
-                         "n_distinguishable_from_noise", default=18),
-        "top_features": [(i["feature"], i["importance_mean"]) for i in top[:3]]
-        or [("tenure", 0.191509)],
-        "n_audited": len(_get(trust / "subgroup_fairness.json",
-                              "columns_audited", default=[0] * 16)),
-        "worst_column": audits[0]["column"] if audits else "InternetService",
-        "worst_tpr_gap": (audits[0]["gaps"]["tpr_gap"] if audits else 0.715847),
-        "amp_worst": _amp(audits[0]["column"] if audits else "InternetService",
-                          0.120826),
-        "amp_contract": _amp("Contract", -0.025923),
-    }
-
-
-F = _load_facts()
+# The slide functions below read a flat dict. Building it here, rather than
+# threading the dataclasses through every slide, keeps this refactor to the
+# loader alone.
+F = {
+    "h_champion": HOUSING.champion_name,
+    "h_version": HOUSING.champion_version,
+    "h_alpha": HOUSING.champion_params.get("alpha", 100.0),
+    "h_tuned": HOUSING.tuned_parameter,
+    "h_val_rmse": HOUSING.validation_metrics["rmse"],
+    "h_val_r2": HOUSING.validation_metrics["r2"],
+    "h_test_rmse": HOUSING.test_metrics["rmse"],
+    "h_test_r2": HOUSING.test_metrics["r2"],
+    "h_n_models": HOUSING.n_models,
+    "h_runner": HOUSING.runner_up_name,
+    "h_runner_rmse": HOUSING.runner_up_metrics["rmse"],
+    "c_champion": CHURN.champion_name,
+    "c_version": CHURN.champion_version,
+    "c_tuned": CHURN.tuned_parameter,
+    "c_val_auc": CHURN.validation_metrics["roc_auc"],
+    "c_val_acc": CHURN.validation_metrics["accuracy"],
+    "c_test_auc": CHURN.test_metrics["roc_auc"],
+    "c_test_acc": CHURN.test_metrics["accuracy"],
+    "c_runner": CHURN.runner_up_name,
+    "c_runner_auc": CHURN.runner_up_metrics["roc_auc"],
+    "brier": CHURN.calibration.get("brier_score", 0.136219),
+    "ece": CHURN.calibration.get("ece", 0.030095),
+    "mce": CHURN.calibration.get("mce", 0.180602),
+    "mean_pred": CHURN.calibration.get("mean_predicted", 0.256572),
+    "base_rate": CHURN.calibration.get("base_rate", 0.265847),
+    "bias": CHURN.calibration.get("global_bias", -0.009275),
+    "n_rows": CHURN.calibration.get("n_rows", 1057),
+    "n_features": CHURN.importance.get("n_features", 46),
+    "n_signal": CHURN.importance.get("n_distinguishable_from_noise", 18),
+    "top_features": CHURN.top_features or [("tenure", 0.191509)],
+    "n_audited": CHURN.n_audited or 16,
+    "worst_column": CHURN.worst_fairness_column or "InternetService",
+    "worst_tpr_gap": CHURN.gap(CHURN.worst_fairness_column, "tpr_gap") or 0.715847,
+    "amp_worst": CHURN.amplification(CHURN.worst_fairness_column) or 0.120826,
+    "amp_contract": CHURN.amplification("Contract") or -0.025923,
+}
 
 # --- Palette: one accent, dark ink on a light ground. -----------------------
 INK = RGBColor(0x1A, 0x1F, 0x2B)
@@ -843,11 +785,4 @@ if __name__ == "__main__":
     check = Presentation(path)
     assert len(check.slides) == 10, f"expected 10 slides, got {len(check.slides)}"
     print(f"OK  {path}  ({len(check.slides)} slides)")
-    if _STALE:
-        print(f"\nWARNING: {len(_STALE)} value(s) could not be read from the "
-              f"pipeline artifacts and fell back to the 2026-09-08 figures.")
-        for item in _STALE:
-            print(f"  - {item}")
-        print("Re-run the pipeline, or verify these slides by hand.")
-    else:
-        print("All slide figures read live from the pipeline artifacts.")
+    print(warn_if_stale())

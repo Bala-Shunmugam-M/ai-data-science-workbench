@@ -17,41 +17,18 @@ Run by: .github/workflows/pages.yml
 
 from __future__ import annotations
 
-import json
 import shutil
+import sys
 from pathlib import Path
 
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO))
+
+# The published numbers come from the same module the deck and the written
+# report read, so the site cannot quote a different figure for the same run.
+from src.reporting.facts import PROJECTS, warn_if_stale  # noqa: E402
+
 SITE = Path("_site")
-
-# (slug, display name, task, workspace root)
-PROJECTS = [
-    ("housing", "California Housing", "Regression", Path(".")),
-    ("churn", "Telco Customer Churn", "Classification",
-     Path("workspaces") / "churn"),
-]
-
-
-def read_selection(root: Path) -> dict:
-    path = root / "artifacts" / "final_model_selection.json"
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return {}
-
-
-def fmt_metrics(metrics: dict | None) -> str:
-    if not metrics:
-        return "not available"
-    parts = []
-    for key, value in metrics.items():
-        if not isinstance(value, (int, float)):
-            continue
-        # RMSE and MAE are in target units (dollars here); the rest are ratios.
-        if key in ("rmse", "mae") and abs(value) >= 1000:
-            parts.append(f"{key.upper()} ${value:,.0f}")
-        else:
-            parts.append(f"{key.upper()} {value:.4f}")
-    return "  &middot;  ".join(parts) or "not available"
 
 
 def copy_if(src: Path, dest: Path) -> bool:
@@ -68,13 +45,16 @@ def build() -> None:
     SITE.mkdir(parents=True)
 
     cards: list[str] = []
-    for slug, name, task, root in PROJECTS:
-        selection = read_selection(root)
-        champion = selection.get("champion_name", "not available")
-        version = selection.get("champion_version", "")
-        metric = selection.get("selection_metric", "not available")
-        test = fmt_metrics(selection.get("test_metrics"))
-        validation = fmt_metrics(selection.get("validation_metrics"))
+    for facts in PROJECTS:
+        slug, name, task, root = (facts.slug, facts.display_name,
+                                  facts.task, facts.root)
+        champion = facts.champion_name
+        version = facts.champion_version
+        metric = facts.selection_metric
+        # The same canonical strings the deck and the report print, so a reader
+        # comparing the three documents sees identical figures.
+        test = facts.test_line
+        validation = facts.validation_line
 
         links: list[str] = []
         if copy_if(root / "artifacts" / "reports" / "project_report.html",
@@ -112,6 +92,7 @@ def build() -> None:
     # files and directories beginning with an underscore.
     (SITE / ".nojekyll").write_text("", encoding="utf-8")
     print(f"Built {SITE} with {len(PROJECTS)} project(s).")
+    print(warn_if_stale())
 
 
 INDEX = """<!DOCTYPE html>
