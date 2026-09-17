@@ -39,13 +39,75 @@ import joblib
 import numpy as np
 import pandas as pd
 
+if __name__ == "__main__" and __package__ is None:
+    # Running this file directly puts src/simulation/ on sys.path, not the
+    # repository root, so `python src/simulation/retention.py` - the self-check
+    # this module's docstring advertises - died on `import config`. Importing
+    # it as a module (pytest, Streamlit) was always fine, which is why the
+    # broken path went unnoticed.
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from config.paths import PROJECT_ROOT
 from src.model_training.design_matrix import positive_proba
 
-CHURN_ROOT: Path = PROJECT_ROOT / "workspaces" / "churn"
+_WORKSPACES = PROJECT_ROOT / "workspaces"
+_REVENUE_COLUMN = "MonthlyCharges"
+
+
+def _usable(root: Path) -> bool:
+    """
+    True when this workspace can actually be simulated.
+
+    Both files are required. The selection file alone is not enough: the
+    repository publishes artifacts but NOT datasets or model pickles, so a
+    fresh clone has a churn workspace whose final_model_selection.json exists
+    and whose model and test split do not. Checking only the former is how the
+    simulator ends up loading a path that is not there.
+    """
+
+    return (
+        (root / "artifacts" / "final_model_selection.json").exists()
+        and (root / "data" / "engineered" / "test.csv").exists()
+    )
+
+
+def _resolve_root() -> Path:
+    """
+    The churn workspace to simulate.
+
+    ``workspaces/churn`` is preferred, so every existing local result is
+    unchanged. When it is not usable - a fresh clone, or a deployment built
+    from one - any other workspace carrying the revenue column is accepted, so
+    a seeded demo project works instead of the page silently showing nothing.
+    """
+
+    preferred = _WORKSPACES / "churn"
+    if _usable(preferred):
+        return preferred
+
+    if _WORKSPACES.is_dir():
+        for candidate in sorted(_WORKSPACES.glob("*")):
+            if not candidate.is_dir() or not _usable(candidate):
+                continue
+            # The revenue column is what makes a project simulatable at all: a
+            # regression project has a champion and a test split but no notion
+            # of a monthly bill to discount.
+            try:
+                with (candidate / "data" / "engineered" / "test.csv").open(
+                        encoding="utf-8") as handle:
+                    header = handle.readline()
+            except OSError:
+                continue
+            if _REVENUE_COLUMN in header:
+                return candidate
+
+    return preferred
+
+
+CHURN_ROOT: Path = _resolve_root()
 _FINAL_SELECTION = CHURN_ROOT / "artifacts" / "final_model_selection.json"
 _TEST_SPLIT = CHURN_ROOT / "data" / "engineered" / "test.csv"
-_REVENUE_COLUMN = "MonthlyCharges"
 
 
 def is_ready() -> bool:
